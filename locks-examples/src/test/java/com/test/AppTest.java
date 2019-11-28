@@ -79,85 +79,7 @@ public class AppTest extends TestCase
 		redisson.shutdown();
 	}
 
-	// @org.junit.Test
-	public void testRedLock() throws InterruptedException
-	{
-		// 锁的名字
-		String key = "myTest001";
-		// 尝试加锁的超时时间
-		Long timeout = 1000L;
-		// 锁过期时间
-		Long expire = 30L;
-		// 并发数
-		Integer size = 100;
-
-		// 定义线程池
-		ExecutorService executorService = Executors.newFixedThreadPool(size);
-
-		// 定义倒计时门闩：以保证所有线程执行完毕再进行最后的计数
-		CountDownLatch latchCount = new CountDownLatch(size);
-
-		// 计数器
-		LongAdder adderSuccess = new LongAdder();
-		LongAdder adderFail = new LongAdder();
-
-		// 多线程执行
-		for (int i = 0; i < size; i++)
-		{
-			executorService.execute(() ->
-			{
-				// 定义锁
-				RLock lock = redisson.getLock(key);
-				try
-				{
-					// 获取锁
-					if (lock.tryLock(timeout, expire, TimeUnit.MILLISECONDS))
-					{
-						// 成功计数器累加1
-						adderSuccess.increment();
-						latchCount.countDown();
-					}
-					else
-					{
-						// 失败计数器累加1
-						adderFail.increment();
-						latchCount.countDown();
-					}
-				}
-				catch (InterruptedException e)
-				{
-					System.out.println("尝试获取分布式锁失败");
-					// log.error("尝试获取分布式锁失败", e);
-				}
-				finally
-				{
-					// 释放锁
-					try
-					{
-						// lock.unlock();
-					}
-					catch (Exception e)
-					{
-						// do nothing
-					}
-				}
-			});
-		}
-		// 等待所有线程执行完毕
-		latchCount.await();
-
-		// 关闭线程池
-		executorService.shutdown();
-
-		// 关闭连接
-		redisson.shutdown();
-
-		System.out.println("共计「" + adderSuccess.intValue() + "」获取锁成功，「" + adderFail.intValue() + "」获取锁失败。");
-		// log.info("共计「{}」获取锁成功，「{}」获取锁失败。", adderSuccess.intValue(),
-		// adderFail.intValue());
-	}
-
-//	@org.junit.Test
+	@org.junit.Test
 	public void testStockLock() throws InterruptedException
 	{
 		// 锁的名字
@@ -168,20 +90,49 @@ public class AppTest extends TestCase
 		Long expire = 30L;
 		// 并发数
 		Integer size = 2;
-
+		// 每条线程所得库存数
+		Integer[] stockQtyArray = new Integer[size];
+		
 		// 定义线程池
 		ExecutorService executorService = Executors.newFixedThreadPool(size);
-
+		
 		// 定义倒计时门闩：以保证所有线程执行完毕再进行最后的计数
 		CountDownLatch latchCount = new CountDownLatch(size);
-
+		
 		// 计数器
 		LongAdder adderSuccess = new LongAdder();
 		LongAdder adderFail = new LongAdder();
-
-		// 多线程执行
+		
+		// 多线程查库存
+		log.info("/**************************************************查库存**************************************************/");
 		for (int i = 0; i < size; i++)
 		{
+			final int j = i;
+			log.info("[{}]:{}", i, j);
+			executorService.execute(() ->
+			{
+				Stock stock = service.get(1l);
+				log.info("线程[{}] 所得库存为：{}", j, stock.getQty());
+				stockQtyArray[j] = stock.getQty();
+			});
+		}
+		
+		// 等待1s
+		try
+		{
+			Thread.sleep(1000);
+		}
+		catch (InterruptedException e)
+		{
+			e.printStackTrace();
+		}
+		
+		// 多线程扣库存
+		log.info("/**************************************************扣库存**************************************************/");
+		for (int i = 0; i < size; i++)
+		{
+			final int j = i;
+			log.info("[{}]:{}", i, j);
 			executorService.execute(() ->
 			{
 				// 定义锁
@@ -191,10 +142,14 @@ public class AppTest extends TestCase
 					// 获取锁
 					if (lock.tryLock(timeout, expire, TimeUnit.MILLISECONDS))
 					{
-						Stock stock = service.get(1l);
-						stock.setQty(stock.getQty() - 1);
-						service.upd(stock);
-
+						try
+						{
+							service.deductInventoryWithDistributedLock(j, 1l, stockQtyArray[j]);
+						}
+						catch (Exception e)
+						{
+							log.error(e.getMessage());
+						}
 						// 成功计数器累加1
 						adderSuccess.increment();
 						latchCount.countDown();
@@ -226,17 +181,17 @@ public class AppTest extends TestCase
 		}
 		// 等待所有线程执行完毕
 		latchCount.await();
-
+		
 		// 关闭线程池
 		executorService.shutdown();
-
+		
 		// 关闭连接
 		redisson.shutdown();
-
+		
 		log.info("共计「{}」获取锁成功，「{}」获取锁失败。", adderSuccess.intValue(), adderFail.intValue());
 	}
 	
-	@org.junit.Test
+//	@org.junit.Test
 	/**
 	 * 无锁，并发事务扣库存
 	 * @throws InterruptedException

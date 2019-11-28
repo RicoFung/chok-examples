@@ -4,10 +4,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import chok.devwork.springboot.BaseDao;
-import chok.devwork.springboot.BaseService;
+
 import com.admin.dao.StockDao;
 import com.admin.entity.Stock;
+
+import chok.devwork.springboot.BaseDao;
+import chok.devwork.springboot.BaseService;
 
 @Service
 public class StockService extends BaseService<Stock, Long>
@@ -68,6 +70,28 @@ public class StockService extends BaseService<Stock, Long>
 		}
 	}
 
+	/**
+	 * 分布式锁避免库存超卖
+	 * @param tid
+	 * @param id
+	 * @param qty
+	 * @throws Exception
+	 */
+	public void deductInventoryWithDistributedLock(int tid, long id, int qty) throws Exception
+	{
+		Stock stock = dao.get(id);
+		log.info("线程[{}]，{}", tid, stock.toString());
+		if (0 == stock.getQty() || 0 > stock.getQty() - qty)
+		{
+			throw new Exception("【分布式锁】库存不足！");
+		}
+		else
+		{
+			stock.setQty(stock.getQty() - qty);
+			dao.upd(stock);
+		}
+	}
+	
 	/**
 	 * 利用悲观锁模拟库存超卖
 	 * @param tid
