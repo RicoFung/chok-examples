@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">   
+
+<mapper namespace="com.admin.entity.Stock">
+      <!-- 自动生成id策略 -->
+    <insert id="add" parameterType="com.admin.entity.Stock" useGeneratedKeys="true" keyProperty="id">  
+       	INSERT INTO stock 
+       	( id, sku, qty, version) 
+       	VALUES
+       	( #{id}, #{sku}, #{qty}, #{version})
+    </insert>  
+	
+	<delete id="del" parameterType="com.admin.entity.Stock">
+		DELETE FROM stock 
+		 WHERE id = #{id}  
+	</delete>
+	
+	<update id="upd" parameterType="com.admin.entity.Stock">
+		UPDATE stock SET
+	           sku = #{sku}, 
+	           qty = #{qty},
+	           version = #{version}
+         WHERE id = #{id}  
+	</update>
+	
+	<!-- 乐观锁处理库存超卖（跨应用无效） -->
+	<update id="deductInventoryWithOptimisticLock">
+		UPDATE stock SET
+	           qty = #{qty},
+	           version = #{version_new}
+         WHERE id = #{id} 
+           AND version = #{version_old}
+	</update>
+  	
+	<resultMap type="com.admin.entity.Stock" id="result">
+        <result property="id" column="id"/>
+        <result property="sku" column="sku"/>
+        <result property="qty" column="qty"/>
+        <result property="version" column="version"/>
+	</resultMap>
+  	
+	<sql id="columns">
+		t.id, t.sku, t.qty, t.version
+	</sql>
+	
+	<sql id="order">
+		<choose>
+			<when test="@chok.devwork.Ognl@isNotEmpty(sort)">
+				ORDER BY tt.<include refid="orderParse1"/> ${order}
+			</when>
+			<when test="@chok.devwork.Ognl@isNotEmpty(multiSort) and @chok.devwork.Ognl@isEmpty(sort)">
+				ORDER BY <foreach collection="multiSort" index="index" item="item" separator=",">tt.<include refid="orderParse2" /> ${item.sortOrder}</foreach>  
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</sql>
+	<sql id="orderParse1">
+		<if test="sort == 'id'">id</if>
+		<if test="sort == 'sku'">sku</if>
+		<if test="sort == 'qty'">qty</if>
+	</sql>
+	<sql id="orderParse2">
+		<if test="item.sortName == 'id'">id</if>
+		<if test="item.sortName == 'sku'">sku</if>
+		<if test="item.sortName == 'qty'">qty</if>
+	</sql>
+	
+	<sql id="dynamicWhere">
+		<where>	      				
+	       <if test="@chok.devwork.Ognl@isNotEmpty(sku)"> AND t.sku LIKE CONCAT('%',#{sku},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(qty)"> AND t.qty LIKE CONCAT('%',#{qty},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(search)"> AND (t.sku LIKE CONCAT('%',#{search},'%') OR t.qty LIKE CONCAT('%',#{search},'%'))</if>	
+		</where>
+	</sql>	
+	
+	<!-- 加悲观锁，防止并发事务导致第二类丢失更新（提交被覆盖） -->
+	<!-- 此处用于模拟负库存场景 -->
+	<select id="getWithPessimisticLock" resultMap="result">
+		SELECT <include refid="columns"/> 
+		  FROM stock t 
+		 WHERE t.id = #{id}
+		 FOR UPDATE
+	</select>
+	
+	<!-- 无锁，并发事务会导致脏读 -->
+	<select id="get" resultMap="result">
+		SELECT <include refid="columns"/> 
+		  FROM stock t 
+		 WHERE t.id = #{id}
+	</select>
+	
+	<select id="query" resultType="list" resultMap="result">
+		<choose>
+			<!-- 翻页 -->
+			<when test="@chok.devwork.Ognl@isNotEmpty(offset) and @chok.devwork.Ognl@isNotEmpty(limit)">
+				SELECT * FROM (SELECT row_.*, ROWNUM rownum_ FROM(
+					SELECT tt.* FROM 
+					(
+						SELECT <include refid="columns"/> FROM stock t
+						<include refid="dynamicWhere" />
+					) tt
+					<include refid="order" />
+	            ) row_ WHERE rownum &lt;= #{offset,javaType=String,jdbcType=NUMERIC}+#{limit,javaType=String,jdbcType=NUMERIC} ) 
+	            WHERE rownum_ &gt; #{offset,javaType=String,jdbcType=NUMERIC}
+			</when>
+			<!-- 非翻页 -->
+			<otherwise>
+				SELECT tt.* FROM 
+				(
+					SELECT <include refid="columns"/> FROM stock t
+					<include refid="dynamicWhere" />
+				) tt
+				<include refid="order" />
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="getCount" resultType="int">
+		SELECT COUNT(1) FROM stock t
+		<include refid="dynamicWhere" />
+	</select>
+</mapper>  
