@@ -24,7 +24,7 @@ public class StockService extends BaseService<Stock, Long>
 	}
 
 	/**
-	 * 乐观锁处理库存超卖（跨应用无效）
+	 * 乐观锁避免库存超卖（跨应用无效）
 	 * 
 	 * @param tid
 	 * @param id
@@ -46,7 +46,7 @@ public class StockService extends BaseService<Stock, Long>
 	}
 
 	/**
-	 * 悲观锁处理库存超卖（并发性能差）
+	 * 悲观锁避免库存超卖（并发性能差）
 	 * 
 	 * @param tid
 	 * @param id
@@ -66,5 +66,20 @@ public class StockService extends BaseService<Stock, Long>
 			stock.setQty(stock.getQty() - qty);
 			dao.upd(stock);
 		}
+	}
+
+	/**
+	 * 利用悲观锁模拟库存超卖
+	 * @param tid
+	 * @param id
+	 * @param qty
+	 * @throws Exception
+	 */
+	public void deductInventoryOversold(int tid, long id, int qty) throws Exception
+	{
+		Stock stock = dao.getWithPessimisticLock(id);
+		log.info("线程[{}]，{}", tid, stock.toString());
+		stock.setQty(stock.getQty() - qty);
+		dao.upd(stock);
 	}
 }
