@@ -25,12 +25,13 @@ public class StockService extends BaseService<Stock, Long>
 
 	/**
 	 * 乐观锁处理库存超卖（跨应用无效）
+	 * 
 	 * @param tid
 	 * @param id
 	 * @param qty
-	 * @throws Exception 
+	 * @throws Exception
 	 */
-	public void deductInventoryWithOptimisticLock (int tid, long id, int qty) throws Exception
+	public void deductInventoryWithOptimisticLock(int tid, long id, int qty) throws Exception
 	{
 		Stock stock = dao.get(id);
 		log.info("线程[{}]，{}", tid, stock.toString());
@@ -38,7 +39,7 @@ public class StockService extends BaseService<Stock, Long>
 		int versionOld = stock.getVersion();
 		int versionNew = versionOld + 1;
 		int updateRows = dao.deductInventoryWithOptimisticLock(id, qtyNew, versionNew, versionOld);
-		if (0 == updateRows) 
+		if (0 == updateRows)
 		{
 			throw new Exception("【乐观锁】库存不足！");
 		}
@@ -46,20 +47,24 @@ public class StockService extends BaseService<Stock, Long>
 
 	/**
 	 * 悲观锁处理库存超卖（并发性能差）
+	 * 
 	 * @param tid
 	 * @param id
 	 * @param qty
-	 * @throws Exception 
+	 * @throws Exception
 	 */
-	public void deductInventoryWithPessimisticLock (int tid, long id, int qty) throws Exception 
+	public void deductInventoryWithPessimisticLock(int tid, long id, int qty) throws Exception
 	{
 		Stock stock = dao.getWithPessimisticLock(id);
 		log.info("线程[{}]，{}", tid, stock.toString());
-		stock.setQty(stock.getQty() - qty);
-		int updateRows = dao.upd(stock);
-		if (0 == updateRows) 
+		if (0 == stock.getQty() || 0 > stock.getQty() - qty)
 		{
 			throw new Exception("【悲观锁】库存不足！");
+		}
+		else
+		{
+			stock.setQty(stock.getQty() - qty);
+			dao.upd(stock);
 		}
 	}
 }

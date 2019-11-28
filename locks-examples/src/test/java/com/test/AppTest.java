@@ -284,7 +284,8 @@ public class AppTest extends TestCase
 			{
 				try
 				{
-					service.deductInventoryWithOptimisticLock(j, 1l, stockQtyArray[j]);
+					service.deductInventoryWithPessimisticLock(j, 1l, stockQtyArray[j]);
+//					service.deductInventoryWithOptimisticLock(j, 1l, stockQtyArray[j]);
 				}
 				catch (Exception e)
 				{
