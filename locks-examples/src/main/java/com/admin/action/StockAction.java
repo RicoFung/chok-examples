@@ -1,119 +1,91 @@
 package com.admin.action;
 
-import java.util.List;
-import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
+import org.redisson.api.RLock;
+import org.redisson.api.RedissonClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import chok.devwork.BaseController;
-import chok.util.CollectionUtil;
 import com.admin.service.StockService;
-import com.admin.entity.Stock;
+import com.alibaba.fastjson.JSONObject;
 
-@Scope("prototype")
-@Controller
+@RestController
 @RequestMapping("/admin/stock")
-public class StockAction extends BaseController<Stock>
+public class StockAction
 {
+	private final Logger log = LoggerFactory.getLogger(getClass());
+
+	@Autowired
+	private RedissonClient redisson;
+
 	@Autowired
 	private StockService service;
 	
-	@RequestMapping("/add")
-	public String add() 
-	{
-		put("queryParams",req.getParameterValueMap(false, true));
-		put("jspaction", req.getServletPath());
-		return "jsp/admin/stock/add";
-	}
-	@RequestMapping("/add2")
-	public void add2(Stock po) 
-	{
-		try
-		{
-			service.add(po);
-			print("1");
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-			print("0:" + e.getMessage());
-		}
-	}
+	// 锁的名字
+	String key = "stock-lock-key-01";
+	// 尝试加锁的超时时间
+	Long timeout = 1000L;
+	// 锁过期时间
+	Long expire = 30L;
 	
-	@RequestMapping("/del")
-	public void del() 
+	@RequestMapping(value="/deductInventoryWithDistributedLock", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	public JSONObject deductInventoryWithDistributedLock(@RequestBody JSONObject jsonParam) 
 	{
+		JSONObject restResult = new JSONObject();
+		restResult.put("success", true);
+		restResult.put("msg", "");
+		
+		log.info("==> 请求参数：{}", jsonParam.toJSONString());
+		int tid = jsonParam.getIntValue("tid");
+		int id = jsonParam.getIntValue("id");
+		int qty = jsonParam.getIntValue("qty");
+		
+		// 定义锁
+		RLock lock = redisson.getLock(key);
 		try
 		{
-			service.del(CollectionUtil.toLongArray(req.getLongArray("id[]", 0l)));
-			result.setSuccess(true);
+			// 获取锁
+			if (lock.tryLock(timeout, expire, TimeUnit.MILLISECONDS))
+			{
+				try
+				{
+					service.deductInventoryWithDistributedLock(tid, id, qty);
+				}
+				catch (Exception e)
+				{
+					log.error("<== 异常提示：{}", e.getMessage());
+					restResult.put("success", false);
+					restResult.put("msg", e.getMessage());
+				}
+			}
+			else
+			{
+			}
 		}
-		catch(Exception e)
+		catch (InterruptedException e)
 		{
-			e.printStackTrace();
-			result.setSuccess(false);
-			result.setMsg(e.getMessage());
+			log.error("尝试获取分布式锁失败: {}", e);
 		}
-		printJson(result);
-	}
-	
-	@RequestMapping("/upd")
-	public String upd() 
-	{
-		put("po", service.get(req.getLong("id")));
-		put("queryParams",req.getParameterValueMap(false, true));
-		put("jspaction", req.getServletPath());
-		return "jsp/admin/stock/upd";
-	}
-	@RequestMapping("/upd2")
-	public void upd2(Stock po) 
-	{
-		try
+		finally
 		{
-			service.upd(po);
-			print("1");
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-			print("0:" + e.getMessage());
-		}
+			// 释放锁
+			try
+			{
+				lock.unlock();
+			}
+			catch (Exception e)
+			{
+				// do nothing
+			}
+		}	
+
+		return restResult;
 	}
 
-	@RequestMapping("/get")
-	public String get() 
-	{
-		put("po",service.get(req.getLong("id")));
-		put("queryParams",req.getParameterValueMap(false, true));
-		put("jspaction", req.getServletPath());
-		return "jsp/admin/stock/get";
-	}
-
-	@RequestMapping("/query")
-	public String query() 
-	{
-		put("queryParams",req.getParameterValueMap(false, true));
-		put("jspaction", req.getServletPath());
-		return "jsp/admin/stock/query";
-	}
-	
-	@RequestMapping("/query2")
-	public void query2()
-	{
-		Map<String, Object> m = req.getParameterValueMap(false, true);
-		result.put("total",service.getCount(m));
-		result.put("rows",service.query(req.getDynamicSortParameterValueMap(m)));
-		printJson(result.getData());
-	}
-	
-	@RequestMapping("/exp")
-	public void exp()
-	{
-		Map<String, Object> m = req.getParameterValueMap(false, true);
-		List<Stock> list = service.query(m);
-		exp(list, "xlsx");
-	}
 }
