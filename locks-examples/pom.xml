@@ -107,8 +107,8 @@
 					<include>**/application.properties</include>
 					<include>**/application-${profileActive}.properties</include>
 					<include>**/datasource-${profileActive}.properties</include>
-					<include>**/redisson-cluster-${profileActive}</include>
-					<include>**/redisson-single-${profileActive}</include>
+					<include>**/redisson-cluster-${profileActive}.yml</include>
+					<include>**/redisson-single-${profileActive}.yml</include>
 					<include>**/i18n/*</include>
 					<include>**/img/*</include>
 					<include>**/templates/*</include>

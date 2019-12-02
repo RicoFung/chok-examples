@@ -44,7 +44,7 @@ public class StockDao extends BaseDao<Stock,Long>
 		params.put("qty", qty);
 		params.put("version_new", version_new);
 		params.put("version_old", version_old);
-		return this.getSqlSession().update(getStatementName("deductInventoryWithOptimisticLock"), params);
+		return upd("deductInventoryWithOptimisticLock", params);
 	}
 	
 	/**
@@ -54,6 +54,6 @@ public class StockDao extends BaseDao<Stock,Long>
 	 */
 	public Stock getWithPessimisticLock(long id)
 	{
-		return (Stock) this.getSqlSession().selectOne(getStatementName("getWithPessimisticLock"), id);
+		return (Stock) get("getWithPessimisticLock", id);
 	}
 }
