@@ -9,7 +9,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan(basePackages={"com","chok.common"})
+@ComponentScan(basePackages={"com","chok.common","chok.lock"})
 @EnableAutoConfiguration(exclude = { MultipartAutoConfiguration.class, DataSourceAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class })
 public class App extends SpringBootServletInitializer
 {

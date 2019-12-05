@@ -1,9 +1,5 @@
 package com.admin.service;
 
-import java.util.concurrent.TimeUnit;
-
-import org.redisson.api.RLock;
-import org.redisson.api.RedissonClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +18,15 @@ public class StockService extends BaseService<Stock, Long>
 {
 	private final Logger log = LoggerFactory.getLogger(getClass());
 
-	// 锁的名字
-	private String key = "stock-lock-key-01";
-	// 尝试加锁的超时时间
-	private Long timeout = 1000L;
-	// 锁过期时间
-	private Long expire = 30L;
-
-	@Autowired
-	private RedissonClient redisson;
+//	// 锁的名字
+//	private String key = "stock-lock-key-01";
+//	// 尝试加锁的超时时间
+//	private Long timeout = 1000L;
+//	// 锁过期时间
+//	private Long expire = 30L;
+//
+//	@Autowired
+//	private RedissonClient redisson;
 
 	@Autowired
 	private StockDao dao;
@@ -86,63 +82,61 @@ public class StockService extends BaseService<Stock, Long>
 		}
 	}
 
-	// /**
-	// * 分布式锁避免库存超卖
-	// * @param tid
-	// * @param id
-	// * @param qty
-	// * @throws Exception
-	// */
-	//// @RedissonLock(keyName = "stock-lock-key-01", lockType =
-	// RedissonLockType.READ_LOCK, waitTime = 30000)
-	// public void deductInventoryWithDistributedLock(int tid, long id, int qty)
-	// throws Exception
-	// {
-	// Stock stock = dao.get(id);
-	// log.info("线程[{}]，库存信息：{}", tid, stock.toString());
-	//// if (0 == stock.getQty() || 0 > stock.getQty() - qty)
-	//// {
-	//// throw new Exception("【分布式锁】库存不足！");
-	//// }
-	//// else
-	//// {
-	// stock.setQty(stock.getQty() - qty);
-	// dao.upd(stock);
-	//// }
-	// }
-
+	 /**
+	 * 分布式锁避免库存超卖
+	 * @param tid
+	 * @param id
+	 * @param qty
+	 * @throws Exception
+	 */
+	@RedissonLock(keyName = "stock-lock-key-01", lockType = RedissonLockType.REENTRANT_LOCK, getLockFailMsg = "其他用户正在操作，请等待！")
 	public void deductInventoryWithDistributedLock(int tid, long id, int qty) throws Exception
 	{
-		// 定义锁
-		RLock lock = redisson.getLock(key);
-
-		if (lock.tryLock())
-		{
-			try
-			{
-				Stock stock = dao.get(id);
-				log.info("线程[{}]，锁名[{}]，加锁成功！库存信息：{}", tid, lock.getName(), stock.toString());
-				if (0 == stock.getQty() || 0 > stock.getQty() - qty)
-				{
-					throw new Exception("【分布式锁】库存不足！");
-				}
-				else
-				{
-					stock.setQty(stock.getQty() - qty);
-					dao.upd(stock);
-				}
-			}
-			finally
-			{
-				lock.unlock();
-				log.info("线程[{}]，锁名[{}]，释放锁!", tid, lock.getName());
-			}
-		}
-		else
-		{
-			log.info("线程[{}]，锁名[{}]，加锁失败！", tid, lock.getName());
-		}
+		Stock stock = dao.get(id);
+		log.info("线程[{}]，库存信息：{}", tid, stock.toString());
+		// if (0 == stock.getQty() || 0 > stock.getQty() - qty)
+		// {
+		// throw new Exception("【分布式锁】库存不足！");
+		// }
+		// else
+		// {
+		stock.setQty(stock.getQty() - qty);
+		dao.upd(stock);
+		// }
 	}
+
+//	public void deductInventoryWithDistributedLock(int tid, long id, int qty) throws Exception
+//	{
+//		// 定义锁
+//		RLock lock = redisson.getLock(key);
+//
+//		if (lock.tryLock())
+//		{
+//			try
+//			{
+//				Stock stock = dao.get(id);
+//				log.info("线程[{}]，锁名[{}]，加锁成功！库存信息：{}", tid, lock.getName(), stock.toString());
+//				if (0 == stock.getQty() || 0 > stock.getQty() - qty)
+//				{
+//					throw new Exception("【分布式锁】库存不足！");
+//				}
+//				else
+//				{
+//					stock.setQty(stock.getQty() - qty);
+//					dao.upd(stock);
+//				}
+//			}
+//			finally
+//			{
+//				lock.unlock();
+//				log.info("线程[{}]，锁名[{}]，释放锁!", tid, lock.getName());
+//			}
+//		}
+//		else
+//		{
+//			log.info("线程[{}]，锁名[{}]，加锁失败！", tid, lock.getName());
+//		}
+//	}
 
 	/**
 	 * 利用悲观锁模拟库存超卖
