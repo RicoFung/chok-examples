@@ -19,19 +19,19 @@ public class StockAction
 
 	@Autowired
 	private StockService service;
-	
-	@RequestMapping(value="/deductInventoryWithDistributedLock", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	public JSONObject deductInventoryWithDistributedLock(@RequestBody JSONObject jsonParam) 
+
+	@RequestMapping(value = "/deductInventoryWithDistributedLock", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	public JSONObject deductInventoryWithDistributedLock(@RequestBody JSONObject jsonParam)
 	{
 		JSONObject restResult = new JSONObject();
 		restResult.put("success", true);
 		restResult.put("msg", "");
-		
+
 		int tid = jsonParam.getIntValue("tid");
 		int id = jsonParam.getIntValue("id");
 		int qty = jsonParam.getIntValue("qty");
 		log.info("==> 线程[{}]，请求参数：{}", tid, jsonParam.toJSONString());
-		
+
 		try
 		{
 			service.deductInventoryWithDistributedLock(tid, id, qty);

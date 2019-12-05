@@ -14,12 +14,14 @@ import com.admin.entity.Stock;
 
 import chok.devwork.springboot.BaseDao;
 import chok.devwork.springboot.BaseService;
+import chok.lock.redisson.RedissonLock;
+import chok.lock.redisson.RedissonLockType;
 
 @Service
 public class StockService extends BaseService<Stock, Long>
 {
 	private final Logger log = LoggerFactory.getLogger(getClass());
-	
+
 	// 锁的名字
 	private String key = "stock-lock-key-01";
 	// 尝试加锁的超时时间
@@ -84,24 +86,42 @@ public class StockService extends BaseService<Stock, Long>
 		}
 	}
 
-	/**
-	 * 分布式锁避免库存超卖
-	 * @param tid
-	 * @param id
-	 * @param qty
-	 * @throws Exception
-	 */
+	// /**
+	// * 分布式锁避免库存超卖
+	// * @param tid
+	// * @param id
+	// * @param qty
+	// * @throws Exception
+	// */
+	//// @RedissonLock(keyName = "stock-lock-key-01", lockType =
+	// RedissonLockType.READ_LOCK, waitTime = 30000)
+	// public void deductInventoryWithDistributedLock(int tid, long id, int qty)
+	// throws Exception
+	// {
+	// Stock stock = dao.get(id);
+	// log.info("线程[{}]，库存信息：{}", tid, stock.toString());
+	//// if (0 == stock.getQty() || 0 > stock.getQty() - qty)
+	//// {
+	//// throw new Exception("【分布式锁】库存不足！");
+	//// }
+	//// else
+	//// {
+	// stock.setQty(stock.getQty() - qty);
+	// dao.upd(stock);
+	//// }
+	// }
+
 	public void deductInventoryWithDistributedLock(int tid, long id, int qty) throws Exception
 	{
 		// 定义锁
 		RLock lock = redisson.getLock(key);
-		try
+
+		if (lock.tryLock())
 		{
-			// 获取锁
-			if (lock.tryLock(timeout, expire, TimeUnit.MILLISECONDS))
+			try
 			{
 				Stock stock = dao.get(id);
-				log.info("线程[{}]，库存信息：{}", tid, stock.toString());
+				log.info("线程[{}]，锁名[{}]，加锁成功！库存信息：{}", tid, lock.getName(), stock.toString());
 				if (0 == stock.getQty() || 0 > stock.getQty() - qty)
 				{
 					throw new Exception("【分布式锁】库存不足！");
@@ -112,29 +132,21 @@ public class StockService extends BaseService<Stock, Long>
 					dao.upd(stock);
 				}
 			}
-		}
-		catch (InterruptedException e)
-		{
-			log.error("线程[{}]，尝试获取分布式锁失败: {}", tid, e);
-			throw e;
-		}
-		finally
-		{
-			// 释放锁
-			try
+			finally
 			{
 				lock.unlock();
-				log.info("线程[{}]，释放锁!", tid);
-			}
-			catch (Exception e)
-			{
-				log.error("线程[{}]，释放锁失败!", tid);
+				log.info("线程[{}]，锁名[{}]，释放锁!", tid, lock.getName());
 			}
 		}
+		else
+		{
+			log.info("线程[{}]，锁名[{}]，加锁失败！", tid, lock.getName());
+		}
 	}
-	
+
 	/**
 	 * 利用悲观锁模拟库存超卖
+	 * 
 	 * @param tid
 	 * @param id
 	 * @param qty

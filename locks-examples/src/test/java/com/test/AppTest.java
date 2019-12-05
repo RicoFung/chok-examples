@@ -79,7 +79,7 @@ public class AppTest extends TestCase
 		redisson.shutdown();
 	}
 
-	@org.junit.Test
+//	@org.junit.Test
 	public void testStockLock() throws InterruptedException
 	{
 		// 锁的名字
@@ -89,7 +89,7 @@ public class AppTest extends TestCase
 		// 锁过期时间
 		Long expire = 30L;
 		// 并发数
-		Integer size = 2;
+		Integer size = 1000;
 		// 每条线程所得库存数
 		Integer[] stockQtyArray = new Integer[size];
 		
@@ -191,15 +191,15 @@ public class AppTest extends TestCase
 		log.info("共计「{}」获取锁成功，「{}」获取锁失败。", adderSuccess.intValue(), adderFail.intValue());
 	}
 	
-//	@org.junit.Test
+	@org.junit.Test
 	/**
 	 * 无锁，并发事务扣库存
 	 * @throws InterruptedException
 	 */
 	public void testStockNoLock() throws InterruptedException
 	{
-		// 并发数
-		Integer size = 2;
+		// 并发数, 即：Jmeter 中线程数
+		Integer size = 10;
 		// 每条线程所得库存数
 		Integer[] stockQtyArray = new Integer[size];
 		// 定义线程池
@@ -239,7 +239,8 @@ public class AppTest extends TestCase
 			{
 				try
 				{
-					service.deductInventoryOversold(j, 1l, stockQtyArray[j]);
+					service.deductInventoryWithDistributedLock(j, 1l, stockQtyArray[j]);
+//					service.deductInventoryOversold(j, 1l, stockQtyArray[j]);
 //					service.deductInventoryWithPessimisticLock(j, 1l, stockQtyArray[j]);
 //					service.deductInventoryWithOptimisticLock(j, 1l, stockQtyArray[j]);
 				}
@@ -248,6 +249,7 @@ public class AppTest extends TestCase
 					log.error(e.getMessage());
 				}
 			});
+//			Thread.sleep(1000l/size); // 即：Jmeter 中 Ramp-Up(秒) 时间
 		}
 		
 		// 关闭线程池

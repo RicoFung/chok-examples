@@ -86,6 +86,10 @@
 			<groupId>com.chok</groupId>
 			<artifactId>chok-redis</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.chok</groupId>
+			<artifactId>chok-lock</artifactId>
+		</dependency>
 	</dependencies>
 
 	<!-- maven 打包插件 -->
