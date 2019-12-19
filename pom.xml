@@ -4,9 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.chok</groupId>
 	<artifactId>chok-examples</artifactId>
-	<version>1.0</version>
 	<packaging>pom</packaging>
 
 	<name>chok-examples</name>
@@ -19,4 +17,11 @@
 	<modules>
 		<module>locks-examples</module>
 	</modules>
+
+	<parent>
+		<groupId>com.chok</groupId>
+		<artifactId>chok-parent</artifactId>
+		<version>1.0</version>
+		<relativePath>../chok-parent/pom.xml</relativePath>
+	</parent>
 </project>
