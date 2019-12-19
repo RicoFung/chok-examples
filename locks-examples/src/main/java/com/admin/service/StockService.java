@@ -89,7 +89,7 @@ public class StockService extends BaseService<Stock, Long>
 	 * @param qty
 	 * @throws Exception
 	 */
-	@RedissonLock(keyName = "stock-lock-key-01", lockType = RedissonLockType.REENTRANT_LOCK, getLockFailMsg = "其他用户正在操作，请等待！")
+	@RedissonLock(lockKey = "stock-lock-key-01", lockType = RedissonLockType.REENTRANT_LOCK, lockFailMsg = "其他用户正在操作，请等待！")
 	public void deductInventoryWithDistributedLock(int tid, long id, int qty) throws Exception
 	{
 		Stock stock = dao.get(id);
