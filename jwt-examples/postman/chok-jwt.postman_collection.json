@@ -6,44 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "认证",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"username\":\"rico\",\n\t\"password\":\"pwd\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:9094/jwt-examples/admin/authentication/login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9094",
-					"path": [
-						"jwt-examples",
-						"admin",
-						"authentication",
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "测试1",
 			"request": {
 				"auth": {
@@ -144,6 +106,44 @@
 					]
 				},
 				"description": "Headers中配置{Authorization:Bearer {token}}"
+			},
+			"response": []
+		},
+		{
+			"name": "认证",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"rico\",\n\t\"password\":\"pwd\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9094/jwt-examples/admin/authenticate/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"jwt-examples",
+						"admin",
+						"authenticate",
+						"login"
+					]
+				}
 			},
 			"response": []
 		}

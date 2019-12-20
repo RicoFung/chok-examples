@@ -13,8 +13,8 @@ import com.util.JwtConfig;
 import com.util.JwtUtil;
 
 @RestController
-@RequestMapping("/admin/authentication")
-public class LoginAction
+@RequestMapping("/admin/authenticate")
+public class AuthenticateAction
 {
 	private final Logger log = LoggerFactory.getLogger(getClass());
 
