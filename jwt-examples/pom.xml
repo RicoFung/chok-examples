@@ -51,23 +51,6 @@
 			<groupId>de.siegmar</groupId>
 			<artifactId>logback-gelf</artifactId>
 		</dependency>
-		<!-- 使用logback-glef需排除spring-boot-starter-logging -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-logging</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<!-- jwt -->
-		<dependency>
-			<groupId>io.jsonwebtoken</groupId>
-			<artifactId>jjwt</artifactId>
-			<version>0.9.1</version>
-		</dependency>
 		<!-- spring-boot-configuration-processor -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -85,6 +68,10 @@
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 		<!-- chok -->
+		<dependency>
+			<groupId>com.chok</groupId>
+			<artifactId>chok-jwt</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.chok</groupId>
 			<artifactId>chok-devwork</artifactId>

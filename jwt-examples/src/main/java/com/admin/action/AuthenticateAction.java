@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
-import com.util.JwtConfig;
-import com.util.JwtUtil;
+
+import chok.jwt.JwtConfig;
+import chok.jwt.JwtUtil;
 
 @RestController
 @RequestMapping("/admin/authenticate")
