@@ -1,12 +1,10 @@
 package com.util;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
-//@ConfigurationProperties(prefix = "jwt")
-public class JwtParam
+public class JwtConfig
 {
 
 	/**
@@ -24,8 +22,14 @@ public class JwtParam
 	/**
 	 * jwt中过期时间设置(分)
 	 */
-    @Value("${jwt.jwt-expires}")
-	private int jwtExpires;
+    @Value("${jwt.expires}")
+	private int expires;
+    
+    /**
+     * jwt中过期时间单位（毫秒(ms)/秒(s)/分(mi), 默认：ms）
+     */
+    @Value("${jwt.expires-util}")
+    private String expiresUtil;
 
 	public String getName()
 	{
@@ -37,9 +41,14 @@ public class JwtParam
 		return base64Secret;
 	}
 
-	public int getJwtExpires()
+	public int getExpires()
 	{
-		return jwtExpires;
+		return expires;
+	}
+
+	public String getExpiresUtil()
+	{
+		return expiresUtil;
 	}
 
 }

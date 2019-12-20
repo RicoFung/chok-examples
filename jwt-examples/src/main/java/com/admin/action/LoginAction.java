@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
-import com.util.JwtIgnore;
-import com.util.JwtParam;
+import com.util.JwtConfig;
 import com.util.JwtUtil;
 
 @RestController
@@ -20,10 +19,9 @@ public class LoginAction
 	private final Logger log = LoggerFactory.getLogger(getClass());
 
 	@Autowired
-	private JwtParam jwtParam;
+	private JwtConfig jwtConfig;
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-//    @JwtIgnore // 加此注解, 请求不做token验证
 	public JSONObject login(@RequestBody JSONObject jsonParam)
 	{
 		JSONObject restResult = new JSONObject();
@@ -31,7 +29,6 @@ public class LoginAction
 		restResult.put("msg", "");
 
 		String username = jsonParam.getString("username");
-		String password = jsonParam.getString("password");
 		log.info("==> 请求参数：{}", jsonParam.toJSONString());
 
 		try
@@ -40,7 +37,7 @@ public class LoginAction
 			// 省略
 
 			// 2.验证通过生成token
-			String token = JwtUtil.createToken(username + "", jwtParam);
+			String token = JwtUtil.createToken(username + "", jwtConfig);
 			if (token == null)
 			{
 				String msg = "===== 用户签名失败 =====";

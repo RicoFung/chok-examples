@@ -69,13 +69,13 @@ public class JwtUtil
 	 * 
 	 * @param userId
 	 *            用户id
-	 * @param jwtParam
+	 * @param jwtConfig
 	 *            JWT加密所需信息
 	 * @return
 	 */
-	public static String createToken(String userId, JwtParam jwtParam)
+	public static String createToken(String userId, JwtConfig jwtConfig)
 	{
-		return createToken(userId, null, jwtParam);
+		return createToken(userId, null, jwtConfig);
 	}
 
 	/**
@@ -85,11 +85,11 @@ public class JwtUtil
 	 *            用户id
 	 * @param claim
 	 *            声明
-	 * @param jwtParam
+	 * @param jwtConfig
 	 *            JWT加密所需信息
 	 * @return
 	 */
-	public static String createToken(String userId, Map<String, Object> claim, JwtParam jwtParam)
+	public static String createToken(String userId, Map<String, Object> claim, JwtConfig jwtConfig)
 	{
 		try
 		{
@@ -100,17 +100,27 @@ public class JwtUtil
 			Date now = new Date(nowMillis);
 
 			// 生成签名密钥
-			byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(jwtParam.getBase64Secret());
+			byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(jwtConfig.getBase64Secret());
 			SecretKeySpec signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
 
 			// 添加构成JWT的参数
 			JwtBuilder jwtBuilder = Jwts.builder().setHeaderParam("typ", "JWT").claim(JwtConstant.USER_ID_KEY, userId)
-					.addClaims(claim).setIssuer(jwtParam.getName()).setIssuedAt(now)
+					.addClaims(claim).setIssuer(jwtConfig.getName()).setIssuedAt(now)
 					.signWith(signatureAlgorithm, signingKey);
 
-			// 添加token过期时间
-			long TTLMillis = jwtParam.getJwtExpires()  * 1000;
-//			long TTLMillis = jwtParam.getJwtExpires() * 60 * 1000;
+			// 添加token过期时间（默认：毫秒）
+			long TTLMillis = jwtConfig.getExpires();
+			if ("s".equals(jwtConfig.getExpiresUtil()))
+			{
+				// 添加token过期时间（秒）
+				TTLMillis = TTLMillis * 1000;
+			}
+			else if ("mi".equals(jwtConfig.getExpiresUtil()))
+			{
+				// 添加token过期时间（分）
+				TTLMillis = TTLMillis * 60 * 1000;
+			}
+			
 			if (TTLMillis >= 0)
 			{
 				long expMillis = nowMillis + TTLMillis;
@@ -122,8 +132,7 @@ public class JwtUtil
 		}
 		catch (Exception e)
 		{
-			// TODO 这里自行抛出异常
-			log.error("签名失败", e);
+			log.error(JwtErrorType.TOKEN_SIGNING_FAILED.toString(), e);
 			return null;
 		}
 	}
@@ -146,23 +155,20 @@ public class JwtUtil
 					.parseClaimsJws(authToken).getBody();
 			return claims;
 		}
-		catch (SignatureException se)
+		catch (SignatureException e1)
 		{
-			String msg = "密钥不匹配"	;
-			log.error(msg, se);
-			throw new Exception(msg);
+			log.error(JwtErrorType.TOKEN_MISMATCH.toString(), e1);
+			throw new Exception(JwtErrorType.TOKEN_MISMATCH.toString());
 		}
-		catch (ExpiredJwtException ejw)
+		catch (ExpiredJwtException e2)
 		{
-			String msg = "token过期";
-			log.error(msg, ejw);
-			throw new Exception(msg);
+			log.error(JwtErrorType.TOKEN_EXPIRED.toString(), e2);
+			throw new Exception(JwtErrorType.TOKEN_EXPIRED.toString());
 		}
-		catch (Exception e)
+		catch (Exception e3)
 		{
-			String msg = "token解析异常";
-			log.error(msg, e);
-			throw new Exception(msg);
+			log.error(JwtErrorType.TOKEN_PARSING_FAILED.toString(), e3);
+			throw new Exception(JwtErrorType.TOKEN_PARSING_FAILED.toString());
 		}
 	}
 }

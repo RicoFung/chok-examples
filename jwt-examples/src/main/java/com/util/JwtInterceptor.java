@@ -9,8 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
-import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,12 +19,13 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 
 import io.jsonwebtoken.Claims;
 
+@Component
 public class JwtInterceptor implements HandlerInterceptor
 {
 
 	private final Logger	log	= LoggerFactory.getLogger(getClass());
 	@Autowired
-	private JwtParam		jwtParam;
+	private JwtConfig		jwtConfig;
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception
@@ -33,17 +34,6 @@ public class JwtInterceptor implements HandlerInterceptor
 		restResult.put("success", true);
 		restResult.put("msg", "");
 
-		// 忽略带JwtIgnore注解的请求, 不做后续token认证校验
-		if (handler instanceof HandlerMethod)
-		{
-			HandlerMethod handlerMethod = (HandlerMethod) handler;
-			JwtIgnore jwtIgnore = handlerMethod.getMethodAnnotation(JwtIgnore.class);
-			if (jwtIgnore != null)
-			{
-				return true;
-			}
-		}
-
 		if (HttpMethod.OPTIONS.equals(request.getMethod()))
 		{
 			response.setStatus(HttpServletResponse.SC_OK);
@@ -51,42 +41,39 @@ public class JwtInterceptor implements HandlerInterceptor
 		}
 
 		final String authHeader = request.getHeader(JwtConstant.AUTH_HEADER_KEY);
-
+		// 校验请求头是否配置Authorization
 		if (StringUtils.isEmpty(authHeader))
 		{
-			String msg = "===== 用户未登录, 请先登录 =====";
-			restResult.put("msg", msg);
+			restResult.put("msg", JwtErrorType.USER_NO_AUTHENTICATED);
 			restResult.put("success", false);
 			sendJsonMessage(response, restResult);
-			log.error("msg");
+			log.error(JwtErrorType.USER_NO_AUTHENTICATED.toString());
 			return false;
 		}
 
-		// 校验头格式校验
+		// 校验请求头格式
 		if (!JwtUtil.validate(authHeader))
 		{
-			String msg = "===== token格式异常 =====";
-			restResult.put("msg", msg);
+			restResult.put("msg", JwtErrorType.AUTHORIZATION_HEADER_INCORRECT);
 			restResult.put("success", false);
 			sendJsonMessage(response, restResult);
-			log.error("msg");
+			log.error(JwtErrorType.AUTHORIZATION_HEADER_INCORRECT.toString());
 			return false;
 		}
 
 		// token解析
 		final String authToken = JwtUtil.getRawToken(authHeader);
-		
 		Claims claims = null;
 		try
 		{
-			claims = JwtUtil.parseToken(authToken, jwtParam.getBase64Secret());
+			claims = JwtUtil.parseToken(authToken, jwtConfig.getBase64Secret());
 		}
 		catch (Exception e) 
 		{
 			restResult.put("msg", e.getMessage());
 			restResult.put("success", false);
 			sendJsonMessage(response, restResult);
-			log.error("msg");
+			log.error(e.getMessage());
 			return false;
 		}
 
