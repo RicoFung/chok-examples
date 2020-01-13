@@ -128,6 +128,7 @@
     <logger name="org.springframework" level="ERROR" />
     <logger name="com.admin" level="DEBUG" />
     <logger name="chok.lock.redisson" level="DEBUG" />
+    <logger name="chok.jwt" level="DEBUG" />
 
     <!-- ${LOG_ROOT_LEVEL} 日志级别 -->
     <root level="${LOG_ROOT_LEVEL}">

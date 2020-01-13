@@ -1,5 +1,8 @@
 package com.admin.action;
 
+import java.util.HashMap;
+import java.util.UUID;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +41,30 @@ public class AuthenticateAction
 			// 省略
 
 			// 2.验证通过生成token
-			String token = JwtUtil.createToken(username + "", jwtConfig);
+			// 方式 1
+//			 String token = JwtUtil.createToken(username + "", jwtConfig);
+			// 方式 2
+			String token = JwtUtil.createToken(
+					username + "", 
+					new HashMap<String, Object>()
+					{
+						private static final long serialVersionUID = 1L;
+						{
+							put("claim_user_name", username);
+							put("claim_user_role", "admin");
+						}
+					}, 
+					UUID.randomUUID().toString(), 
+					JSONObject.toJSONString(new HashMap<String, Object>()
+					{
+						private static final long serialVersionUID = 1L;
+						{
+							put("subject_user_name", username);
+							put("subject_user_role", "admin");
+						}
+					}), 
+					jwtConfig);
+			
 			if (token == null)
 			{
 				String msg = "===== 用户签名失败 =====";
