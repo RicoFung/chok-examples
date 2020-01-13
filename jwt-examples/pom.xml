@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.chok</groupId>
+		<artifactId>chok-examples</artifactId>
+		<version>1.0</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<artifactId>jwt-examples</artifactId>
+	<name>jwt-examples</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<profiles>
+		<!-- Maven控制Spring Profile -->
+		<profile>
+			<id>dev</id>
+			<properties>
+				<profileActive>dev</profileActive>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>uat</id>
+			<properties>
+				<profileActive>uat</profileActive>
+			</properties>
+		</profile>
+		<profile>
+			<id>prd</id>
+			<properties>
+				<profileActive>prd</profileActive>
+			</properties>
+		</profile>
+	</profiles>
+
+	<dependencies>
+		<!-- logback-glef 用于发送消息至graylog -->
+		<dependency>
+			<groupId>de.siegmar</groupId>
+			<artifactId>logback-gelf</artifactId>
+		</dependency>
+		<!-- spring-boot-configuration-processor -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<!-- spring-boot druid -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid-spring-boot-starter</artifactId>
+		</dependency>
+		<!-- db driver myql -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<!-- chok -->
+		<dependency>
+			<groupId>com.chok</groupId>
+			<artifactId>chok-jwt</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.chok</groupId>
+			<artifactId>chok-devwork</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.chok</groupId>
+			<artifactId>chok-redis</artifactId>
+		</dependency>
+	</dependencies>
+
+	<!-- maven 打包插件 -->
+	<build>
+		<!-- profile对资源的操作 -->
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<!-- 是否替换@xx@表示的maven properties属性值 -->
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.xml</include>
+					<include>**/application.properties</include>
+					<include>**/application-${profileActive}.properties</include>
+					<include>**/datasource-${profileActive}.properties</include>
+					<include>**/i18n/*</include>
+					<include>**/img/*</include>
+					<include>**/templates/*</include>
+				</includes>
+			</resource>
+		</resources>
+		<finalName>jwt-examples</finalName>
+	</build>
+</project>

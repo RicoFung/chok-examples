@@ -16,6 +16,7 @@
 
 	<modules>
 		<module>locks-examples</module>
+		<module>jwt-examples</module>
 	</modules>
 
 	<parent>
