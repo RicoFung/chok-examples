@@ -89,7 +89,7 @@ public class StockService extends BaseService<Stock, Long>
 	 * @param qty
 	 * @throws Exception
 	 */
-	@RedissonLock(lockKey = "stock-lock-key-01", lockType = RedissonLockType.REENTRANT_LOCK, lockFailMsg = "其他用户正在操作，请等待！")
+	@RedissonLock(lockKey = "stock-lock-key-02", tryLockOption = 3, lockType = RedissonLockType.REENTRANT_LOCK, lockFailMsg = "其他用户正在操作，请等待！")
 	public void deductInventoryWithDistributedLock(int tid, long id, int qty) throws Exception
 	{
 		Stock stock = dao.get(id);
@@ -103,7 +103,28 @@ public class StockService extends BaseService<Stock, Long>
 		stock.setQty(stock.getQty() - qty);
 		dao.upd(stock);
 		// }
+		
+		// 测试tryLock2 (arg参数需大于RedissonLock.waitTime)
+//		Thread.sleep(2000);
+		// 测试tryLock3 (arg参数需大于RedissonLock.leaseTime)
+		Thread.sleep(2000);
+		
 	}
+//	@RedissonLock(lockKey = "stock-lock-key-01", lockType = RedissonLockType.REENTRANT_LOCK, lockFailMsg = "其他用户正在操作，请等待！")
+//	public void deductInventoryWithDistributedLock(int tid, long id, int qty) throws Exception
+//	{
+//		Stock stock = dao.get(id);
+//		log.info("线程[{}]，库存信息：{}", tid, stock.toString());
+//		// if (0 == stock.getQty() || 0 > stock.getQty() - qty)
+//		// {
+//		// throw new Exception("【分布式锁】库存不足！");
+//		// }
+//		// else
+//		// {
+//		stock.setQty(stock.getQty() - qty);
+//		dao.upd(stock);
+//		// }
+//	}
 
 //	public void deductInventoryWithDistributedLock(int tid, long id, int qty) throws Exception
 //	{
