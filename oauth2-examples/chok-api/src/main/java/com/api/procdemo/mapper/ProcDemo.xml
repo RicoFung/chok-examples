@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">   
+
+
+<mapper namespace="com.api.procdemo.entity.ProcDemo">
+	
+	<resultMap type="com.api.procdemo.entity.ProcDemo" id="outList1">
+        <result property="tcRowid" column="TC_ROWID"/>
+        <result property="tcCode" column="TC_CODE"/>
+        <result property="tcName" column="TC_NAME"/>
+	</resultMap>
+	<resultMap type="com.api.procdemo.entity.ProcDemo" id="outList2">
+        <result property="tcRowid" column="TC_ROWID"/>
+        <result property="tcCode" column="TC_CODE"/>
+	</resultMap>
+	
+	<select id="pQuery" statementType="CALLABLE" parameterType="map">
+		{call p_procdemo_query_act(#{tcCode,jdbcType=VARCHAR,javaType=String,mode=IN},
+								   #{tcName,jdbcType=VARCHAR,javaType=String,mode=IN},
+								   #{page,jdbcType=NUMERIC,javaType=Integer,mode=IN},
+								   #{pagesize,jdbcType=NUMERIC,javaType=Integer,mode=IN},
+								   #{v_out_data,jdbcType=VARCHAR,javaType=String,mode=OUT},
+								   #{v_out_success,jdbcType=VARCHAR,javaType=String,mode=OUT},
+								   #{v_out_msg,jdbcType=VARCHAR,javaType=String,mode=OUT},
+								   #{v_out_list1, mode=OUT, jdbcType=CURSOR, resultMap=com.api.procdemo.entity.ProcDemo.outList1},
+								   #{v_out_list2, mode=OUT, jdbcType=CURSOR, resultMap=com.api.procdemo.entity.ProcDemo.outList2}
+								   )}
+	</select>
+</mapper>  
