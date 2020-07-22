@@ -138,24 +138,28 @@ public class TbDemoController extends BaseRestController<TbDemo>
 	public RestResult get(@RequestBody @Validated TbDemoGetDTO tbDemoGetDTO, BindingResult validResult)
 	{
 		restResult = new RestResult();
-		if (log.isDebugEnabled())
-		{
-			log.debug("==> 请求参数：{}", tbDemoGetDTO.getTcRowid());
-		}
-		if (validResult.hasErrors())
-		{
-			restResult.setSuccess(false);
-			restResult.setCode(RestConstants.ERROR_CODE1);
-			restResult.setMsg(getValidMsgs(validResult));
-			return restResult;
-		}
 		try
 		{
-			restResult.put("vo", service.get(tbDemoGetDTO.getTcRowid()));
+			if (log.isDebugEnabled())
+			{
+				log.debug("==> requestDto：{}", restMapper.writeValueAsString(tbDemoGetDTO));
+			}
+			if (validResult.hasErrors())
+			{
+				restResult.setSuccess(false);
+				restResult.setCode(RestConstants.ERROR_CODE1);
+				restResult.setMsg(getValidMsgs(validResult));
+				return restResult;
+			}
+			Map<String, Object> param = restMapper.convertValue(tbDemoGetDTO,
+					new TypeReference<Map<String, Object>>()
+			{
+			});
+			restResult.put("row", service.getDynamic(param));
 		}
 		catch (Exception e)
 		{
-			log.error("<== 异常提示：{}", e);
+			log.error("<== Exception：{}", e);
 			restResult.setSuccess(false);
 			restResult.setCode(RestConstants.ERROR_CODE1);
 			restResult.setMsg(e.getMessage());
@@ -166,34 +170,6 @@ public class TbDemoController extends BaseRestController<TbDemo>
 	@ApiOperation("列表")
 	@RequestMapping(value = "/query", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	public RestResult query(@RequestBody TbDemoQueryDTO tbDemoQueryDTO)
-	{
-		restResult = new RestResult();
-		if (log.isDebugEnabled())
-		{
-			log.debug("==> 请求参数：{}", tbDemoQueryDTO.toString());
-		}
-		try
-		{
-			Map<String, Object> params = restMapper.convertValue(tbDemoQueryDTO,
-					new TypeReference<Map<String, Object>>()
-					{
-					});
-			restResult.put("total", service.getCount(params));
-			restResult.put("rows", service.query(params));
-		}
-		catch (Exception e)
-		{
-			log.error("<== 异常提示：{}", e);
-			restResult.setSuccess(false);
-			restResult.setCode(RestConstants.ERROR_CODE1);
-			restResult.setMsg(e.getMessage());
-		}
-		return restResult;
-	}
-	
-	@ApiOperation("动态列表(LIST<T>)")
-	@RequestMapping(value = "/queryDynamic", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	public RestResult queryDynamic(@RequestBody TbDemoQueryDTO tbDemoQueryDTO)
 	{
 		restResult = new RestResult();
 		try
@@ -219,30 +195,4 @@ public class TbDemoController extends BaseRestController<TbDemo>
 		return restResult;
 	}
 	
-	@ApiOperation("动态列表(LIST<MAP>)")
-	@RequestMapping(value = "queryMapOnSelectFields", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	public RestResult queryMapOnSelectFields(@RequestBody TbDemoQueryDTO tbDemoQueryDTO)
-	{
-		restResult = new RestResult();
-		if (log.isDebugEnabled())
-		{
-			log.debug("==> 请求参数：{}", tbDemoQueryDTO.toString());
-		}
-		try
-		{
-			Map<String, Object> param = restMapper.convertValue(tbDemoQueryDTO,
-					new TypeReference<Map<String, Object>>()
-			{
-			});
-//			restResult.put("rows", service.queryMapOnSelectFields(param));
-		}
-		catch (Exception e)
-		{
-			log.error("<== 异常提示：{}", e);
-			restResult.setSuccess(false);
-			restResult.setCode(RestConstants.ERROR_CODE1);
-			restResult.setMsg(e.getMessage());
-		}
-		return restResult;
-	}
 }

@@ -18,10 +18,10 @@ public class TbDemoQueryDTO implements Serializable
 	@ApiModelProperty(value = "动态排序", example = "[{\"sortName\":\"tcRowid\",\"sortOrder\":\"DESC\"},{\"sortName\":\"tcCode\",\"sortOrder\":\"ASC\"}]", position = 1)
 	private List<Map<String, Object>> dynamicOrder;
 	
-	@ApiModelProperty(value = "页码", example = "1", required = true, position = 2)
+	@ApiModelProperty(value = "页码", example = "1", position = 2)
 	private int page;
 	
-	@ApiModelProperty(value = "页大小", example = "10", required = true, position = 3)
+	@ApiModelProperty(value = "页大小", example = "10", position = 3)
 	private int pagesize;
 	
 	@ApiModelProperty(value = "代号", example = "\"\"", position = 4)
