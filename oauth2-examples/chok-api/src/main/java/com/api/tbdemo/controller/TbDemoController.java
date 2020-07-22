@@ -43,26 +43,26 @@ public class TbDemoController extends BaseRestController<TbDemo>
 	public RestResult add(@RequestBody @Validated TbDemoAddDTO tbDemoAddDTO, BindingResult validResult)
 	{
 		restResult = new RestResult();
-		if (log.isDebugEnabled())
-		{
-			log.debug("==> 请求参数：{}", tbDemoAddDTO.toString());
-		}
-		if (validResult.hasErrors())
-		{
-			restResult.setSuccess(false);
-			restResult.setCode(RestConstants.ERROR_CODE1);
-			restResult.setMsg(getValidMsgs(validResult));
-			return restResult;
-		}
 		try
 		{
+			if (log.isDebugEnabled())
+			{
+				log.debug("==> requestDto：{}", restMapper.writeValueAsString(tbDemoAddDTO));
+			}
+			if (validResult.hasErrors())
+			{
+				restResult.setSuccess(false);
+				restResult.setCode(RestConstants.ERROR_CODE1);
+				restResult.setMsg(getValidMsgs(validResult));
+				return restResult;
+			}
 			TbDemo tbDemo = new TbDemo();
 			BeanUtils.copyProperties(tbDemoAddDTO, tbDemo);
 			service.add(tbDemo);
 		}
 		catch (Exception e)
 		{
-			log.error("<== 异常提示：{}", e);
+			log.error("<== Exception：{}", e);
 			restResult.setSuccess(false);
 			restResult.setCode(RestConstants.ERROR_CODE1);
 			restResult.setMsg(e.getMessage());
@@ -75,25 +75,25 @@ public class TbDemoController extends BaseRestController<TbDemo>
 	public RestResult del(@RequestBody @Validated TbDemoDelDTO tbDemoDelDTO, BindingResult validResult)
 	{
 		restResult = new RestResult();
-		if (log.isDebugEnabled())
-		{
-			log.debug("==> 请求参数：{}", tbDemoDelDTO.getTcRowids().toString());
-		}
-		if (validResult.hasErrors())
-		{
-			restResult.setSuccess(false);
-			restResult.setCode(RestConstants.ERROR_CODE1);
-			restResult.setMsg(getValidMsgs(validResult));
-			return restResult;
-		}
 		try
 		{
+			if (log.isDebugEnabled())
+			{
+				log.debug("==> requestDto：{}", restMapper.writeValueAsString(tbDemoDelDTO));
+			}
+			if (validResult.hasErrors())
+			{
+				restResult.setSuccess(false);
+				restResult.setCode(RestConstants.ERROR_CODE1);
+				restResult.setMsg(getValidMsgs(validResult));
+				return restResult;
+			}
 			service.del(tbDemoDelDTO.getTcRowids());
 			restResult.setSuccess(true);
 		}
 		catch (Exception e)
 		{
-			log.error("<== 异常提示：{}", e);
+			log.error("<== Exception：{}", e);
 			restResult.setSuccess(false);
 			restResult.setCode(RestConstants.ERROR_CODE1);
 			restResult.setMsg(e.getMessage());
@@ -106,26 +106,26 @@ public class TbDemoController extends BaseRestController<TbDemo>
 	public RestResult upd(@RequestBody @Validated TbDemoUpdDTO tbDemoUpdDTO, BindingResult validResult)
 	{
 		restResult = new RestResult();
-		if (log.isDebugEnabled())
-		{
-			log.debug("==> 请求参数：{}", tbDemoUpdDTO.toString());
-		}
-		if (validResult.hasErrors())
-		{
-			restResult.setSuccess(false);
-			restResult.setCode(RestConstants.ERROR_CODE1);
-			restResult.setMsg(getValidMsgs(validResult));
-			return restResult;
-		}
 		try
 		{
+			if (log.isDebugEnabled())
+			{
+				log.debug("==> requestDto：{}", restMapper.writeValueAsString(tbDemoUpdDTO));
+			}
+			if (validResult.hasErrors())
+			{
+				restResult.setSuccess(false);
+				restResult.setCode(RestConstants.ERROR_CODE1);
+				restResult.setMsg(getValidMsgs(validResult));
+				return restResult;
+			}
 			TbDemo tbDemo = new TbDemo();
 			BeanUtils.copyProperties(tbDemoUpdDTO, tbDemo);
 			service.upd(tbDemo);
 		}
 		catch (Exception e)
 		{
-			log.error("<== 异常提示：{}", e);
+			log.error("<== Exception：{}", e);
 			restResult.setSuccess(false);
 			restResult.setCode(RestConstants.ERROR_CODE1);
 			restResult.setMsg(e.getMessage());

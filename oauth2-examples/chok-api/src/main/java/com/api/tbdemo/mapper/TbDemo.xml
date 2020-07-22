@@ -63,7 +63,7 @@
 	</delete>
 	
 	<update id="upd" parameterType="com.api.tbdemo.entity.TbDemo">
-		UPDATE TB_DEMO SET
+		UPDATE TB_DEMO T
         <set>
        	<if test="@chok.devwork.Ognl@isNotNull(tcCode)"> T.TC_CODE = #{tcCode},</if>
        	<if test="@chok.devwork.Ognl@isNotNull(tcName)"> T.TC_NAME = #{tcName},</if>
