@@ -42,6 +42,7 @@ public class TbDemoController extends BaseRestController<TbDemo>
 	@RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	public RestResult add(@RequestBody @Validated TbDemoAddDTO tbDemoAddDTO, BindingResult validResult)
 	{
+		restResult = new RestResult();
 		if (log.isDebugEnabled())
 		{
 			log.debug("==> 请求参数：{}", tbDemoAddDTO.toString());
@@ -73,6 +74,7 @@ public class TbDemoController extends BaseRestController<TbDemo>
 	@RequestMapping(value = "/del", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	public RestResult del(@RequestBody @Validated TbDemoDelDTO tbDemoDelDTO, BindingResult validResult)
 	{
+		restResult = new RestResult();
 		if (log.isDebugEnabled())
 		{
 			log.debug("==> 请求参数：{}", tbDemoDelDTO.getTcRowids().toString());
@@ -103,6 +105,7 @@ public class TbDemoController extends BaseRestController<TbDemo>
 	@RequestMapping(value = "/upd", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	public RestResult upd(@RequestBody @Validated TbDemoUpdDTO tbDemoUpdDTO, BindingResult validResult)
 	{
+		restResult = new RestResult();
 		if (log.isDebugEnabled())
 		{
 			log.debug("==> 请求参数：{}", tbDemoUpdDTO.toString());
@@ -134,6 +137,7 @@ public class TbDemoController extends BaseRestController<TbDemo>
 	@RequestMapping(value = "/get", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	public RestResult get(@RequestBody @Validated TbDemoGetDTO tbDemoGetDTO, BindingResult validResult)
 	{
+		restResult = new RestResult();
 		if (log.isDebugEnabled())
 		{
 			log.debug("==> 请求参数：{}", tbDemoGetDTO.getTcRowid());
@@ -163,6 +167,7 @@ public class TbDemoController extends BaseRestController<TbDemo>
 	@RequestMapping(value = "/query", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	public RestResult query(@RequestBody TbDemoQueryDTO tbDemoQueryDTO)
 	{
+		restResult = new RestResult();
 		if (log.isDebugEnabled())
 		{
 			log.debug("==> 请求参数：{}", tbDemoQueryDTO.toString());
@@ -186,25 +191,27 @@ public class TbDemoController extends BaseRestController<TbDemo>
 		return restResult;
 	}
 	
-	@ApiOperation("动态列表(LIST<OBJECT>)")
-	@RequestMapping(value = "queryOnSelectFields", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	public RestResult queryOnSelectFields(@RequestBody TbDemoQueryDTO tbDemoQueryDTO)
+	@ApiOperation("动态列表(LIST<T>)")
+	@RequestMapping(value = "/queryDynamic", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	public RestResult queryDynamic(@RequestBody TbDemoQueryDTO tbDemoQueryDTO)
 	{
-		if (log.isDebugEnabled())
-		{
-			log.debug("==> 请求参数：{}", tbDemoQueryDTO.toString());
-		}
+		restResult = new RestResult();
 		try
 		{
+			if (log.isDebugEnabled())
+			{
+				log.debug("==> requestDto：{}", restMapper.writeValueAsString(tbDemoQueryDTO));
+			}
 			Map<String, Object> param = restMapper.convertValue(tbDemoQueryDTO,
 					new TypeReference<Map<String, Object>>()
 			{
 			});
-//			restResult.put("rows", service.queryOnSelectFields(param));
+			restResult.put("rows", service.queryDynamic(param));
+			restResult.put("total", service.getCount(param));
 		}
 		catch (Exception e)
 		{
-			log.error("<== 异常提示：{}", e);
+			log.error("<== Exception：{}", e);
 			restResult.setSuccess(false);
 			restResult.setCode(RestConstants.ERROR_CODE1);
 			restResult.setMsg(e.getMessage());
@@ -216,6 +223,7 @@ public class TbDemoController extends BaseRestController<TbDemo>
 	@RequestMapping(value = "queryMapOnSelectFields", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	public RestResult queryMapOnSelectFields(@RequestBody TbDemoQueryDTO tbDemoQueryDTO)
 	{
+		restResult = new RestResult();
 		if (log.isDebugEnabled())
 		{
 			log.debug("==> 请求参数：{}", tbDemoQueryDTO.toString());

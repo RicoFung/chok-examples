@@ -1,8 +1,5 @@
 package com.api.tbdemo.service;
 
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,14 +20,4 @@ public class TbDemoService extends BaseService<TbDemo, Long>
 	{
 		return dao;
 	}
-	
-//	public List<TbDemo> queryOnSelectFields(Map<String, Object> param)
-//	{
-//		return dao.queryOnSelectFields(param);
-//	}
-//	
-//	public List<Map<String, Object>> queryMapOnSelectFields(Map<String, Object> param)
-//	{
-//		return dao.queryMapOnSelectFields(param);
-//	}
 }
