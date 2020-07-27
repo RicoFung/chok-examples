@@ -1,4 +1,4 @@
-package com.api.tbdemo.controller;
+package com.api.v1.tbdemo.controller;
 
 import java.util.Map;
 
@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.api.tbdemo.dto.TbDemoAddDTO;
-import com.api.tbdemo.dto.TbDemoDelDTO;
-import com.api.tbdemo.dto.TbDemoGetDTO;
-import com.api.tbdemo.dto.TbDemoQueryDTO;
-import com.api.tbdemo.dto.TbDemoUpdDTO;
-import com.api.tbdemo.entity.TbDemo;
-import com.api.tbdemo.service.TbDemoService;
+import com.api.v1.tbdemo.dto.TbDemoAddDTO;
+import com.api.v1.tbdemo.dto.TbDemoDelDTO;
+import com.api.v1.tbdemo.dto.TbDemoGetDTO;
+import com.api.v1.tbdemo.dto.TbDemoQueryDTO;
+import com.api.v1.tbdemo.dto.TbDemoUpdDTO;
+import com.api.v1.tbdemo.entity.TbDemo;
+import com.api.v1.tbdemo.service.TbDemoService;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import chok.common.RestResult;
@@ -29,7 +29,7 @@ import io.swagger.annotations.ApiOperation;
 
 @Api(tags = "tbdemo管理")
 @RestController
-@RequestMapping("/api/tbdemo")
+@RequestMapping("/api/v1/tbdemo")
 public class TbDemoController extends BaseRestController<TbDemo>
 {
 	private final Logger log = LoggerFactory.getLogger(getClass());

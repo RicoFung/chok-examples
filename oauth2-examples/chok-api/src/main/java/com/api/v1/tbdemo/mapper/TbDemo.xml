@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>  
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">   
 
-<mapper namespace="com.api.tbdemo.entity.TbDemo">
+<mapper namespace="com.api.v1.tbdemo.entity.TbDemo">
 	<!-- 开启基于redis的二级缓存 -->
 	<!-- 
     <cache type="chok.redis.mybatis.RedisCache">
@@ -12,7 +12,7 @@
     </cache>
      -->
       <!-- 自动生成id策略 -->
-    <insert id="add" parameterType="com.api.tbdemo.entity.TbDemo">  
+    <insert id="add" parameterType="com.api.v1.tbdemo.entity.TbDemo">  
        	<selectKey keyProperty="tcRowid" resultType="long" order="BEFORE">
 	         SELECT SEQ_TB_DEMO.NEXTVAL FROM DUAL
 	     </selectKey>
@@ -41,12 +41,12 @@
         ) T
     </insert>
 	
-	<delete id="del" parameterType="com.api.tbdemo.entity.TbDemo">
+	<delete id="del" parameterType="com.api.v1.tbdemo.entity.TbDemo">
 		DELETE FROM TB_DEMO 
 		 WHERE TC_ROWID = #{tcRowid}  
 	</delete>
 	
-	<update id="upd" parameterType="com.api.tbdemo.entity.TbDemo">
+	<update id="upd" parameterType="com.api.v1.tbdemo.entity.TbDemo">
 		UPDATE TB_DEMO T
 		<set>
         <if test="@chok.devwork.Ognl@isNotNull(tcCode)"> T.TC_CODE = #{tcCode},</if>
@@ -66,7 +66,7 @@
     	</foreach>
   	</update>
   	
-	<resultMap type="com.api.tbdemo.entity.TbDemo" id="result">
+	<resultMap type="com.api.v1.tbdemo.entity.TbDemo" id="result">
         <result property="tcRowid" column="TC_ROWID"/>
         <result property="tcCode" column="TC_CODE"/>
         <result property="tcName" column="TC_NAME"/>

@@ -1,4 +1,4 @@
-package com.api.tbdemo.entity;
+package com.api.v1.tbdemo.entity;
 
 import java.io.Serializable;
 /**

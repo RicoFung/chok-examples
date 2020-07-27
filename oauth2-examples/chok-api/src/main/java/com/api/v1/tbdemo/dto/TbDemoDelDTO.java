@@ -1,4 +1,4 @@
-package com.api.tbdemo.dto;
+package com.api.v1.tbdemo.dto;
 
 import java.io.Serializable;
 import java.util.Arrays;
