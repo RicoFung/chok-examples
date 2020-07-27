@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 
 import io.swagger.annotations.ApiModel;
 
-@ApiModel(description = "DelDTO 删除入参")
+@ApiModel(description = "TbDemoDelDTO 删除入参")
 public class TbDemoDelDTO implements Serializable
 {
 	private static final long serialVersionUID = 1L;

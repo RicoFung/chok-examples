@@ -22,13 +22,12 @@ import com.api.tbdemo.entity.TbDemo;
 import com.api.tbdemo.service.TbDemoService;
 import com.fasterxml.jackson.core.type.TypeReference;
 
-import chok.common.RestConstants;
 import chok.common.RestResult;
 import chok.devwork.springboot.BaseRestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Api(tags = "DEMO-管理")
+@Api(tags = "tbdemo管理")
 @RestController
 @RequestMapping("/api/tbdemo")
 public class TbDemoController extends BaseRestController<TbDemo>
@@ -38,21 +37,20 @@ public class TbDemoController extends BaseRestController<TbDemo>
 	@Autowired
 	private TbDemoService service;
 
+	
 	@ApiOperation("新增")
 	@RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	public RestResult add(@RequestBody @Validated TbDemoAddDTO tbDemoAddDTO, BindingResult validResult)
 	{
-		restResult = new RestResult();
 		try
 		{
 			if (log.isDebugEnabled())
 			{
 				log.debug("==> requestDto：{}", restMapper.writeValueAsString(tbDemoAddDTO));
 			}
-			if (validResult.hasErrors())
+			if (validResult.hasErrors()) 
 			{
 				restResult.setSuccess(false);
-				restResult.setCode(RestConstants.ERROR_CODE1);
 				restResult.setMsg(getValidMsgs(validResult));
 				return restResult;
 			}
@@ -60,11 +58,10 @@ public class TbDemoController extends BaseRestController<TbDemo>
 			BeanUtils.copyProperties(tbDemoAddDTO, tbDemo);
 			service.add(tbDemo);
 		}
-		catch (Exception e)
+		catch(Exception e)
 		{
 			log.error("<== Exception：{}", e);
 			restResult.setSuccess(false);
-			restResult.setCode(RestConstants.ERROR_CODE1);
 			restResult.setMsg(e.getMessage());
 		}
 		return restResult;
@@ -72,30 +69,27 @@ public class TbDemoController extends BaseRestController<TbDemo>
 
 	@ApiOperation("删除")
 	@RequestMapping(value = "/del", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	public RestResult del(@RequestBody @Validated TbDemoDelDTO tbDemoDelDTO, BindingResult validResult)
+	public RestResult del(@RequestBody @Validated TbDemoDelDTO tbDemoDelDTO, BindingResult validResult) 
 	{
-		restResult = new RestResult();
 		try
 		{
 			if (log.isDebugEnabled())
 			{
 				log.debug("==> requestDto：{}", restMapper.writeValueAsString(tbDemoDelDTO));
 			}
-			if (validResult.hasErrors())
+			if (validResult.hasErrors()) 
 			{
 				restResult.setSuccess(false);
-				restResult.setCode(RestConstants.ERROR_CODE1);
 				restResult.setMsg(getValidMsgs(validResult));
 				return restResult;
 			}
 			service.del(tbDemoDelDTO.getTcRowids());
 			restResult.setSuccess(true);
 		}
-		catch (Exception e)
+		catch(Exception e)
 		{
 			log.error("<== Exception：{}", e);
 			restResult.setSuccess(false);
-			restResult.setCode(RestConstants.ERROR_CODE1);
 			restResult.setMsg(e.getMessage());
 		}
 		return restResult;
@@ -103,19 +97,17 @@ public class TbDemoController extends BaseRestController<TbDemo>
 
 	@ApiOperation("修改")
 	@RequestMapping(value = "/upd", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	public RestResult upd(@RequestBody @Validated TbDemoUpdDTO tbDemoUpdDTO, BindingResult validResult)
+	public RestResult upd(@RequestBody @Validated TbDemoUpdDTO tbDemoUpdDTO, BindingResult validResult) 
 	{
-		restResult = new RestResult();
 		try
 		{
 			if (log.isDebugEnabled())
 			{
 				log.debug("==> requestDto：{}", restMapper.writeValueAsString(tbDemoUpdDTO));
 			}
-			if (validResult.hasErrors())
+			if (validResult.hasErrors()) 
 			{
 				restResult.setSuccess(false);
-				restResult.setCode(RestConstants.ERROR_CODE1);
 				restResult.setMsg(getValidMsgs(validResult));
 				return restResult;
 			}
@@ -123,11 +115,10 @@ public class TbDemoController extends BaseRestController<TbDemo>
 			BeanUtils.copyProperties(tbDemoUpdDTO, tbDemo);
 			service.upd(tbDemo);
 		}
-		catch (Exception e)
+		catch(Exception e)
 		{
 			log.error("<== Exception：{}", e);
 			restResult.setSuccess(false);
-			restResult.setCode(RestConstants.ERROR_CODE1);
 			restResult.setMsg(e.getMessage());
 		}
 		return restResult;
@@ -135,19 +126,17 @@ public class TbDemoController extends BaseRestController<TbDemo>
 
 	@ApiOperation("明细")
 	@RequestMapping(value = "/get", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	public RestResult get(@RequestBody @Validated TbDemoGetDTO tbDemoGetDTO, BindingResult validResult)
+	public RestResult get(@RequestBody @Validated TbDemoGetDTO tbDemoGetDTO, BindingResult validResult) 
 	{
-		restResult = new RestResult();
 		try
 		{
 			if (log.isDebugEnabled())
 			{
 				log.debug("==> requestDto：{}", restMapper.writeValueAsString(tbDemoGetDTO));
 			}
-			if (validResult.hasErrors())
+			if (validResult.hasErrors()) 
 			{
 				restResult.setSuccess(false);
-				restResult.setCode(RestConstants.ERROR_CODE1);
 				restResult.setMsg(getValidMsgs(validResult));
 				return restResult;
 			}
@@ -157,42 +146,35 @@ public class TbDemoController extends BaseRestController<TbDemo>
 			});
 			restResult.put("row", service.getDynamic(param));
 		}
-		catch (Exception e)
+		catch(Exception e)
 		{
 			log.error("<== Exception：{}", e);
 			restResult.setSuccess(false);
-			restResult.setCode(RestConstants.ERROR_CODE1);
 			restResult.setMsg(e.getMessage());
 		}
 		return restResult;
 	}
-
+	
 	@ApiOperation("列表")
 	@RequestMapping(value = "/query", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	public RestResult query(@RequestBody TbDemoQueryDTO tbDemoQueryDTO)
 	{
-		restResult = new RestResult();
 		try
 		{
 			if (log.isDebugEnabled())
 			{
 				log.debug("==> requestDto：{}", restMapper.writeValueAsString(tbDemoQueryDTO));
 			}
-			Map<String, Object> param = restMapper.convertValue(tbDemoQueryDTO,
-					new TypeReference<Map<String, Object>>()
-			{
-			});
+			Map<String, Object> param = restMapper.convertValue(tbDemoQueryDTO, new TypeReference<Map<String, Object>>(){});
+	        restResult.put("total", service.getCount(param));
 			restResult.put("rows", service.queryDynamic(param));
-			restResult.put("total", service.getCount(param));
 		}
 		catch (Exception e)
 		{
 			log.error("<== Exception：{}", e);
 			restResult.setSuccess(false);
-			restResult.setCode(RestConstants.ERROR_CODE1);
 			restResult.setMsg(e.getMessage());
 		}
 		return restResult;
 	}
-	
 }

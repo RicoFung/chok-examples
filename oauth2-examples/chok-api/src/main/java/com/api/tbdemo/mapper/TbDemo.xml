@@ -13,49 +13,33 @@
      -->
       <!-- 自动生成id策略 -->
     <insert id="add" parameterType="com.api.tbdemo.entity.TbDemo">  
-	    <selectKey keyProperty="tcRowid" resultType="long" order="BEFORE">
+       	<selectKey keyProperty="tcRowid" resultType="long" order="BEFORE">
 	         SELECT SEQ_TB_DEMO.NEXTVAL FROM DUAL
 	     </selectKey>
        	INSERT INTO TB_DEMO 
        	( TC_ROWID, TC_CODE, TC_NAME) 
        	VALUES
-       	(#{tcRowid}, #{tcCode}, #{tcName})
+       	( #{tcRowid}, #{tcCode}, #{tcName})
     </insert>  
-	
+    
     <insert id="addBatch">
-	    INSERT INTO TB_DEMO
-	    (TC_ROWID, 
-	    TC_CODE,
-	    TC_NAME
-	    )
+    	INSERT INTO TB_DEMO
+    	(
+        TC_ROWID,
+        TC_CODE,
+        TC_NAME
+        )
 	    SELECT SEQ_TB_DEMO.NEXTVAL, T.*
-	    FROM (
+        FROM 
+        (
 	    <foreach collection ="list" item="item" index="index" separator="UNION ALL">
-	    	SELECT
-        	#{item.tcCode} TC_CODE,
-        	#{item.tcName} TC_NAME
-        	FROM DUAL
-	    </foreach >
-	    ) T
-	</insert>
-	
-    <insert id="addBatchV2">
-	    INSERT INTO TB_DEMO
-	    (TC_ROWID, 
-	    TC_CODE,
-	    TC_NAME
-	    )
-	    SELECT T.*
-	    FROM (
-	    <foreach collection ="list" item="item" index="index" separator="UNION ALL">
-	    	SELECT
-        	#{item.tcRowid} TC_ROWID,
-        	#{item.tcCode} TC_CODE,
-        	#{item.tcName} TC_NAME
-        	FROM DUAL
-	    </foreach >
-	    ) T
-	</insert>
+	    SELECT
+		#{item.tcCode} AS TC_CODE,
+		#{item.tcName} AS TC_NAME
+	    FROM DUAL
+	    </foreach>
+        ) T
+    </insert>
 	
 	<delete id="del" parameterType="com.api.tbdemo.entity.TbDemo">
 		DELETE FROM TB_DEMO 
@@ -64,47 +48,49 @@
 	
 	<update id="upd" parameterType="com.api.tbdemo.entity.TbDemo">
 		UPDATE TB_DEMO T
-        <set>
-       	<if test="@chok.devwork.Ognl@isNotNull(tcCode)"> T.TC_CODE = #{tcCode},</if>
-       	<if test="@chok.devwork.Ognl@isNotNull(tcName)"> T.TC_NAME = #{tcName},</if>
+		<set>
+        <if test="@chok.devwork.Ognl@isNotNull(tcCode)"> T.TC_CODE = #{tcCode},</if>
+        <if test="@chok.devwork.Ognl@isNotNull(tcName)"> T.TC_NAME = #{tcName}</if>
         </set>
-       	WHERE T.TC_ROWID = #{tcRowid}
+         WHERE T.TC_ROWID = #{tcRowid}  
 	</update>
-	
+  	
   	<update id="updBatch">
   		<foreach collection="list" index="index" item="item" open="begin" close=";end;" separator=";">
 	        UPDATE TB_DEMO T
 	        <set>
-        	<if test="@chok.devwork.Ognl@isNotNull(item.tcCode)"> T.TC_CODE = #{item.tcCode},</if>
-        	<if test="@chok.devwork.Ognl@isNotNull(item.tcName)"> T.TC_NAME = #{item.tcName},</if>
+		       <if test="@chok.devwork.Ognl@isNotEmpty(item.tcCode)"> T.TC_CODE = #{item.tcCode},</if>
+		       <if test="@chok.devwork.Ognl@isNotEmpty(item.tcName)"> T.TC_NAME = #{item.tcName},</if>
 	        </set>
-         	WHERE T.TC_ROWID = #{item.tcRowid}  
-	    </foreach>
-	</update>
+			WHERE T.TC_ROWID = #{item.tcRowid}  
+    	</foreach>
+  	</update>
   	
 	<resultMap type="com.api.tbdemo.entity.TbDemo" id="result">
-        <id property="tcRowid" column="TC_ROWID" typeHandler="chok.util.mybatis.NullToEmptyLongTypeHandler"/>
-        <result property="tcCode" column="TC_CODE" typeHandler="chok.util.mybatis.NullToEmptyStringTypeHandler"/>
-        <result property="tcName" column="TC_NAME" typeHandler="chok.util.mybatis.NullToEmptyStringTypeHandler"/>
+        <result property="tcRowid" column="TC_ROWID"/>
+        <result property="tcCode" column="TC_CODE"/>
+        <result property="tcName" column="TC_NAME"/>
 	</resultMap>
-
+  	
 	<sql id="columns">
-		t.TC_ROWID, t.TC_CODE, t.TC_NAME 
-	</sql>	
+		T.TC_ROWID, 
+		T.TC_CODE, 
+		T.TC_NAME 
+	</sql>
 	
 	<sql id="dynamicColumns">
 		<choose>
 			<when test="@chok.devwork.Ognl@isNotEmpty(dynamicColumns) and @chok.devwork.Ognl@isNotNull(dynamicColumns)">
-			    <foreach collection ="dynamicColumns" item="column" index="index" separator=",">
-					<if test="column == 'tcRowid'">t.TC_ROWID</if>
-					<if test="column == 'tcCode'">t.TC_CODE</if>
-					<if test="column == 'tcName'">t.TC_NAME</if>
+			    <foreach collection ="dynamicColumns" item="col" index="index" separator=",">
+					<if test="col == 'tcRowid'">T.TC_ROWID</if>
+					<if test="col == 'tcCode'">T.TC_CODE</if>
+					<if test="col == 'tcName'">T.TC_NAME</if>
 			    </foreach>
 			</when>
 			<otherwise>
-				t.TC_ROWID, 
-				t.TC_CODE, 
-				t.TC_NAME 
+				T.TC_ROWID, 
+				T.TC_CODE, 
+				T.TC_NAME 
 			</otherwise>
 		</choose>
 	</sql>
@@ -112,23 +98,23 @@
 	<sql id="order">
 		<choose>
 			<when test="@chok.devwork.Ognl@isNotEmpty(sort)">
-				ORDER BY tt.<include refid="orderParse1"/> ${order}
+				ORDER BY TT.<include refid="orderParse1"/> ${order}
 			</when>
 			<when test="@chok.devwork.Ognl@isNotEmpty(multiSort)">
-				ORDER BY <foreach collection="multiSort" index="index" item="item" separator=",">tt.<include refid="orderParse2" /> ${item.sortOrder}</foreach>  
+				ORDER BY <foreach collection="multiSort" index="index" item="item" separator=",">TT.<include refid="orderParse2" /> ${item.sortOrder}</foreach>  
 			</when>
 			<otherwise>
-				ORDER BY tt.TC_ROWID DESC
+				ORDER BY TT.TC_ROWID DESC
 			</otherwise>
 		</choose>
 	</sql>
 	<sql id="dynamicOrder">
 		<choose>
 			<when test="@chok.devwork.Ognl@isNotEmpty(dynamicOrder)">
-				ORDER BY <foreach collection="dynamicOrder" index="index" item="item" separator=",">tt.<include refid="orderParse2" /> ${item.sortOrder}</foreach>  
+				ORDER BY <foreach collection="dynamicOrder" index="index" item="item" separator=",">TT.<include refid="orderParse2" /> ${item.sortOrder}</foreach>  
 			</when>
 			<otherwise>
-				ORDER BY tt.TC_ROWID DESC
+				ORDER BY TT.TC_ROWID DESC
 			</otherwise>
 		</choose>
 	</sql>
@@ -144,23 +130,23 @@
 	</sql>
 	
 	<sql id="dynamicWhere">
-		<where>	      				
-	       <if test="@chok.devwork.Ognl@isNotEmpty(tcRowid)"> AND t.TC_ROWID = #{tcRowid}</if>
-	       <if test="@chok.devwork.Ognl@isNotEmpty(tcCode)"> AND t.TC_CODE LIKE '%'||#{tcCode}||'%'</if>
-	       <if test="@chok.devwork.Ognl@isNotEmpty(tcName)"> AND t.TC_NAME LIKE '%'||#{tcName}||'%'</if>
-	       <if test="@chok.devwork.Ognl@isNotEmpty(search)"> AND (t.TC_CODE LIKE '%'||#{search}||'%') OR t.TC_NAME LIKE '%'||#{search}||'%')</if>	
+		<where>
+    		<if test="@chok.devwork.Ognl@isNotEmpty(tcRowid)"> AND T.TC_ROWID = #{tcRowid} </if>
+	       	<if test="@chok.devwork.Ognl@isNotEmpty(tcCode)"> AND T.TC_CODE LIKE '%'||#{tcCode}||'%'</if>
+	       	<if test="@chok.devwork.Ognl@isNotEmpty(tcName)"> AND T.TC_NAME LIKE '%'||#{tcName}||'%'</if>
+	       	<if test="@chok.devwork.Ognl@isNotEmpty(search)"> AND (T.TC_CODE LIKE '%'||#{search}||'%' OR T.TC_NAME LIKE '%'||#{search}||'%')</if>	
 		</where>
 	</sql>	
 	
 	<select id="get" resultMap="result">
 		SELECT <include refid="columns"/> 
-		  FROM TB_DEMO t 
-		 WHERE t.TC_ROWID = #{tcRowid}  	  
+		  FROM TB_DEMO T 
+		 WHERE T.TC_ROWID = #{tcRowid}  	  
 	</select>
 	
 	<select id="getDynamic" resultMap="result">
 		SELECT <include refid="dynamicColumns"/> 
-		  FROM TB_DEMO t 
+		  FROM TB_DEMO T 
 		 <include refid="dynamicWhere" />	  
 	</select>
 	
@@ -169,23 +155,23 @@
 			<!-- 翻页 -->
 			<when test="@chok.devwork.Ognl@isNotEmpty(page) and @chok.devwork.Ognl@isNotEmpty(pagesize)">
 				SELECT * FROM (SELECT row_.*, ROWNUM rownum_ FROM(
-					SELECT tt.* FROM 
+					SELECT TT.* FROM 
 					(
-						SELECT <include refid="dynamicColumns"/> FROM TB_DEMO t
+						SELECT <include refid="columns"/> FROM TB_DEMO T
 						<include refid="dynamicWhere" />
-					) tt
-					<include refid="dynamicOrder" />
-	            ) row_ WHERE rownum &lt;= #{page}*#{pagesize}) 
+					) TT
+					<include refid="order" />
+	            ) row_ WHERE rownum &lt;= #{page}*#{pagesize} ) 
 	            WHERE rownum_ &gt; (#{page}-1)*#{pagesize}
 			</when>
 			<!-- 非翻页 -->
 			<otherwise>
-				SELECT tt.* FROM 
+				SELECT TT.* FROM 
 				(
-					SELECT <include refid="dynamicColumns"/> FROM TB_DEMO t
+					SELECT <include refid="columns"/> FROM TB_DEMO T
 					<include refid="dynamicWhere" />
-				) tt
-				<include refid="dynamicOrder" />
+				) TT
+				<include refid="order" />
 			</otherwise>
 		</choose>
 	</select>
@@ -195,30 +181,29 @@
 			<!-- 翻页 -->
 			<when test="@chok.devwork.Ognl@isNotEmpty(page) and @chok.devwork.Ognl@isNotEmpty(pagesize)">
 				SELECT * FROM (SELECT row_.*, ROWNUM rownum_ FROM(
-					SELECT tt.* FROM 
+					SELECT TT.* FROM 
 					(
-						SELECT <include refid="dynamicColumns"/> FROM TB_DEMO t
+						SELECT <include refid="dynamicColumns"/> FROM TB_DEMO T
 						<include refid="dynamicWhere" />
-					) tt
+					) TT
 					<include refid="dynamicOrder" />
 	            ) row_ WHERE rownum &lt;= #{page}*#{pagesize} ) 
 	            WHERE rownum_ &gt; (#{page}-1)*#{pagesize}
 			</when>
 			<!-- 非翻页 -->
 			<otherwise>
-				SELECT tt.* FROM 
+				SELECT TT.* FROM 
 				(
-					SELECT <include refid="dynamicColumns"/> FROM TB_DEMO t
+					SELECT <include refid="dynamicColumns"/> FROM TB_DEMO T
 					<include refid="dynamicWhere" />
-				) tt
+				) TT
 				<include refid="dynamicOrder" />
 			</otherwise>
 		</choose>
 	</select>
 	
 	<select id="getCount" resultType="int">
-		SELECT COUNT(1) FROM TB_DEMO t
+		SELECT COUNT(1) FROM TB_DEMO T
 		<include refid="dynamicWhere" />
 	</select>
-	
 </mapper>  

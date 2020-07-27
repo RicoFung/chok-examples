@@ -1,13 +1,10 @@
 package com.api.tbdemo.dao;
 
 import javax.annotation.Resource;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
-
-import com.api.tbdemo.entity.TbDemo;
-
 import chok.devwork.springboot.BaseDao;
+import com.api.tbdemo.entity.TbDemo;
 
 @Repository
 public class TbDemoDao extends BaseDao<TbDemo, Long>
