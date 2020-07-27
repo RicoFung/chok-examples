@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import chok.devwork.springboot.BaseDao;
 import com.api.v1.tbdemo.entity.TbDemo;
 
-@Repository
+@Repository(value = "v1TbDemoDao")
 public class TbDemoDao extends BaseDao<TbDemo, Long>
 {
 	@Resource//(name = "firstSqlSessionTemplate")

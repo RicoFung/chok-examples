@@ -1,4 +1,4 @@
-package com.api.tbdemo1.dto;
+package com.api.v2.tbdemo.dto;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -8,8 +8,8 @@ import javax.validation.constraints.Size;
 
 import io.swagger.annotations.ApiModel;
 
-@ApiModel(description = "DelDTO 删除入参")
-public class TbDemo1DelDTO implements Serializable
+@ApiModel(description = "TbDemoDelDTO 删除入参")
+public class TbDemoDelDTO implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	

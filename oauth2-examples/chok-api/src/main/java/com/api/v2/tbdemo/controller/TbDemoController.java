@@ -1,4 +1,4 @@
-package com.api.v1.tbdemo.controller;
+package com.api.v2.tbdemo.controller;
 
 import java.util.Map;
 
@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.api.v1.tbdemo.dto.TbDemoAddDTO;
-import com.api.v1.tbdemo.dto.TbDemoDelDTO;
-import com.api.v1.tbdemo.dto.TbDemoGetDTO;
-import com.api.v1.tbdemo.dto.TbDemoQueryDTO;
-import com.api.v1.tbdemo.dto.TbDemoUpdDTO;
-import com.api.v1.tbdemo.entity.TbDemo;
-import com.api.v1.tbdemo.service.TbDemoService;
+import com.api.v2.tbdemo.dto.TbDemoAddDTO;
+import com.api.v2.tbdemo.dto.TbDemoDelDTO;
+import com.api.v2.tbdemo.dto.TbDemoGetDTO;
+import com.api.v2.tbdemo.dto.TbDemoQueryDTO;
+import com.api.v2.tbdemo.dto.TbDemoUpdDTO;
+import com.api.v2.entity.TbDemo;
+import com.api.v2.tbdemo.service.TbDemoService;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import chok.common.RestResult;
@@ -27,9 +27,9 @@ import chok.devwork.springboot.BaseRestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Api(tags = "v1-TbDemo")
-@RestController(value = "v1TbDemoController")
-@RequestMapping("/api/v1/tbdemo")
+@Api(tags = "v2-TbDemo")
+@RestController(value = "v2TbDemoController")
+@RequestMapping("/api/v2/tbdemo")
 public class TbDemoController extends BaseRestController<TbDemo>
 {
 	private final Logger log = LoggerFactory.getLogger(getClass());

@@ -1,4 +1,4 @@
-package com.api.tbdemo1.entity;
+package com.api.v2.entity;
 
 import java.io.Serializable;
 /**
@@ -58,12 +58,6 @@ public class TbDemo implements Serializable
 	public java.lang.String getTcName() 
 	{
 		return this.tcName;
-	}
-
-	@Override
-	public String toString()
-	{
-		return "TbDemo [tcRowid=" + tcRowid + ", tcCode=" + tcCode + ", tcName=" + tcName + "]";
 	}
 }
 
