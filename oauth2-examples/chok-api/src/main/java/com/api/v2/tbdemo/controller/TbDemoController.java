@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -21,11 +22,14 @@ import org.springframework.web.multipart.MultipartFile;
 import com.api.v2.entity.TbDemo;
 import com.api.v2.tbdemo.dto.TbDemoAddDTO;
 import com.api.v2.tbdemo.dto.TbDemoDelDTO;
+import com.api.v2.tbdemo.dto.TbDemoExpDTO;
 import com.api.v2.tbdemo.dto.TbDemoGetDTO;
 import com.api.v2.tbdemo.dto.TbDemoImpDTO;
 import com.api.v2.tbdemo.dto.TbDemoQueryDTO;
 import com.api.v2.tbdemo.dto.TbDemoUpdDTO;
+
 import com.api.v2.tbdemo.service.TbDemoService;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import chok.common.RestConstants;
@@ -249,6 +253,52 @@ public class TbDemoController extends BaseRestController<TbDemo>
 			restResult.setMsg(e.getMessage());
 		}
 		return restResult;
+	}
+	
+	@ApiOperation("导出")
+	@RequestMapping(value = "/exp", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	public void exp(@RequestBody @Validated TbDemoExpDTO tbDemoExpDTO, BindingResult validResult)
+	{
+		try
+		{
+			if (log.isDebugEnabled())
+			{
+				log.debug("==> requestDto：{}", restMapper.writeValueAsString(tbDemoExpDTO));
+			}
+			if (validResult.hasErrors())
+			{
+				throw new Exception(getValidMsgs(validResult));
+			}
+			// 查询参数
+			Map<String, Object> param = restMapper.convertValue(tbDemoExpDTO,
+					new TypeReference<Map<String, Object>>()
+					{
+					});
+			if (0 < tbDemoExpDTO.getTcRowids().length)
+			{
+				param.clear();
+				param.put("tcRowidArray", tbDemoExpDTO.getTcRowids());
+			}
+			// 限制导出数量必须小于1000
+			int count = service.getCount(param);
+			if (1000 < count)
+			{
+				throw new Exception("导出数量不能大于1000条！");
+			}
+			// 查询
+			List<TbDemo> list = service.queryDynamic(param);
+			// 导出至excel
+			export(list, 
+					tbDemoExpDTO.getShowFilename(),
+					tbDemoExpDTO.getShowTitle(),
+					StringUtils.join(tbDemoExpDTO.getShowAlias(), ","),
+					StringUtils.join(tbDemoExpDTO.getShowColumns(), ","),
+					"xlsx");
+		}
+		catch (Exception e)
+		{
+			log.error("<== Exception：{}", e);
+		}
 	}
 	
 }

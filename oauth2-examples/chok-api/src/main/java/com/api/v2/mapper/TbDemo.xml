@@ -132,6 +132,10 @@
 	<sql id="dynamicWhere">
 		<where>
     		<if test="@chok.devwork.Ognl@isNotEmpty(tcRowid)"> AND T.TC_ROWID = #{tcRowid} </if>
+			<if test="@chok.devwork.Ognl@isNotEmpty(tcRowidArray)"> 
+				AND T.TC_ROWID IN
+				<foreach collection="tcRowidArray" item="tcRowid" index="index" open="(" close=")" separator=",">#{tcRowid}</foreach>
+			</if>
 	       	<if test="@chok.devwork.Ognl@isNotEmpty(tcCode)"> AND T.TC_CODE LIKE '%'||#{tcCode}||'%'</if>
 	       	<if test="@chok.devwork.Ognl@isNotEmpty(tcName)"> AND T.TC_NAME LIKE '%'||#{tcName}||'%'</if>
 	       	<if test="@chok.devwork.Ognl@isNotEmpty(search)"> AND (T.TC_CODE LIKE '%'||#{search}||'%' OR T.TC_NAME LIKE '%'||#{search}||'%')</if>	
