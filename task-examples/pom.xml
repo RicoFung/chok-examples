@@ -76,6 +76,24 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<!-- spring-boot-security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<!-- spring-boot-security oauth2 -->
+		<dependency>
+			<groupId>org.springframework.security.oauth.boot</groupId>
+			<artifactId>spring-security-oauth2-autoconfigure</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
 		<!-- spring-boot-properties 迁移工具 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -93,6 +111,15 @@
 			<version>12.2.0.1.0</version>
 			<type>jar</type>
 		</dependency>
+		<!--swagger -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+		</dependency>
 		<!-- chok -->
 		<dependency>
 			<groupId>com.chok</groupId>
@@ -101,6 +128,10 @@
 		<dependency>
 			<groupId>com.chok</groupId>
 			<artifactId>chok-redis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.chok</groupId>
+			<artifactId>chok-oauth2</artifactId>
 		</dependency>
 	</dependencies>
 

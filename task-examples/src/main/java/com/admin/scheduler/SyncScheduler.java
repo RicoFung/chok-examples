@@ -1,4 +1,4 @@
-package com.task.scheduler;
+package com.admin.scheduler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,13 +12,13 @@ public class SyncScheduler
 {
 	static Logger log = LoggerFactory.getLogger(SyncScheduler.class);
 
-	@Scheduled(initialDelayString = "${scheduled.initialDelay}", fixedDelayString = "${scheduled.fixedDelay}")
+//	@Scheduled(initialDelayString = "${scheduled.initialDelay}", fixedDelayString = "${scheduled.fixedDelay}")
 	public void task1()
 	{
 		System.out.println("执行任务1："+ TimeUtil.getCurrentMillTime());
 	}
 	
-	@Scheduled(initialDelayString = "${scheduled.initialDelay}", fixedDelayString = "${scheduled.fixedDelay}")
+//	@Scheduled(initialDelayString = "${scheduled.initialDelay}", fixedDelayString = "${scheduled.fixedDelay}")
 	public void task2()
 	{
 		System.out.println("执行任务2："+ TimeUtil.getCurrentMillTime());

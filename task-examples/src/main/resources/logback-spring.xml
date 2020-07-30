@@ -216,12 +216,12 @@
     <logger name="org.springframework" level="ERROR" />
     <logger name="com.common" level="DEBUG" />
     <logger name="chok.redis" level="DEBUG" />
-    <logger name="com.task" level="DEBUG" />
+    <logger name="com.admin" level="DEBUG" />
     <springProfile name="local-dev,dev,uat">
-    	<logger name="com.task.entity" level="DEBUG" additivity="true"/>
+    	<logger name="com.admin" level="DEBUG" additivity="true"/>
     </springProfile>
     <springProfile name="prd">
-    	<logger name="com.task.entity" level="WARN" additivity="true"/>
+    	<logger name="com.admin" level="WARN" additivity="true"/>
     </springProfile>
 
 	<!-- ================================================================ -->
