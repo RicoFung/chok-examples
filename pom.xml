@@ -17,9 +17,9 @@
 	<modules>
 		<module>locks-examples</module>
 		<module>jwt-examples</module>
-		<module>task-examples</module>
 		<module>oauth2-examples/chok-sso</module>
 		<module>oauth2-examples/chok-api</module>
+		<module>oauth2-examples/chok-scheduler</module>
 	</modules>
 
 	<parent>

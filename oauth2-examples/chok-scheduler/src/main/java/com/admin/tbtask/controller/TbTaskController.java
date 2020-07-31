@@ -1,19 +1,11 @@
 package com.admin.tbtask.controller;
 
-import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ScheduledFuture;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.scheduling.Trigger;
-import org.springframework.scheduling.TriggerContext;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
-import org.springframework.scheduling.support.CronTrigger;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,15 +21,12 @@ import com.admin.tbtask.dto.TbTaskStartDTO;
 import com.admin.tbtask.dto.TbTaskStopDTO;
 import com.admin.tbtask.dto.TbTaskUpdDTO;
 import com.admin.tbtask.entity.TbTask;
-import com.admin.tbtask.runnable.TaskInvoke;
-import com.admin.tbtask.runnable.TaskRunnable;
 import com.admin.tbtask.service.TbTaskService;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import chok.common.RestConstants;
 import chok.common.RestResult;
 import chok.devwork.springboot.BaseRestController;
-import chok.util.TimeUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -47,19 +36,6 @@ import io.swagger.annotations.ApiOperation;
 public class TbTaskController extends BaseRestController<TbTask>
 {
 	private final Logger log = LoggerFactory.getLogger(getClass());
-
-	// 接受任务的返回结果集
-	private Map<Long, ScheduledFuture<?>> futureMap  = new HashMap<Long, ScheduledFuture<?>>();
-	
-	@Autowired
-	private ThreadPoolTaskScheduler	threadPoolTaskScheduler;
-
-	// 实例化一个线程池任务调度类,可以使用自定义的ThreadPoolTaskScheduler
-	@Bean
-	public ThreadPoolTaskScheduler threadPoolTaskScheduler()
-	{
-		return new ThreadPoolTaskScheduler();
-	}
 
 	@Autowired
 	private TbTaskService service;
@@ -83,52 +59,8 @@ public class TbTaskController extends BaseRestController<TbTask>
 				restResult.setMsg(getValidMsgs(validResult));
 				return restResult;
 			}
-			// 任务记录校验
-			TbTask tbTask = service.get(tbTaskStartDTO.getTcRowid());
-			if (tbTask == null)
-			{
-				restResult.setSuccess(false);
-				restResult.setCode(RestConstants.ERROR_CODE1);
-				restResult.setMsg("任务不存在！");
-				return restResult;
-			}
-			
-			//
-			TaskRunnable taskRunnable = new TaskRunnable(new TaskInvoke()
-			{
-				@Override
-				public void execute()
-				{
-					System.out.println("执行" + tbTask.getTcName() + "：" + TimeUtil.getCurrentMillTime());
-				}
-			});
-			//
-			Trigger taskTigger = new Trigger()
-			{
-				@Override
-				public Date nextExecutionTime(TriggerContext triggerContext)
-				{
-					return new CronTrigger(tbTask.getTcCron()).nextExecutionTime(triggerContext);
-				}
-			};
-			// 执行任务
-			ScheduledFuture<?> future = threadPoolTaskScheduler.schedule(taskRunnable, taskTigger);
-			if (future != null)
-			{
-				futureMap.put(tbTask.getTcRowid(), future);
-				restResult.setMsg("任务【" + tbTask.getTcName() + "】启动成功！");
-			}
-			else
-			{
-				restResult.setSuccess(false);
-				restResult.setCode(RestConstants.ERROR_CODE1);
-				restResult.setMsg("任务【" + tbTask.getTcName() + "】启动失败！");
-			}
-			//
-			if (log.isDebugEnabled())
-			{
-				log.debug(restResult.getMsg());
-			}
+			// 任务启动
+			restResult = service.start(tbTaskStartDTO.getTcRowid());
 		}
 		catch(Exception e)
 		{
@@ -159,34 +91,8 @@ public class TbTaskController extends BaseRestController<TbTask>
 				restResult.setMsg(getValidMsgs(validResult));
 				return restResult;
 			}
-			// 任务记录校验
-			TbTask tbTask = service.get(tbTaskStopDTO.getTcRowid());
-			if (tbTask == null)
-			{
-				restResult.setSuccess(false);
-				restResult.setCode(RestConstants.ERROR_CODE1);
-				restResult.setMsg("任务不存在！");
-				return restResult;
-			}
-			// 任務停止
-			ScheduledFuture<?> future = futureMap.get(tbTaskStopDTO.getTcRowid());
-			if (future != null) 
-			{
-				future.cancel(true);
-				futureMap.remove(tbTaskStopDTO.getTcRowid());
-				restResult.setMsg("任务【" + tbTask.getTcName() + "】停止成功！");
-	        }
-			else
-			{
-				restResult.setSuccess(false);
-				restResult.setCode(RestConstants.ERROR_CODE1);
-				restResult.setMsg("任务【" + tbTask.getTcName() + "】停止失败！");
-			}
-			//
-			if (log.isDebugEnabled())
-			{
-				log.debug(restResult.getMsg());
-			}
+			// 任务停止
+			restResult = service.stop(tbTaskStopDTO.getTcRowid());
 		}
 		catch(Exception e)
 		{

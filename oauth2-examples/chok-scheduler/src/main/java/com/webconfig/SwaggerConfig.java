@@ -46,7 +46,7 @@ public class SwaggerConfig
 	private ApiInfo apiInfo()
 	{
 		return new ApiInfoBuilder()
-				.title("chok-task的Rest API文档")
+				.title("chok-scheduler的Rest API文档")
 				.license("Apache 2.0")
 				.licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
 				.termsOfServiceUrl("")

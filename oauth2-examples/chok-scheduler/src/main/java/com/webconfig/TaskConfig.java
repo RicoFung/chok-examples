@@ -1,21 +1,14 @@
 package com.webconfig;
 
-import java.time.LocalDateTime;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
-import org.springframework.scheduling.support.CronTrigger;
-import org.springframework.util.StringUtils;
-
-import com.admin.tbtask.dao.TbTaskDao;
 
 @Configuration
 public class TaskConfig implements SchedulingConfigurer 
 {
-	@Autowired
-	private TbTaskDao dao;
+//	@Autowired
+//	private TbTaskDao dao;
 
 	@Override
 	public void configureTasks(ScheduledTaskRegistrar taskRegistrar)

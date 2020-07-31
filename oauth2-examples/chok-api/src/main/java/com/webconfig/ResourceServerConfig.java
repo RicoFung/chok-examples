@@ -37,7 +37,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter
                 "/swagger-resources/**",
                 "/v2/api-docs",
                 "/csrf",
-                "/")
+                "/",
+        		"/api/v1/**")
         .permitAll()
         // 其它请求需要认证
         .anyRequest().authenticated()
