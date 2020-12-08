@@ -65,7 +65,7 @@ public class OauthController
 	{
 		List<String> oauthList = factory.oauthList();
 		return oauthList.stream().collect(Collectors.toMap(oauth -> oauth.toLowerCase() + "登录",
-				oauth -> "http://localhost:6161/chok-api/oauth/login/" + oauth.toLowerCase()));
+				oauth -> "http://oauth.ricofung.cn:7000/chok-api/oauth/login/" + oauth.toLowerCase()));
 	}
 
 	@RequestMapping(value = "/test/{param}")
@@ -100,7 +100,7 @@ public class OauthController
 	 * @return 登录成功后的信息
 	 * @throws JsonProcessingException 
 	 */
-	@RequestMapping("/{oauthType}/callback")
+	@RequestMapping("/callback/{oauthType}")
 	public AuthResponse<?> login(@PathVariable String oauthType, AuthCallback callback) throws JsonProcessingException
 	{
 		AuthRequest authRequest = factory.get(getAuthSource(oauthType));
@@ -109,7 +109,6 @@ public class OauthController
 		ObjectMapper om = new ObjectMapper();
 		
 		log.info("【response】= {}", om.writeValueAsString(response));
-//		log.info("【response】= {}", JSONUtil.toJsonStr(response));
 		return response;
 	}
 
