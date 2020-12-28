@@ -10,8 +10,9 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 import chok.oauth2.MyAccessDeniedHandler;
 import chok.oauth2.MyOAuth2ExceptionEntryPoint;
 
-@Configuration
-@EnableResourceServer
+// 先MARK掉，否则会拦截/auth2/*的请求，后续再优化
+//@Configuration
+//@EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter
 {
     @Override
@@ -34,9 +35,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter
         // 开启请求权限配置-1.必须满足SpEL表达式为true时才可访问
 //      .antMatchers("/oauth2/test/product/**").access("#oauth2.hasScope('read') and hasRole('ROLE_USER')")
 //      .antMatchers("/oauth2/test/product/**").access("#oauth2.hasScope('select') and hasRole('ROLE_USER')")
-        .antMatchers("/oauth2/test/product/**").access("#oauth2.hasScope('read')")
+        .antMatchers("/sso/test/product/**").access("#oauth2.hasScope('read')")
         // 开启请求权限配置-2.必须认证/登录过后才可访问
-        .antMatchers("/oauth2/test/order/**").authenticated() 
+        .antMatchers("/sso/test/order/**").authenticated() 
         ;
     }
 

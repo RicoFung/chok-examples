@@ -17,6 +17,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import com.sso.service.TbUserInfo0aService;
 
 import chok.util.EncryptionUtil;
+import top.dcenter.ums.security.core.oauth.config.Auth2AutoConfigurer;
+import top.dcenter.ums.security.core.oauth.properties.Auth2Properties;
 
 
 @Configuration
@@ -25,6 +27,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 {
 	static Logger log = LoggerFactory.getLogger(WebSecurityConfig.class);
 	
+    @Autowired
+    private Auth2AutoConfigurer auth2AutoConfigurer;
+    @Autowired
+    private Auth2Properties auth2Properties;
 	@Autowired
 	private TbUserInfo0aService service;
 
@@ -38,11 +44,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 	@Override
 	protected void configure(HttpSecurity http) throws Exception
 	{
+		// ========= start: 使用 justAuth-spring-security-starter 必须步骤 ========= 
+        // 添加 Auth2AutoConfigurer 使 OAuth2(justAuth) login 生效.
+        http.apply(this.auth2AutoConfigurer);
+        
 		http
 		.csrf().disable().cors() // 禁用csrf，开启跨域
 		.and()
 		.authorizeRequests()
-		.antMatchers("/oauth/*", "/login", "/logout", "/account/logout", "/revoke", "/error").permitAll()
+		.antMatchers(
+				auth2Properties.getRedirectUrlPrefix() + "/*",
+                auth2Properties.getAuthLoginUrlPrefix() + "/*"//,
+//                "/oauth/*", 
+//                "/login", 
+//                "/logout", 
+//                "/account/logout", 
+//                "/revoke", 
+//                "/error"
+                )
+		.permitAll()
 		;
 	}
 	
