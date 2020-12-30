@@ -15,6 +15,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.sso.service.TbUserInfo0aService;
+import com.webconfig.oauth2.handler.AdminAuthenticationFailureHandler;
+import com.webconfig.oauth2.handler.AdminAuthenticationSuccessHandler;
 
 import chok.util.EncryptionUtil;
 import top.dcenter.ums.security.core.oauth.config.Auth2AutoConfigurer;
@@ -33,6 +35,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     private Auth2Properties auth2Properties;
 	@Autowired
 	private TbUserInfo0aService service;
+	@Autowired
+	private AdminAuthenticationSuccessHandler adminAuthenticationSuccessHandler;
+	@Autowired
+	private AdminAuthenticationFailureHandler adminAuthenticationFailureHandler;
 
 	@Bean(name = BeanIds.AUTHENTICATION_MANAGER)
 	@Override
@@ -54,16 +60,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 		.authorizeRequests()
 		.antMatchers(
 				auth2Properties.getRedirectUrlPrefix() + "/*",
-                auth2Properties.getAuthLoginUrlPrefix() + "/*"//,
-//                "/oauth/*", 
-//                "/login", 
-//                "/logout", 
-//                "/account/logout", 
-//                "/revoke", 
-//                "/error"
+                auth2Properties.getAuthLoginUrlPrefix() + "/*",
+                "/oauth/*", 
+                "/login", 
+                "/logout", 
+                "/account/logout", 
+                "/revoke", 
+                "/error"
                 )
 		.permitAll()
+//		.and()
+//		.oauth2Login().successHandler(adminAuthenticationSuccessHandler).failureHandler(adminAuthenticationFailureHandler)
 		;
+		
 	}
 	
 	@Override
