@@ -214,6 +214,7 @@
 	<!-- LOGGER -->
 	<!-- ================================================================ -->
     <logger name="org.springframework" level="ERROR" />
+    <logger name="org.springframework.security" level="DEBUG" />
     <logger name="com.common" level="DEBUG" />
     <logger name="chok.component" level="DEBUG" />
     <logger name="chok.redis" level="DEBUG" />

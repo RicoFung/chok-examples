@@ -98,6 +98,7 @@ public class DataSourceMybatisMysqlConfig
 		return new SqlSessionTemplate(sqlSessionFactory());
 	}
 	
+	@Primary
 	@Bean(name = "transactionManagerMybatisMysql")
 	@DependsOn({ "dataSourceMybatisMysql" })
 	public DataSourceTransactionManager transactionManager() throws SQLException 

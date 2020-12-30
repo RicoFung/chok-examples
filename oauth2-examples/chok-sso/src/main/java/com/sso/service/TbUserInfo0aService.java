@@ -61,6 +61,9 @@ public class TbUserInfo0aService extends BaseService<TbUserInfo0a,Long> implemen
 	
 	public OauthUser getByUsername(String username)
 	{
+		// 测试用例
+		username = "RicoFung_github".equals(username) ? "1141086" : username;
+		
 		OauthUser oUser = null;
 		TbUserInfo0a tbUser = dao.getByUsername(username);
 		if (null != tbUser)

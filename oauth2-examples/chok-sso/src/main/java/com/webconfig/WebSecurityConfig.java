@@ -44,23 +44,32 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 	@Override
 	protected void configure(HttpSecurity http) throws Exception
 	{
-		// ========= start: 使用 justAuth-spring-security-starter 必须步骤 ========= 
+		// ====================================================================
+		// 使用 justAuth-spring-security-starter 必须步骤
+		// ====================================================================
         // 添加 Auth2AutoConfigurer 使 OAuth2(justAuth) login 生效.
         http.apply(this.auth2AutoConfigurer);
-        
+        // 放行第三方登录入口地址与第三方登录回调地址
+        http
+        .authorizeRequests()
+        .antMatchers(auth2Properties.getRedirectUrlPrefix() + "/*",
+                     auth2Properties.getAuthLoginUrlPrefix() + "/*")
+        .permitAll();
+
+		// ====================================================================
+		// 其它地址权限
+		// ====================================================================
 		http
 		.csrf().disable().cors() // 禁用csrf，开启跨域
 		.and()
 		.authorizeRequests()
 		.antMatchers(
-				auth2Properties.getRedirectUrlPrefix() + "/*",
-                auth2Properties.getAuthLoginUrlPrefix() + "/*"//,
-//                "/oauth/*", 
-//                "/login", 
-//                "/logout", 
-//                "/account/logout", 
-//                "/revoke", 
-//                "/error"
+                "/oauth/*", 
+                "/login", 
+                "/logout", 
+                "/account/logout", 
+                "/revoke", 
+                "/error"
                 )
 		.permitAll()
 		;

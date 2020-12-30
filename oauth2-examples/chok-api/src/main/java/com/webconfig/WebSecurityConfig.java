@@ -1,58 +1,35 @@
 package com.webconfig;
 
-//@EnableOAuth2Sso
-//@Configuration
-//@EnableOAuth2Client
-//@EnableWebSecurity
-public class WebSecurityConfig //extends WebSecurityConfigurerAdapter
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+@EnableOAuth2Sso
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 {
-	
-//	@Override
-//	public void configure(WebSecurity web) throws Exception
-//	{
-//		// 静态资源完全绕过spring security的所有filter
-//		web.ignoring().antMatchers(
-//        		"/v2/api-docs", 
-//        		"/swagger-resources/configuration/ui",
-//                "/swagger-resources", 
-//                "/swagger-resources/configuration/security",
-//                "/swagger-ui.html", 
-//                "/webjars/**");
-//	}
-//
-//	@Override
-//	protected void configure(HttpSecurity http) throws Exception
-//	{
-//		http.antMatcher("/**").authorizeRequests()
-//		.antMatchers("/").permitAll()
-//		.anyRequest().authenticated()
-//		.and()
-//		.oauth2Login();
-//	}
-	
-	
 	////////////////////////////////////////////////////////////
 	// Oauth2 认证
 	////////////////////////////////////////////////////////////
-//	@Override
-//	public void configure(HttpSecurity http) throws Exception
-//	{
-//		http.csrf().disable().cors()
-//        ;
-//	}
-//
-//	@Override
-//	public void configure(WebSecurity web) throws Exception
-//	{
-//		// 静态资源完全绕过spring security的所有filter
-//		web.ignoring().antMatchers(
-//        		"/v2/api-docs", 
-//        		"/swagger-resources/configuration/ui",
-//                "/swagger-resources", 
-//                "/swagger-resources/configuration/security",
-//                "/swagger-ui.html", 
-//                "/webjars/**");
-//	}
+	@Override
+	public void configure(HttpSecurity http) throws Exception
+	{
+		http.csrf().disable().cors()
+        ;
+	}
+
+	@Override
+	public void configure(WebSecurity web) throws Exception
+	{
+		// 静态资源完全绕过spring security的所有filter
+		web.ignoring().antMatchers(
+        		"/v2/api-docs", 
+        		"/swagger-resources/configuration/ui",
+                "/swagger-resources", 
+                "/swagger-resources/configuration/security",
+                "/swagger-ui.html", 
+                "/webjars/**");
+	}
 	
 	////////////////////////////////////////////////////////////
 	// HttpBasic 认证
