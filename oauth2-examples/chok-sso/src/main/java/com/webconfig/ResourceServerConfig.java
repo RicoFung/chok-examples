@@ -1,5 +1,6 @@
 package com.webconfig;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -9,12 +10,19 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 
 import chok.oauth2.MyAccessDeniedHandler;
 import chok.oauth2.MyOAuth2ExceptionEntryPoint;
+import top.dcenter.ums.security.core.oauth.config.Auth2AutoConfigurer;
+import top.dcenter.ums.security.core.oauth.properties.Auth2Properties;
 
 // 先MARK掉，否则会拦截/auth2/*的请求，后续再优化
-//@Configuration
-//@EnableResourceServer
+@Configuration
+@EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter
 {
+    @Autowired
+    private Auth2AutoConfigurer auth2AutoConfigurer;
+    @Autowired
+    private Auth2Properties auth2Properties;
+    
     @Override
     public void configure(HttpSecurity http) throws Exception 
     {
@@ -39,6 +47,18 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter
         // 开启请求权限配置-2.必须认证/登录过后才可访问
         .antMatchers("/sso/test/order/**").authenticated() 
         ;
+
+		// ====================================================================
+		// 使用 justAuth-spring-security-starter 必须步骤
+		// ====================================================================
+        // 添加 Auth2AutoConfigurer 使 OAuth2(justAuth) login 生效.
+        http.apply(this.auth2AutoConfigurer);
+        // 放行第三方登录入口地址与第三方登录回调地址
+        http
+        .authorizeRequests()
+        .antMatchers(auth2Properties.getRedirectUrlPrefix() + "/*",
+                     auth2Properties.getAuthLoginUrlPrefix() + "/*")
+        .permitAll();
     }
 
 	@Override

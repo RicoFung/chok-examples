@@ -1,7 +1,6 @@
 package com.webconfig.oauth2.handler;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,22 +15,19 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
-import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import chok.common.RestResult;
 
 @Component
-public class AdminAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler//implements AuthenticationFailureHandler
+public class AdminAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler
 {
 	private static Logger log = LoggerFactory.getLogger(AdminAuthenticationFailureHandler.class);
 	
-	private PrintWriter out;
-
 	@Override
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException e) throws IOException, ServletException
@@ -72,26 +68,23 @@ public class AdminAuthenticationFailureHandler extends SimpleUrlAuthenticationFa
 		printJson(response, result);
 	}
 
-	public void printJson(HttpServletResponse response, Object o)
+	public void printJson(HttpServletResponse response, Object result) throws JsonProcessingException
 	{
+		ObjectMapper objectMapper = new ObjectMapper();
+		// 返回数据
 		response.setContentType("application/json;charset=UTF-8");
+		response.setStatus(402);
 		try
 		{
-			if(out == null)
-			{
-				out = response.getWriter();
-			}
-			String s = JSON.toJSONString(o);
-			if (log.isDebugEnabled()) log.debug("Response JSON <== {}", s);
-			out.print(s);
+			objectMapper.writeValue(response.getOutputStream(), result);
 		}
-		catch(Exception ex)
+		catch (Exception e)
 		{
-			log.error(ex.getMessage());
+			log.error(objectMapper.writeValueAsString(e));
 		}
-		finally 
+		finally
 		{
-			out.close();
+			log.error(objectMapper.writeValueAsString(result));
 		}
 	}
 }
