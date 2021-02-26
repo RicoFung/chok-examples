@@ -18,8 +18,8 @@ import org.springframework.security.web.authentication.AbstractAuthenticationPro
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.stereotype.Component;
 
-import com.webconfig.oauth2.handler.AdminAuthenticationFailureHandler;
-import com.webconfig.oauth2.handler.AdminAuthenticationSuccessHandler;
+import com.webconfig.oauth2.handler.JustAuthFailureHandler;
+import com.webconfig.oauth2.handler.JustAuthSuccessHandler;
 import com.webconfig.oauth2.manager.CusAuthenticationManager;
 
 //@Component
@@ -29,8 +29,8 @@ public class MyAuthenticationProcessingFilter extends AbstractAuthenticationProc
 	private ClientDetailsService clientDetailsService;
 	
 	public MyAuthenticationProcessingFilter(CusAuthenticationManager authenticationManager,
-			AdminAuthenticationSuccessHandler adminAuthenticationSuccessHandler,
-			AdminAuthenticationFailureHandler adminAuthenticationFailureHandler)
+			JustAuthSuccessHandler adminAuthenticationSuccessHandler,
+			JustAuthFailureHandler adminAuthenticationFailureHandler)
 	{
 		super(new AntPathRequestMatcher("/oauth/token", "POST"));
 		this.setAuthenticationManager(authenticationManager);

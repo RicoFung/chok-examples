@@ -29,7 +29,8 @@ import com.alibaba.druid.wall.WallFilter;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource(value = "classpath:datasource-mybatis-${spring.profiles.active}.properties", ignoreResourceNotFound = true)
+@PropertySource(value = "datasource-mybatis.properties", ignoreResourceNotFound = true)
+//@PropertySource(value = "classpath:datasource-mybatis-${spring.profiles.active}.properties", ignoreResourceNotFound = true)
 public class DataSourceMybatisDefaultConfig 
 {
     @Value("${datasource.mybatis.default.url}")

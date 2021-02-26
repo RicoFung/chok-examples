@@ -18,9 +18,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import chok.common.RestResult;
 
 @Component
-public class AdminAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler
+public class JustAuthSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler
 {
-	private static Logger log = LoggerFactory.getLogger(AdminAuthenticationFailureHandler.class);
+	private static Logger log = LoggerFactory.getLogger(JustAuthFailureHandler.class);
 	
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,

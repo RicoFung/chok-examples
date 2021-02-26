@@ -101,6 +101,13 @@ public class TbTaskController extends BaseRestController<TbTask>
 			restResult.setCode(RestConstants.ERROR_CODE1);
 			restResult.setMsg(e.getMessage());
 		}
+		finally 
+		{
+			if (log.isDebugEnabled())
+			{
+				log.debug(restResult.getMsg());
+			}
+		}
 		return restResult;
 	}
 	

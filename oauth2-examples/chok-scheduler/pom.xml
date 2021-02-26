@@ -25,18 +25,9 @@
 	<profiles>
 		<!-- Maven控制Spring Profile -->
 		<profile>
-			<id>local-dev</id>
+			<id>local</id>
 			<properties>
-				<profileActive>local-dev</profileActive>
-			</properties>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-		</profile>
-		<profile>
-			<id>local-uat</id>
-			<properties>
-				<profileActive>local-uat</profileActive>
+				<profileActive>local</profileActive>
 			</properties>
 		</profile>
 		<profile>
@@ -44,6 +35,9 @@
 			<properties>
 				<profileActive>dev</profileActive>
 			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 		</profile>
 		<profile>
 			<id>uat</id>
@@ -94,6 +88,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-oauth2-client</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-quartz -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-quartz</artifactId>
+		</dependency>
 		<!-- spring-boot-properties 迁移工具 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -119,6 +118,12 @@
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.ctrip.framework.apollo/apollo-client -->
+		<dependency>
+		    <groupId>com.ctrip.framework.apollo</groupId>
+		    <artifactId>apollo-client</artifactId>
+		    <version>1.7.0</version>
 		</dependency>
 		<!-- chok -->
 		<dependency>
