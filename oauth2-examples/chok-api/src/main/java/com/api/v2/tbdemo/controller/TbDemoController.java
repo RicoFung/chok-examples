@@ -2,6 +2,7 @@ package com.api.v2.tbdemo.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -300,9 +301,9 @@ public class TbDemoController extends BaseRestController<TbDemo>
 		}
 	}
 	
-	@ApiOperation("导出（pdf/xlsx/html）")
-	@RequestMapping(value = "/expRpt", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	public void expRpt(@RequestBody @Validated TbDemoExpRptDTO tbDemoExpRptDTO, BindingResult validResult)
+	@ApiOperation("导出单个Bean列表（pdf/xlsx/html）")
+	@RequestMapping(value = "/expRpt1", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	public void expRpt1(@RequestBody @Validated TbDemoExpRptDTO tbDemoExpRptDTO, BindingResult validResult)
 	{
 		try
 		{
@@ -333,7 +334,57 @@ public class TbDemoController extends BaseRestController<TbDemo>
 			// 查询
 			List<TbDemo> bizDatasetValue = service.queryDynamic(param);
 			// 导出
-			expJRBeanList("bizDatasetKey", bizDatasetValue, "rpt_demo_bean", tbDemoExpRptDTO.getRptName(), tbDemoExpRptDTO.getRptFormat());
+			exportRptOneTable("rpt_demo_bean_single", tbDemoExpRptDTO.getRptName(), tbDemoExpRptDTO.getRptFormat(), "bizDatasetKey", bizDatasetValue, Object.class);
+		}
+		catch (Exception e)
+		{
+			log.error("<== Exception：{}", e);
+		}
+	}
+	
+	@ApiOperation("导出多个Bean列表（pdf/xlsx/html）")
+	@RequestMapping(value = "/expRpt2", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	public void expRpt2(@RequestBody @Validated TbDemoExpRptDTO tbDemoExpRptDTO, BindingResult validResult)
+	{
+		try
+		{
+			if (log.isDebugEnabled())
+			{
+				log.debug("==> requestDto：{}", restMapper.writeValueAsString(tbDemoExpRptDTO));
+			}
+			if (validResult.hasErrors())
+			{
+				throw new Exception(getValidMsgs(validResult));
+			}
+			// 查询参数
+			Map<String, Object> param = restMapper.convertValue(tbDemoExpRptDTO,
+					new TypeReference<Map<String, Object>>()
+			{
+			});
+			if (0 < tbDemoExpRptDTO.getTcRowids().length)
+			{
+				param.clear();
+				param.put("tcRowidArray", tbDemoExpRptDTO.getTcRowids());
+			}
+			// 限制导出数量必须小于1000
+			int count = service.getCount(param);
+			if (1000 < count)
+			{
+				throw new Exception("导出数量不能大于1000条！");
+			}
+			// 查询
+			List<TbDemo> bizDatasetValue1 = service.queryDynamic(param);
+			List<TbDemo> bizDatasetValue2 = service.queryDynamic(param);
+			LinkedHashMap<String, List<?>> bizDatasetParams = new LinkedHashMap<String, List<?>>()
+			{
+				private static final long serialVersionUID = 1L;
+				{
+					put("bizDatasetKey1", bizDatasetValue1);
+					put("bizDatasetKey2", bizDatasetValue2);
+				}
+			};
+			// 导出
+			exportRptMultiTable("rpt_demo_bean_multi", tbDemoExpRptDTO.getRptName(), tbDemoExpRptDTO.getRptFormat(), bizDatasetParams, Object.class, Object.class);
 		}
 		catch (Exception e)
 		{
