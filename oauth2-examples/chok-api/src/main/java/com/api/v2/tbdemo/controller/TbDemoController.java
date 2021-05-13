@@ -372,10 +372,20 @@ public class TbDemoController extends BaseRestController<TbDemo>
 			{
 				throw new Exception("导出数量不能大于1000条！");
 			}
-			// 查询
+			// 查询业务数据
 			List<TbDemo> bizDatasetValue1 = service.queryDynamic(param);
 			List<TbDemo> bizDatasetValue2 = service.queryDynamic(param);
-			LinkedHashMap<String, List<?>> bizDatasetParams = new LinkedHashMap<String, List<?>>()
+			// rpt 基础控件参数
+			Map<String, ?> bizDatasetKV = new HashMap<String, Object>() 
+			{
+				private static final long serialVersionUID = 1L;
+				{
+					put("mainField1", "hi world!");
+					put("mainField2", "hello world!");
+				}
+			};
+			// rpt Table控件参数
+			LinkedHashMap<String, List<?>> bizDatasetTableKV = new LinkedHashMap<String, List<?>>()
 			{
 				private static final long serialVersionUID = 1L;
 				{
@@ -384,7 +394,7 @@ public class TbDemoController extends BaseRestController<TbDemo>
 				}
 			};
 			// 导出
-			exportRptMultiTable("rpt_demo_bean_multi", tbDemoExpRptDTO.getRptName(), tbDemoExpRptDTO.getRptFormat(), bizDatasetParams, Object.class, Object.class);
+			exportRptMultiTable("rpt_demo_bean_multi", tbDemoExpRptDTO.getRptName(), tbDemoExpRptDTO.getRptFormat(), bizDatasetKV, bizDatasetTableKV, Object.class, Object.class);
 		}
 		catch (Exception e)
 		{
