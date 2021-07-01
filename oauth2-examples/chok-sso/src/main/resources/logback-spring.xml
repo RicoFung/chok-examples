@@ -245,6 +245,9 @@
     <springProfile name="uat">
 	    <root level="${LOG_ROOT_LEVEL}">
 	        <appender-ref ref="GELF"/>
+	        <appender-ref ref="STDOUT"/>
+	        <appender-ref ref="FILE_ALL"/>
+	        <appender-ref ref="FILE_ERROR"/>
 		</root>
 	</springProfile>
     <springProfile name="prd">

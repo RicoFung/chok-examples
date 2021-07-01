@@ -2,13 +2,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.codec.digest.Md5Crypt;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.MessageDigestPasswordEncoder;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import com.Application;
 
@@ -16,7 +13,6 @@ import chok.util.EncryptionUtil;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class AppTest
 {
