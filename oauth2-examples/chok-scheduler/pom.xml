@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<!--本Project識別 -->
+	<artifactId>chok-scheduler</artifactId>
+	<!--表示打包Project的型態,可能為Jar、war、ear或pom，若是使用了android 則為apk -->
+	<packaging>war</packaging>
+	<!--以下是給工具看的,主要是本Project的資訊 -->
+	<name>chok-scheduler</name>
+
+	<parent>
+		<groupId>com.chok</groupId>
+		<artifactId>chok-parent</artifactId>
+		<version>2.1.8</version>
+		<relativePath>../chok-parent/pom.xml</relativePath>
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<profiles>
+		<!-- Maven控制Spring Profile -->
+		<profile>
+			<id>local-dev</id>
+			<properties>
+				<profileActive>local-dev</profileActive>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>local-uat</id>
+			<properties>
+				<profileActive>local-uat</profileActive>
+			</properties>
+		</profile>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<profileActive>dev</profileActive>
+			</properties>
+		</profile>
+		<profile>
+			<id>uat</id>
+			<properties>
+				<profileActive>uat</profileActive>
+			</properties>
+		</profile>
+		<profile>
+			<id>prd</id>
+			<properties>
+				<profileActive>prd</profileActive>
+			</properties>
+		</profile>
+	</profiles>
+
+	<dependencies>
+		<!-- logback-glef 用于发送消息至graylog -->
+		<dependency>
+			<groupId>de.siegmar</groupId>
+			<artifactId>logback-gelf</artifactId>
+		</dependency>
+		<!-- 使用logback-glef需排除spring-boot-starter-logging -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- spring-boot-security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<!-- spring-boot-security oauth2 -->
+		<dependency>
+			<groupId>org.springframework.security.oauth.boot</groupId>
+			<artifactId>spring-security-oauth2-autoconfigure</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
+		<!-- spring-boot-properties 迁移工具 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-properties-migrator</artifactId>
+		</dependency>
+		<!-- spring-boot druid -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid-spring-boot-starter</artifactId>
+		</dependency>
+		<!-- db driver -->
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<version>12.2.0.1.0</version>
+			<type>jar</type>
+		</dependency>
+		<!--swagger -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+		</dependency>
+		<!-- chok -->
+		<dependency>
+			<groupId>com.chok</groupId>
+			<artifactId>chok-devwork</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.chok</groupId>
+			<artifactId>chok-redis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.chok</groupId>
+			<artifactId>chok-oauth2</artifactId>
+		</dependency>
+	</dependencies>
+
+	<!-- 针对EPO-NEXUS私库发布 -->
+	<!-- 
+	<distributionManagement>
+		<repository>
+			<id>maven-releases</id>
+			<name>Nexus Release Repository</name>
+			<url>http://nexus.moco.com:7000/repository/maven-releases/</url>
+			<layout>default</layout>
+		</repository>
+		<snapshotRepository>
+			<id>maven-snapshots</id>
+			<name>Nexus Snapshot Repository</name>
+			<url>http://nexus.moco.com:7000/repository/maven-snapshots/</url>
+			<layout>legacy</layout>
+		</snapshotRepository>
+	</distributionManagement>
+	 -->
+
+	<!-- maven 打包插件 -->
+	<build>
+		<!-- profile对资源的操作 -->
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<!-- 是否替换@xx@表示的maven properties属性值 -->
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.xml</include>
+					<include>**/application.properties</include>
+					<include>**/application-${profileActive}.properties</include>
+					<include>**/datasource-mybatis-${profileActive}.properties</include>
+					<include>**/datasource-jdbc-${profileActive}.properties</include>
+					<include>**/redisson-single-${profileActive}.yml</include>
+					<include>**/i18n/*</include>
+					<include>**/img/*</include>
+					<include>**/templates/*</include>
+				</includes>
+			</resource>
+		</resources>
+		<finalName>chok-scheduler</finalName>
+	</build>
+
+</project>

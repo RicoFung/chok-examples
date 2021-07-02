@@ -107,7 +107,7 @@ public class StockService extends BaseService<Stock, Long>
 		// 测试tryLock2 (arg参数需大于RedissonLock.waitTime)
 //		Thread.sleep(2000);
 		// 测试tryLock3 (arg参数需大于RedissonLock.leaseTime)
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		
 	}
 //	@RedissonLock(lockKey = "stock-lock-key-01", lockType = RedissonLockType.REENTRANT_LOCK, lockFailMsg = "其他用户正在操作，请等待！")
