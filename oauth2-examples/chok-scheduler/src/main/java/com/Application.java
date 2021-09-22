@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfigura
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 // 默认（只能扫描project内的bean）
@@ -15,6 +16,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 // exclude表示自动配置时排除特定配置（使用CommonsMultipartFile实现多文件上传）
 @EnableAutoConfiguration(exclude = { MultipartAutoConfiguration.class })
 @EnableScheduling
+@EnableAsync
 public class Application extends SpringBootServletInitializer
 {
 	public static void main(String[] args)
