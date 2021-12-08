@@ -2,7 +2,6 @@ package com.admin.scheduler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import chok.util.TimeUtil;
@@ -13,12 +12,14 @@ public class SyncScheduler
 	static Logger log = LoggerFactory.getLogger(SyncScheduler.class);
 
 //	@Scheduled(initialDelayString = "${scheduled.initialDelay}", fixedDelayString = "${scheduled.fixedDelay}")
+//	@Async("asyncTaskExecutor")
 	public void task1()
 	{
 		System.out.println("执行任务1："+ TimeUtil.getCurrentMillTime());
 	}
 	
 //	@Scheduled(initialDelayString = "${scheduled.initialDelay}", fixedDelayString = "${scheduled.fixedDelay}")
+//	@Async("asyncTaskExecutor")
 	public void task2()
 	{
 		System.out.println("执行任务2："+ TimeUtil.getCurrentMillTime());
