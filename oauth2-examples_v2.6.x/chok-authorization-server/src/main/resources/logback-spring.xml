@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<!-- ================================================================ -->
+    <!-- 全局属性property配置 -->
+	<!-- ================================================================ -->
+	
+	<!-- logback默认配置 -->
+	<!-- 
+	<include resource="org/springframework/boot/logging/logback/base.xml" />
+ 	-->
+    <!-- 应用名称 -->
+    <springProperty scope="context" name="APP_NAME" source="spring.application.name"/>
+    <!-- 日志根目录-->
+    <springProfile name="local-dev">
+    	<springProperty scope="context" name="LOG_HOME" source="logging.path" defaultValue="logs"/>
+    </springProfile>
+    <springProfile name="dev,uat">
+    	<springProperty scope="context" name="LOG_HOME" source="logging.path" defaultValue="../logs"/>
+    </springProfile>
+    <!-- 日志级别 -->
+    <springProperty scope="context" name="LOG_ROOT_LEVEL" source="logging.level.root" defaultValue="INFO"/>
+    <!-- 日志文件前缀-->
+    <property name="LOG_PREFIX" value="${APP_NAME}" />
+    <!-- 日志文件后缀-->
+    <property name="LOG_SUFFIX" value="${APP_NAME}" />
+    <!-- 日志文件编码-->
+    <property name="LOG_CHARSET" value="UTF-8" />
+    <!-- 日志文件路径+日期-->
+    <property name="LOG_DIR" value="${LOG_HOME}/%d{yyyyMMdd}" />
+    <!--对日志进行格式化-->
+    <property name="LOG_MSG" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] | [%level] | [%thread] | [%logger] | - %msg%n "/>
+    <!-- 
+    <property name="LOG_MSG" value="- | [%d{yyyyMMdd HH:mm:ss.SSS}] | [%level] | [${HOSTNAME}] | [%thread] | [%logger{36}] | %msg|%n "/>
+    <property name="LOG_MSG" value="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n "/>
+     -->
+    <!--文件大小，默认10MB-->
+    <property name="MAX_FILE_SIZE" value="10MB" />
+    <!-- 配置日志的滚动时间 ，表示只保留最近 10 天的日志-->
+    <property name="MAX_HISTORY" value="10"/>
+    
+	<!-- ================================================================ -->
+    <!-- APPENDER: STDOUT -->
+	<!-- ================================================================ -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+            <pattern>${LOG_MSG}</pattern>
+		</encoder>
+	</appender>
+
+	<!-- ================================================================ -->
+    <!-- APPENDER: FILE_ALL -->
+	<!-- ================================================================ -->
+    <appender name="FILE_ALL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--日志文件路径，日志文件名称-->
+        <File>${LOG_HOME}/all_${LOG_SUFFIX}.log</File>
+        <!-- 设置滚动策略，当天的日志大小超过 ${MAX_FILE_SIZE} 文件大小时候，新的内容写入新的文件， 默认10MB -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--日志文件路径，新的 ALL 日志文件名称，“ i ” 是个变量 -->
+            <FileNamePattern>${LOG_DIR}/all_${LOG_SUFFIX}.%i.log.zip</FileNamePattern>
+            <!-- 配置日志的滚动时间 ，表示只保留最近 10 天的日志-->
+            <MaxHistory>${MAX_HISTORY}</MaxHistory>
+            <!--当天的日志大小超过 ${MAX_FILE_SIZE} 文件大小时候，新的内容写入新的文件， 默认10MB-->
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>${MAX_FILE_SIZE}</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <!-- 输出的日志内容格式化-->
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${LOG_MSG}</pattern>
+        </layout>
+    </appender>
+    
+	<!-- ================================================================ -->
+    <!-- APPENDER: FILE_ERROR -->
+	<!-- ================================================================ -->
+    <appender name="FILE_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 下面为配置只输出error级别的日志 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <OnMismatch>DENY</OnMismatch>
+            <OnMatch>ACCEPT</OnMatch>
+        </filter>
+        <!--日志文件路径，日志文件名称-->
+        <File>${LOG_HOME}/err_${LOG_SUFFIX}.log</File>
+        <!-- 设置滚动策略，当天的日志大小超过 ${MAX_FILE_SIZE} 文件大小时候，新的内容写入新的文件， 默认10MB -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--日志文件路径，新的 ERR 日志文件名称，“ i ” 是个变量 -->
+            <FileNamePattern>${LOG_DIR}/err_${LOG_SUFFIX}.%i.log.zip</FileNamePattern>
+            <!-- 配置日志的滚动时间 ，表示只保留最近 10 天的日志-->
+            <MaxHistory>${MAX_HISTORY}</MaxHistory>
+            <!--当天的日志大小超过 ${MAX_FILE_SIZE} 文件大小时候，新的内容写入新的文件， 默认10MB-->
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>${MAX_FILE_SIZE}</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <!-- 输出的日志内容格式化-->
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>${LOG_MSG}</Pattern>
+        </layout>
+    </appender>
+    
+	<!-- ================================================================ -->
+	<!-- APPENDER: GRAYLOG -->
+	<!-- 发送GELF UDP 到 graylog -->
+	<!-- 使用第三方组件 https://github.com/osiegmar/logback-gelf -->
+	<!-- ================================================================ -->
+    <springProfile name="local-dev">
+		<appender name="GELF" class="de.siegmar.logbackgelf.GelfUdpAppender">
+			<graylogHost>grayloguat.moco.com</graylogHost>
+			<graylogPort>12201</graylogPort>
+			<!--以下为可选配置 -->
+			<maxChunkSize>508</maxChunkSize>
+			<useCompression>true</useCompression>
+			<layout class="de.siegmar.logbackgelf.GelfLayout">
+				<originHost>grayloguat.moco.com</originHost>
+				<includeRawMessage>false</includeRawMessage>
+				<includeMarker>true</includeMarker>
+				<includeMdcData>true</includeMdcData>
+				<includeCallerData>false</includeCallerData>
+				<includeRootCauseData>false</includeRootCauseData>
+				<includeLevelName>true</includeLevelName>
+				<shortPatternLayout class="ch.qos.logback.classic.PatternLayout">
+					<pattern>%m%nopex</pattern>
+				</shortPatternLayout>
+				<fullPatternLayout class="ch.qos.logback.classic.PatternLayout">
+					<pattern>%m</pattern>
+				</fullPatternLayout>
+				<staticField>application:${APP_NAME}</staticField>
+				<staticField>environment:LOCAL-DEV</staticField>
+			</layout>
+		</appender>
+	</springProfile>
+    <springProfile name="dev">
+		<appender name="GELF" class="de.siegmar.logbackgelf.GelfUdpAppender">
+			<graylogHost>grayloguat.moco.com</graylogHost>
+			<graylogPort>12201</graylogPort>
+			<!--以下为可选配置 -->
+			<maxChunkSize>508</maxChunkSize>
+			<useCompression>true</useCompression>
+			<layout class="de.siegmar.logbackgelf.GelfLayout">
+				<originHost>grayloguat.moco.com</originHost>
+				<includeRawMessage>false</includeRawMessage>
+				<includeMarker>true</includeMarker>
+				<includeMdcData>true</includeMdcData>
+				<includeCallerData>false</includeCallerData>
+				<includeRootCauseData>false</includeRootCauseData>
+				<includeLevelName>true</includeLevelName>
+				<shortPatternLayout class="ch.qos.logback.classic.PatternLayout">
+					<pattern>%m%nopex</pattern>
+				</shortPatternLayout>
+				<fullPatternLayout class="ch.qos.logback.classic.PatternLayout">
+					<pattern>%m</pattern>
+				</fullPatternLayout>
+				<staticField>application:${APP_NAME}</staticField>
+				<staticField>environment:DEV</staticField>
+			</layout>
+		</appender>
+	</springProfile>
+    <springProfile name="uat">
+		<appender name="GELF" class="de.siegmar.logbackgelf.GelfUdpAppender">
+			<graylogHost>grayloguat.moco.com</graylogHost>
+			<graylogPort>12201</graylogPort>
+			<!--以下为可选配置 -->
+			<maxChunkSize>508</maxChunkSize>
+			<useCompression>true</useCompression>
+			<layout class="de.siegmar.logbackgelf.GelfLayout">
+				<originHost>grayloguat.moco.com</originHost>
+				<includeRawMessage>false</includeRawMessage>
+				<includeMarker>true</includeMarker>
+				<includeMdcData>true</includeMdcData>
+				<includeCallerData>false</includeCallerData>
+				<includeRootCauseData>false</includeRootCauseData>
+				<includeLevelName>true</includeLevelName>
+				<shortPatternLayout class="ch.qos.logback.classic.PatternLayout">
+					<pattern>%m%nopex</pattern>
+				</shortPatternLayout>
+				<fullPatternLayout class="ch.qos.logback.classic.PatternLayout">
+					<pattern>%m</pattern>
+				</fullPatternLayout>
+				<staticField>application:${APP_NAME}</staticField>
+				<staticField>environment:UAT</staticField>
+			</layout>
+		</appender>
+	</springProfile>
+    <springProfile name="prd">
+		<appender name="GELF" class="de.siegmar.logbackgelf.GelfUdpAppender">
+			<graylogHost>graylog.moco.com</graylogHost>
+			<graylogPort>12201</graylogPort>
+			<!--以下为可选配置 -->
+			<maxChunkSize>508</maxChunkSize>
+			<useCompression>true</useCompression>
+			<layout class="de.siegmar.logbackgelf.GelfLayout">
+				<originHost>graylog.moco.com</originHost>
+				<includeRawMessage>false</includeRawMessage>
+				<includeMarker>true</includeMarker>
+				<includeMdcData>true</includeMdcData>
+				<includeCallerData>false</includeCallerData>
+				<includeRootCauseData>false</includeRootCauseData>
+				<includeLevelName>true</includeLevelName>
+				<shortPatternLayout class="ch.qos.logback.classic.PatternLayout">
+					<pattern>%m%nopex</pattern>
+				</shortPatternLayout>
+				<fullPatternLayout class="ch.qos.logback.classic.PatternLayout">
+					<pattern>%m</pattern>
+				</fullPatternLayout>
+				<staticField>application:${APP_NAME}</staticField>
+				<staticField>environment:PRD</staticField>
+			</layout>
+		</appender>
+	</springProfile>
+
+	<!-- ================================================================ -->
+	<!-- LOGGER -->
+	<!-- ================================================================ -->
+    <logger name="org.springframework" level="ERROR" />
+    <logger name="org.springframework.security" level="DEBUG" />
+    <logger name="com.common" level="DEBUG" />
+    <logger name="chok.component" level="DEBUG" />
+    <logger name="chok.redis" level="DEBUG" />
+    <logger name="com.sso" level="DEBUG" />
+    <springProfile name="local-dev,dev,uat">
+    	<logger name="com.sso.entity" level="DEBUG" additivity="true"/>
+    </springProfile>
+    <springProfile name="prd">
+    	<logger name="com.sso.entity" level="WARN" additivity="true"/>
+    </springProfile>
+
+	<!-- ================================================================ -->
+	<!-- ROOT -->
+	<!-- ================================================================ -->
+    <springProfile name="local-dev">
+	    <root level="${LOG_ROOT_LEVEL}">
+	        <appender-ref ref="GELF"/>
+	        <appender-ref ref="STDOUT"/>
+	        <appender-ref ref="FILE_ALL"/>
+	        <appender-ref ref="FILE_ERROR"/>
+		</root>
+	</springProfile>
+    <springProfile name="dev">
+	    <root level="${LOG_ROOT_LEVEL}">
+	        <appender-ref ref="GELF"/>
+		</root>
+	</springProfile>
+    <springProfile name="uat">
+	    <root level="${LOG_ROOT_LEVEL}">
+	        <appender-ref ref="GELF"/>
+	        <appender-ref ref="STDOUT"/>
+	        <appender-ref ref="FILE_ALL"/>
+	        <appender-ref ref="FILE_ERROR"/>
+		</root>
+	</springProfile>
+    <springProfile name="prd">
+	    <root level="${LOG_ROOT_LEVEL}">
+	        <appender-ref ref="GELF"/>
+		</root>
+	</springProfile>
+
+</configuration>
