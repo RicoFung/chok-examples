@@ -19,8 +19,9 @@
 		<module>jwt-examples</module>
 		<module>oauth2-examples/chok-sso</module>
 		<module>oauth2-examples/chok-api</module>
-		<module>oauth2-examples_v2.6.x/chok-resource-server</module>
-		<module>oauth2-examples_v2.6.x/chok-authorization-server</module>
+		<module>oauth2-examples_v2.6.x/chok-oauth2-authorization</module>
+		<module>oauth2-examples_v2.6.x/chok-oauth2-client</module>
+		<module>oauth2-examples_v2.6.x/chok-oauth2-resource</module>
 	</modules>
 
 	<parent>
