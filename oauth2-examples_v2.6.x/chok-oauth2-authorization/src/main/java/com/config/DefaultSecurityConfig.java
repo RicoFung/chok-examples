@@ -30,13 +30,15 @@ import static org.springframework.security.config.Customizer.withDefaults;
 /**
  * @author felord.cn
  */
-@EnableWebSecurity//(debug = true)
+@EnableWebSecurity(debug = true)
 public class DefaultSecurityConfig {
 
 	@Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests(authorizeRequests ->
-          authorizeRequests.anyRequest().authenticated()
+          authorizeRequests
+//          .antMatchers("/oauth2/token").permitAll()
+          .anyRequest().authenticated()
         )
           .formLogin(withDefaults());
         return http.build();
@@ -57,7 +59,7 @@ public class DefaultSecurityConfig {
                 .username("admin")
                 .password("password")
                 .passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder()::encode)
-                .roles("USER")
+                .roles("ADMIN")
                 .build();
         return new InMemoryUserDetailsManager(user);
     }

@@ -38,21 +38,63 @@ public class AuthServerConfig {
         return http.formLogin(Customizer.withDefaults()).build();
     }
     
+    /**
+     * CLIENT_SECRET_BASIC
+     */
     @Bean
     public RegisteredClientRepository registeredClientRepository() {
         RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
           .clientId("rico-client")
-          .clientSecret("{noop}secret")
+          .clientSecret("{noop}123")
           .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
           .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
           .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+          .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
           .redirectUri("http://127.0.0.1:8080/login/oauth2/code/rico-client-oidc")
           .redirectUri("http://127.0.0.1:8080/authorized")
+          .redirectUri("https://www.baidu.com")
+          .redirectUri("https://oidcdebugger.com/debug")
           .scope(OidcScopes.OPENID)
           .scope("articles.read")
           .build();
         return new InMemoryRegisteredClientRepository(registeredClient);
     }
+    
+    /**
+     * 认证方式: CLIENT_SECRET_BASIC
+     * 测试地址: http://auth-server:9000/oauth2/authorize?client_id=rico-client&client_secret=secret&response_type=code&scope=articles.read&redirect_uri=https://www.baidu.com
+     */
+//    @Bean
+//    public RegisteredClientRepository registeredClientRepository() {
+//    	RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
+//    			.clientId("rico-client")
+//    			.clientSecret("{noop}123")
+//    			.clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+//    			.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+//    			.authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+//    			.redirectUri("https://www.baidu.com")
+//    			.scope("articles.read")
+//    			.build();
+//    	return new InMemoryRegisteredClientRepository(registeredClient);
+//    }
+    
+    /**
+     * 认证方式: CLIENT_SECRET_POST
+     * 测试地址: http://auth-server:9000/oauth2/authorize?client_id=rico-client&client_secret=secret&response_type=code&scope=articles.read&redirect_uri=https://oidcdebugger.com/debug
+     */
+//    @Bean
+//    public RegisteredClientRepository registeredClientRepository() {
+//    	RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
+//    			.clientId("rico-client")
+//    			.clientSecret("{noop}123")
+//    			.clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
+//    			.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+//    			.authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+//    			.redirectUri("https://oidcdebugger.com/debug")
+//    			.scope(OidcScopes.OPENID)
+//    			.build();
+//    	return new InMemoryRegisteredClientRepository(registeredClient);
+//    }
     
     @Bean
     public JWKSource<SecurityContext> jwkSource() throws NoSuchAlgorithmException {
