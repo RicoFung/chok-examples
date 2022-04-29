@@ -39,21 +39,18 @@ public class AuthServerConfig {
     }
     
     /**
-     * CLIENT_SECRET_BASIC
+     * 参考：https://github.com/Baeldung/spring-security-oauth
      */
     @Bean
     public RegisteredClientRepository registeredClientRepository() {
         RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
           .clientId("rico-client")
-          .clientSecret("{noop}123")
+          .clientSecret("{noop}secret")
           .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
           .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
           .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-          .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
           .redirectUri("http://127.0.0.1:8080/login/oauth2/code/rico-client-oidc")
           .redirectUri("http://127.0.0.1:8080/authorized")
-          .redirectUri("https://www.baidu.com")
-          .redirectUri("https://oidcdebugger.com/debug")
           .scope(OidcScopes.OPENID)
           .scope("articles.read")
           .build();
