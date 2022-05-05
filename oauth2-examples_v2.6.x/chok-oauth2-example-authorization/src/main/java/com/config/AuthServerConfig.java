@@ -39,23 +39,46 @@ public class AuthServerConfig {
     }
     
     /**
+     * 正确的注册方式
+     * 认证方式：CLIENT_SECRET_BASIC
+     * 注意：OPENID 不可单独使用
+     * @return
+     */
+	@Bean
+	public RegisteredClientRepository registeredClientRepository()
+	{
+		RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
+				.clientId("rico-client")
+				.clientSecret("{noop}123")
+				.clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+				.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+				.authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+				.redirectUri("http://127.0.0.1:8080/login/oauth2/code/rico-client-oidc")
+				.redirectUri("http://127.0.0.1:8080/authorized")
+				.scope(OidcScopes.OPENID)
+				.scope("test.read")
+				.build();
+		return new InMemoryRegisteredClientRepository(registeredClient);
+	}
+    
+    /**
      * 认证方式: CLIENT_SECRET_BASIC
      * 测试地址: http://auth-server:9000/oauth2/authorize?client_id=rico-client&client_secret=secret&response_type=code&scope=articles.read&redirect_uri=https://www.baidu.com
      */
-    @Bean
-    public RegisteredClientRepository registeredClientRepository() {
-    	RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
-    			.clientId("rico-client")
-    			.clientSecret("{noop}123")
-    			.clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-    			.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-    			.authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-//    			.redirectUri("https://www.baidu.com")
-    			.redirectUri("http://127.0.0.1:8080/test/info")
-    			.scope("test.read")
-    			.build();
-    	return new InMemoryRegisteredClientRepository(registeredClient);
-    }
+//    @Bean
+//    public RegisteredClientRepository registeredClientRepository() {
+//    	RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
+//    			.clientId("rico-client")
+//    			.clientSecret("{noop}123")
+//    			.clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+//    			.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+//    			.authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+////    			.redirectUri("https://www.baidu.com")
+//    			.redirectUri("http://127.0.0.1:8080/test/info")
+//    			.scope("test.read")
+//    			.build();
+//    	return new InMemoryRegisteredClientRepository(registeredClient);
+//    }
     
     /**
      * 认证方式: CLIENT_SECRET_POST

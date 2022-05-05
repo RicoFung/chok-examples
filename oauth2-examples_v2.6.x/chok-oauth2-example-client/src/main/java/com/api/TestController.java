@@ -39,9 +39,15 @@ public class TestController
 	}
 	
 	@GetMapping("/hello")
-	public String hello(@RegisteredOAuth2AuthorizedClient("rico-client-authorization-code") OAuth2AuthorizedClient client)
+	public String hello()
 	{
 		return "hello world";
+	}
+	
+	@GetMapping("/hi")
+	public String hi()
+	{
+		return "hi world";
 	}
 
 }

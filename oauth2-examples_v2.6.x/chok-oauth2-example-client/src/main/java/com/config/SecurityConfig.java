@@ -15,6 +15,8 @@
  */
 package com.config;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -28,10 +30,14 @@ public class SecurityConfig
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
 	{
 		http.authorizeRequests((requests) -> requests
-				.antMatchers("/test/info", "/test/oidc", "/test/hello").hasAnyAuthority("ROLE_ANONYMOUS")
+//				.antMatchers("/test/info", "/test/oidc", "/test/hello").hasAnyAuthority("ROLE_ANONYMOUS")
 				.anyRequest().authenticated());
 		http.oauth2Login(Customizer.withDefaults());
 		http.oauth2Client();
+		
+		// 显式指定某个已注册的oauth2.provider登录
+//		http.oauth2Login(oauth2Login -> oauth2Login.loginPage("/oauth2/authorization/rico-client-oidc"));
+//		http.oauth2Client();
 		return http.build();
 	}
 }
