@@ -22,6 +22,8 @@
 		<module>oauth2-examples_v2.6.x/chok-oauth2-authorization</module>
 		<module>oauth2-examples_v2.6.x/chok-oauth2-client</module>
 		<module>oauth2-examples_v2.6.x/chok-oauth2-resource</module>
+		
+		<module>oauth2-examples_v2.6.x/chok-oauth2-example-authorization</module>
 	</modules>
 
 	<parent>
