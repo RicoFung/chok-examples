@@ -15,6 +15,10 @@
  */
 package com.config;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
+import java.util.Arrays;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -24,43 +28,53 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-
-import static org.springframework.security.config.Customizer.withDefaults;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 /**
  * @author felord.cn
  */
 @EnableWebSecurity(debug = true)
-public class DefaultSecurityConfig {
+public class DefaultSecurityConfig
+{
+	@Bean
+	public CorsConfigurationSource corsConfigurationSource()
+	{
+		CorsConfiguration configuration = new CorsConfiguration();
+		configuration.setAllowedOrigins(Arrays.asList("*"));
+		configuration.setAllowedMethods(Arrays.asList("GET", "POST"));
+		configuration.setAllowCredentials(true);
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		// 对所有url生效
+		source.registerCorsConfiguration("/**", configuration);
+		return source;
+	}
 
 	@Bean
-    SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests(authorizeRequests ->
-          authorizeRequests
-//          .antMatchers("/oauth2/token").permitAll()
-          .anyRequest().authenticated()
-        )
-          .formLogin(withDefaults());
-        return http.build();
-    }
-	
-//	@Bean
-//	UserDetailsService users() {
-//	    UserDetails user = User.withDefaultPasswordEncoder()
-//	      .username("admin")
-//	      .password("password")
-//			.roles("USER")
-//	      .build();
-//	    return new InMemoryUserDetailsManager(user);
-//	}
-    @Bean
-    UserDetailsService users() {
-        UserDetails user = User.builder()
-                .username("admin")
-                .password("password")
-                .passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder()::encode)
-                .roles("ADMIN")
-                .build();
-        return new InMemoryUserDetailsManager(user);
-    }
+	SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception
+	{
+		http.authorizeRequests(authorizeRequests -> authorizeRequests
+				// .antMatchers("/oauth2/token").permitAll()
+				.anyRequest().authenticated()).formLogin(withDefaults());
+		return http.build();
+	}
+
+	// @Bean
+	// UserDetailsService users() {
+	// UserDetails user = User.withDefaultPasswordEncoder()
+	// .username("admin")
+	// .password("password")
+	// .roles("USER")
+	// .build();
+	// return new InMemoryUserDetailsManager(user);
+	// }
+	@Bean
+	UserDetailsService users()
+	{
+		UserDetails user = User.builder().username("admin").password("password")
+				.passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder()::encode).roles("ADMIN")
+				.build();
+		return new InMemoryUserDetailsManager(user);
+	}
 }

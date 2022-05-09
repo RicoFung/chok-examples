@@ -55,6 +55,7 @@ public class AuthServerConfig {
 				.authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
 				.redirectUri("http://127.0.0.1:8080/login/oauth2/code/rico-client-oidc")
 				.redirectUri("http://127.0.0.1:8080/authorized")
+    			.redirectUri("https://oidcdebugger.com/debug")
 				.scope(OidcScopes.OPENID)
 				.scope("test.read")
 				.build();
@@ -63,7 +64,7 @@ public class AuthServerConfig {
     
     /**
      * 认证方式: CLIENT_SECRET_BASIC
-     * 测试地址: http://auth-server:9000/oauth2/authorize?client_id=rico-client&client_secret=secret&response_type=code&scope=articles.read&redirect_uri=https://www.baidu.com
+     * 测试地址: http://auth-server:9000/oauth2/authorize?client_id=rico-client&client_secret=123&response_type=code&scope=test.read&redirect_uri=https://www.baidu.com
      */
 //    @Bean
 //    public RegisteredClientRepository registeredClientRepository() {
@@ -82,7 +83,7 @@ public class AuthServerConfig {
     
     /**
      * 认证方式: CLIENT_SECRET_POST
-     * 测试地址: http://auth-server:9000/oauth2/authorize?client_id=rico-client&client_secret=secret&response_type=code&scope=articles.read&redirect_uri=https://oidcdebugger.com/debug
+     * 测试地址: http://auth-server:9000/oauth2/authorize?client_id=rico-client&client_secret=123&response_type=code&scope=test.read&redirect_uri=https://oidcdebugger.com/debug
      */
 //    @Bean
 //    public RegisteredClientRepository registeredClientRepository() {
