@@ -10,13 +10,32 @@ public class ResourceServerConfig
 {
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http
-			.mvcMatcher("/articles/**")
-				.authorizeRequests()
-					.mvcMatchers("/articles/**").access("hasAuthority('SCOPE_articles.read')")
-					.and()
-			.oauth2ResourceServer()
+
+		http.authorizeRequests((requests) -> requests
+				.anyRequest().authenticated()).oauth2ResourceServer()
 				.jwt();
 		return http.build();
 	}
+//	@Bean
+//	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//		http
+//		.mvcMatcher("/test/**")
+//		.authorizeRequests()
+//		.mvcMatchers("/test/**").access("hasAuthority('SCOPE_test.read')")
+//		.and()
+//		.oauth2ResourceServer()
+//		.jwt();
+//		return http.build();
+//	}
+//	@Bean
+//	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//		http
+//		.mvcMatcher("/articles/**")
+//		.authorizeRequests()
+//		.mvcMatchers("/articles/**").access("hasAuthority('SCOPE_articles.read')")
+//		.and()
+//		.oauth2ResourceServer()
+//		.jwt();
+//		return http.build();
+//	}
 }
