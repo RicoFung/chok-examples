@@ -18,7 +18,7 @@ public class ResourceServerConfig
 		.authorizeRequests((requests) -> requests.anyRequest().authenticated()).oauth2ResourceServer()
 		// 401 Invalid access token
 		.authenticationEntryPoint(new MyOAuth2ExceptionEntryPoint())
-		// 402 insufficient_scope
+		// 403 insufficient_scope
 		.accessDeniedHandler(new MyAccessDeniedHandler()).jwt();
 		return http.build();
 	}

@@ -9,6 +9,7 @@ import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -17,8 +18,8 @@ public class TestController
 {
 
 	@GetMapping("/info")
-	public Map<String, Object> info(
-			@RegisteredOAuth2AuthorizedClient("rico-client-authorization-code") OAuth2AuthorizedClient client)
+	public Map<String, Object> info(@RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient client)
+//	public Map<String, Object> info(@RegisteredOAuth2AuthorizedClient("rico-client-authorization-code") OAuth2AuthorizedClient client)
 	{
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Map<String, Object> map = new HashMap<>();
@@ -28,8 +29,7 @@ public class TestController
 	}
 	
 	@GetMapping("/oidc")
-	public Map<String, Object> oidc(
-			@RegisteredOAuth2AuthorizedClient("rico-client-oidc") OAuth2AuthorizedClient client)
+	public Map<String, Object> oidc(@RegisteredOAuth2AuthorizedClient("rico-client-oidc") OAuth2AuthorizedClient client)
 	{
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Map<String, Object> map = new HashMap<>();
@@ -38,7 +38,8 @@ public class TestController
 		return map;
 	}
 	
-	@GetMapping("/hello")
+//	@GetMapping("/hello")
+	@RequestMapping(value = "/hello", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public String hello()
 	{
 		return "hello world";

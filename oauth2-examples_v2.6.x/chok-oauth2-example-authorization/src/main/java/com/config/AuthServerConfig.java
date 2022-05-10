@@ -1,3 +1,9 @@
+/*
+ * 授权服务器元信息（issue 端点）
+ * http://localhost:9000/.well-known/oauth-authorization-server
+ * 
+ * 参考：https://felord.blog.csdn.net/article/details/123551894
+ */
 package com.config;
 
 import java.security.KeyPair;
@@ -30,7 +36,7 @@ import com.nimbusds.jose.proc.SecurityContext;
 
 @Configuration(proxyBeanMethods = false)
 public class AuthServerConfig {
-    
+
     @Bean
     @Order(Ordered.HIGHEST_PRECEDENCE)
     public SecurityFilterChain authServerSecurityFilterChain(HttpSecurity http) throws Exception {
@@ -53,8 +59,14 @@ public class AuthServerConfig {
 				.clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
 				.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
 				.authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+				// 回调地址名单，不在此列将被拒绝 而且只能使用IP或者域名  不能使用 localhost
+				// client 为 springboot 的回调地址
 				.redirectUri("http://127.0.0.1:8080/login/oauth2/code/rico-client-oidc")
 				.redirectUri("http://127.0.0.1:8080/authorized")
+    			// client 为 vue 的回调地址
+    			.redirectUri("http://127.0.0.1:7090")
+    			.redirectUri("http://10.12.77.103:7090")
+    			// client 为外网服务的回调地址
     			.redirectUri("https://oidcdebugger.com/debug")
 				.scope(OidcScopes.OPENID)
 				.scope("test.read")

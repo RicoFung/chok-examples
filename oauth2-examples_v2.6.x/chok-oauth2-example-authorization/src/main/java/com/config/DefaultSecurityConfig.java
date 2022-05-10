@@ -56,6 +56,7 @@ public class DefaultSecurityConfig
 	{
 		http.authorizeRequests(authorizeRequests -> authorizeRequests
 				// .antMatchers("/oauth2/token").permitAll()
+//				 .antMatchers("/favicon.ico").permitAll()
 				.anyRequest().authenticated()).formLogin(withDefaults());
 		return http.build();
 	}

@@ -31,7 +31,7 @@ public class TestController extends BaseRestController<Object>
 {
 	private final Logger log = LoggerFactory.getLogger(getClass());
 	
-	@RequestMapping(value = "/hi", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "/hi", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json;charset=UTF-8")
 	public RestResult hi()
 	{
 		restResult = new RestResult();
