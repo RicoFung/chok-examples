@@ -1,3 +1,9 @@
+/*
+ * 授权服务器元信息（issue 端点）
+ * http://localhost:9000/.well-known/oauth-authorization-server
+ * 
+ * 参考：https://felord.blog.csdn.net/article/details/123551894
+ */
 package com.config;
 
 import java.security.KeyPair;
@@ -30,7 +36,7 @@ import com.nimbusds.jose.proc.SecurityContext;
 
 @Configuration(proxyBeanMethods = false)
 public class AuthServerConfig {
-    
+
     @Bean
     @Order(Ordered.HIGHEST_PRECEDENCE)
     public SecurityFilterChain authServerSecurityFilterChain(HttpSecurity http) throws Exception {
