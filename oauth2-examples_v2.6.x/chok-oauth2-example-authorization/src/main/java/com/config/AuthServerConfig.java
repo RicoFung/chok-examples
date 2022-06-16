@@ -64,8 +64,8 @@ public class AuthServerConfig {
 				.redirectUri("http://127.0.0.1:8080/login/oauth2/code/rico-client-oidc")
 				.redirectUri("http://127.0.0.1:8080/authorized")
     			// client 为 vue 的回调地址
-    			.redirectUri("http://127.0.0.1:7090")
-    			.redirectUri("http://10.12.77.103:7090")
+    			.redirectUri("http://127.0.0.1:7090/spring-oauth2-code-v1") // 非弹窗
+    			.redirectUri("http://127.0.0.1:7090/oauth2/callback") // 弹窗
     			// client 为外网服务的回调地址
     			.redirectUri("https://oidcdebugger.com/debug")
 				.scope(OidcScopes.OPENID)
