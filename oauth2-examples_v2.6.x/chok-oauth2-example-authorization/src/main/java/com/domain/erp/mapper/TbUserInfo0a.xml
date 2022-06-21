@@ -1,0 +1,1008 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">   
+
+<mapper namespace="com.domain.erp.entity.TbUserInfo0a">
+      <!-- 自动生成id策略 -->
+    <insert id="add" parameterType="com.domain.erp.entity.TbUserInfo0a">  
+       	INSERT INTO TB_USER_INFO_0A 
+       	( TC_ROWID, TC_CODE, TC_NAME, TC_DESCRIPTION, TC_ADD_USER_ROWID, TC_ADD_TIME, TC_UPDATE_USER_ROWID, TC_UPDATE_TIME, TC_DELETE_USER_ROWID, TC_DELETE_TIME, TC_ACTIVE_USER_ROWID, TC_ACTIVE_TIME, TC_CLOSE_USER_ROWID, TC_CLOSE_TIME, TC_STATUS, TC_PASSWORD, TC_USER_TYPE, TC_DEPARTMENT_ROWID, TC_PWD_MODIFY_TIME, TC_PWD_VALID_TIME, TC_FAILURE_TIME, TC_LAST_LOGIN_TIME, TC_IS_USER_ENTERPRISE_MAP_0A, TC_IS_USER_COMPANY_MAPPING_0A, TC_IS_USER_GROUP_MAPPING_0A, TC_IS_USER_METHOD_MAPPING_0A, TC_IS_USER_CUSTOMER_MAPPING_0A, TC_IS_USER_STORE_MAPPING_0A, TC_IS_USER_COUNTRY_MAPPING_0A, TC_IS_USER_REGION_MAPPING_0A, TC_IS_USER_PROVINCE_MAPPING_0A, TC_IS_USER_CITY_MAPPING_0A, TC_IS_USER_ENTERPRISE_MAP_0B, TC_IS_USER_COMPANY_MAPPING_0B, TC_IS_USER_GROUP_MAPPING_0B, TC_IS_USER_METHOD_MAPPING_0B, TC_IS_USER_CUSTOMER_MAPPING_0B, TC_IS_USER_STORE_MAPPING_0B, TC_IS_USER_COUNTRY_MAPPING_0B, TC_IS_USER_REGION_MAPPING_0B, TC_IS_USER_PROVINCE_MAPPING_0B, TC_IS_USER_CITY_MAPPING_0B, TC_IS_USER_ENTERPRISE_MAP_0C, TC_IS_USER_COMPANY_MAPPING_0C, TC_IS_USER_GROUP_MAPPING_0C, TC_IS_USER_METHOD_MAPPING_0C, TC_IS_USER_CUSTOMER_MAPPING_0C, TC_IS_USER_STORE_MAPPING_0C, TC_IS_USER_COUNTRY_MAPPING_0C, TC_IS_USER_REGION_MAPPING_0C, TC_IS_USER_PROVINCE_MAPPING_0C, TC_IS_USER_CITY_MAPPING_0C, TC_IS_USER_ENTERPRISE_MAP_0D, TC_IS_USER_COMPANY_MAPPING_0D, TC_IS_USER_GROUP_MAPPING_0D, TC_IS_USER_METHOD_MAPPING_0D, TC_IS_USER_CUSTOMER_MAPPING_0D, TC_IS_USER_STORE_MAPPING_0D, TC_IS_USER_COUNTRY_MAPPING_0D, TC_IS_USER_REGION_MAPPING_0D, TC_IS_USER_PROVINCE_MAPPING_0D, TC_IS_USER_CITY_MAPPING_0D, TC_IS_USER_ENTERPRISE_MAP_0E, TC_IS_USER_COMPANY_MAPPING_0E, TC_IS_USER_GROUP_MAPPING_0E, TC_IS_USER_METHOD_MAPPING_0E, TC_IS_USER_CUSTOMER_MAPPING_0E, TC_IS_USER_STORE_MAPPING_0E, TC_IS_USER_COUNTRY_MAPPING_0E, TC_IS_USER_REGION_MAPPING_0E, TC_IS_USER_PROVINCE_MAPPING_0E, TC_IS_USER_CITY_MAPPING_0E, TC_IS_USER_ENTERPRISE_MAP_0F, TC_IS_USER_COMPANY_MAPPING_0F, TC_IS_USER_GROUP_MAPPING_0F, TC_IS_USER_METHOD_MAPPING_0F, TC_IS_USER_CUSTOMER_MAPPING_0F, TC_IS_USER_STORE_MAPPING_0F, TC_IS_USER_COUNTRY_MAPPING_0F, TC_IS_USER_REGION_MAPPING_0F, TC_IS_USER_PROVINCE_MAPPING_0F, TC_IS_USER_CITY_MAPPING_0F, TC_IS_USER_ENTERPRISE_MAP_0G, TC_IS_USER_COMPANY_MAPPING_0G, TC_IS_USER_GROUP_MAPPING_0G, TC_IS_USER_METHOD_MAPPING_0G, TC_IS_USER_CUSTOMER_MAPPING_0G, TC_IS_USER_STORE_MAPPING_0G, TC_IS_USER_COUNTRY_MAPPING_0G, TC_IS_USER_REGION_MAPPING_0G, TC_IS_USER_PROVINCE_MAPPING_0G, TC_IS_USER_CITY_MAPPING_0G, TC_IS_USER_ENTERPRISE_MAP_0H, TC_IS_USER_COMPANY_MAPPING_0H, TC_IS_USER_GROUP_MAPPING_0H, TC_IS_USER_METHOD_MAPPING_0H, TC_IS_USER_CUSTOMER_MAPPING_0H, TC_IS_USER_STORE_MAPPING_0H, TC_IS_USER_COUNTRY_MAPPING_0H, TC_IS_USER_REGION_MAPPING_0H, TC_IS_USER_PROVINCE_MAPPING_0H, TC_IS_USER_CITY_MAPPING_0H, TC_IS_USER_ENTERPRISE_MAP_0I, TC_IS_USER_COMPANY_MAPPING_0I, TC_IS_USER_GROUP_MAPPING_0I, TC_IS_USER_METHOD_MAPPING_0I, TC_IS_USER_CUSTOMER_MAPPING_0I, TC_IS_USER_STORE_MAPPING_0I, TC_IS_USER_COUNTRY_MAPPING_0I, TC_IS_USER_REGION_MAPPING_0I, TC_IS_USER_PROVINCE_MAPPING_0I, TC_IS_USER_CITY_MAPPING_0I, TC_IS_USER_BRAND_MAPPING_0A, TC_IS_USER_BRAND_MAPPING_0B, TC_MAIN_CUSTOMER_ROWID, TC_MAIN_DOWN_CUSTOMER_ROWID, TC_IS_USER_FACTORY_MAPPING_1A, TC_IS_USER_FACTORY_MAPPING_1B, TC_IS_USER_STORE_WW_MAPPING_0A, TC_IS_USER_STORE_WW_MAPPING_0B, TC_IS_USER_STORE_WW_MAPPING_0C, TC_IS_USER_STORE_WW_MAPPING_0D, TC_IS_USER_STORE_WW_MAPPING_0E, TC_IS_USER_STORE_WW_MAPPING_0F, TC_IS_USER_STORE_WW_MAPPING_0G, TC_IS_USER_STORE_WW_MAPPING_0H, TC_IS_USER_STORE_WW_MAPPING_0I, TC_IS_USER_COMPANY_MAPPING_1A, TC_IS_USER_COMPANY_MAPPING_1B, TC_IS_USER_ENTERPRISE_MAP_1A, TC_IS_USER_GROUP_MAPPING_1A, TC_IS_USER_METHOD_MAPPING_1A, TC_IS_USER_CUSTOMER_MAPPING_1A, TC_IS_USER_COUNTRY_MAPPING_1A, TC_IS_USER_REGION_MAPPING_1A, TC_IS_USER_PROVINCE_MAPPING_1A, TC_IS_USER_CITY_MAPPING_1A, TC_IS_USER_STORE_WW_MAPPING_1A, TC_IS_USER_ENTERPRISE_MAP_1B, TC_IS_USER_GROUP_MAPPING_1B, TC_IS_USER_METHOD_MAPPING_1B, TC_IS_USER_CUSTOMER_MAPPING_1B, TC_IS_USER_COUNTRY_MAPPING_1B, TC_IS_USER_REGION_MAPPING_1B, TC_IS_USER_PROVINCE_MAPPING_1B, TC_IS_USER_CITY_MAPPING_1B, TC_IS_USER_STORE_WW_MAPPING_1B, TC_IS_USER_TEAM_MAPPING_0A, TC_IS_USER_TEAM_MAPPING_0B, TC_IS_USER_TEAM_MAPPING_0C, TC_IS_USER_TEAM_MAPPING_0D, TC_IS_USER_TEAM_MAPPING_0E, TC_IS_USER_TEAM_MAPPING_0F, TC_IS_USER_TEAM_MAPPING_0G, TC_IS_USER_TEAM_MAPPING_0H, TC_IS_USER_TEAM_MAPPING_0I, TC_IS_USER_TEAM_MAPPING_1A, TC_IS_USER_TEAM_MAPPING_1B, TC_IS_USER_ENTERPRISE_MAP_0J, TC_IS_USER_COMPANY_MAPPING_0J, TC_IS_USER_GROUP_MAPPING_0J, TC_IS_USER_METHOD_MAPPING_0J, TC_IS_USER_CUSTOMER_MAPPING_0J, TC_IS_USER_STORE_MAPPING_0J, TC_IS_USER_COUNTRY_MAPPING_0J, TC_IS_USER_REGION_MAPPING_0J, TC_IS_USER_PROVINCE_MAPPING_0J, TC_IS_USER_CITY_MAPPING_0J, TC_IS_USER_STORE_WW_MAPPING_0J, TC_IS_USER_TEAM_MAPPING_0J, TC_IS_USER_ENTERPRISE_MAP_0K, TC_IS_USER_COMPANY_MAPPING_0K, TC_IS_USER_GROUP_MAPPING_0K, TC_IS_USER_METHOD_MAPPING_0K, TC_IS_USER_CUSTOMER_MAPPING_0K, TC_IS_USER_STORE_MAPPING_0K, TC_IS_USER_COUNTRY_MAPPING_0K, TC_IS_USER_REGION_MAPPING_0K, TC_IS_USER_PROVINCE_MAPPING_0K, TC_IS_USER_CITY_MAPPING_0K, TC_IS_USER_STORE_WW_MAPPING_0K, TC_IS_USER_TEAM_MAPPING_0K, TC_OLD_CODE) 
+       	VALUES
+       	( #{tcRowid}, #{tcCode}, #{tcName}, #{tcDescription}, #{tcAddUserRowid}, #{tcAddTime}, #{tcUpdateUserRowid}, #{tcUpdateTime}, #{tcDeleteUserRowid}, #{tcDeleteTime}, #{tcActiveUserRowid}, #{tcActiveTime}, #{tcCloseUserRowid}, #{tcCloseTime}, #{tcStatus}, #{tcPassword}, #{tcUserType}, #{tcDepartmentRowid}, #{tcPwdModifyTime}, #{tcPwdValidTime}, #{tcFailureTime}, #{tcLastLoginTime}, #{tcIsUserEnterpriseMap0a}, #{tcIsUserCompanyMapping0a}, #{tcIsUserGroupMapping0a}, #{tcIsUserMethodMapping0a}, #{tcIsUserCustomerMapping0a}, #{tcIsUserStoreMapping0a}, #{tcIsUserCountryMapping0a}, #{tcIsUserRegionMapping0a}, #{tcIsUserProvinceMapping0a}, #{tcIsUserCityMapping0a}, #{tcIsUserEnterpriseMap0b}, #{tcIsUserCompanyMapping0b}, #{tcIsUserGroupMapping0b}, #{tcIsUserMethodMapping0b}, #{tcIsUserCustomerMapping0b}, #{tcIsUserStoreMapping0b}, #{tcIsUserCountryMapping0b}, #{tcIsUserRegionMapping0b}, #{tcIsUserProvinceMapping0b}, #{tcIsUserCityMapping0b}, #{tcIsUserEnterpriseMap0c}, #{tcIsUserCompanyMapping0c}, #{tcIsUserGroupMapping0c}, #{tcIsUserMethodMapping0c}, #{tcIsUserCustomerMapping0c}, #{tcIsUserStoreMapping0c}, #{tcIsUserCountryMapping0c}, #{tcIsUserRegionMapping0c}, #{tcIsUserProvinceMapping0c}, #{tcIsUserCityMapping0c}, #{tcIsUserEnterpriseMap0d}, #{tcIsUserCompanyMapping0d}, #{tcIsUserGroupMapping0d}, #{tcIsUserMethodMapping0d}, #{tcIsUserCustomerMapping0d}, #{tcIsUserStoreMapping0d}, #{tcIsUserCountryMapping0d}, #{tcIsUserRegionMapping0d}, #{tcIsUserProvinceMapping0d}, #{tcIsUserCityMapping0d}, #{tcIsUserEnterpriseMap0e}, #{tcIsUserCompanyMapping0e}, #{tcIsUserGroupMapping0e}, #{tcIsUserMethodMapping0e}, #{tcIsUserCustomerMapping0e}, #{tcIsUserStoreMapping0e}, #{tcIsUserCountryMapping0e}, #{tcIsUserRegionMapping0e}, #{tcIsUserProvinceMapping0e}, #{tcIsUserCityMapping0e}, #{tcIsUserEnterpriseMap0f}, #{tcIsUserCompanyMapping0f}, #{tcIsUserGroupMapping0f}, #{tcIsUserMethodMapping0f}, #{tcIsUserCustomerMapping0f}, #{tcIsUserStoreMapping0f}, #{tcIsUserCountryMapping0f}, #{tcIsUserRegionMapping0f}, #{tcIsUserProvinceMapping0f}, #{tcIsUserCityMapping0f}, #{tcIsUserEnterpriseMap0g}, #{tcIsUserCompanyMapping0g}, #{tcIsUserGroupMapping0g}, #{tcIsUserMethodMapping0g}, #{tcIsUserCustomerMapping0g}, #{tcIsUserStoreMapping0g}, #{tcIsUserCountryMapping0g}, #{tcIsUserRegionMapping0g}, #{tcIsUserProvinceMapping0g}, #{tcIsUserCityMapping0g}, #{tcIsUserEnterpriseMap0h}, #{tcIsUserCompanyMapping0h}, #{tcIsUserGroupMapping0h}, #{tcIsUserMethodMapping0h}, #{tcIsUserCustomerMapping0h}, #{tcIsUserStoreMapping0h}, #{tcIsUserCountryMapping0h}, #{tcIsUserRegionMapping0h}, #{tcIsUserProvinceMapping0h}, #{tcIsUserCityMapping0h}, #{tcIsUserEnterpriseMap0i}, #{tcIsUserCompanyMapping0i}, #{tcIsUserGroupMapping0i}, #{tcIsUserMethodMapping0i}, #{tcIsUserCustomerMapping0i}, #{tcIsUserStoreMapping0i}, #{tcIsUserCountryMapping0i}, #{tcIsUserRegionMapping0i}, #{tcIsUserProvinceMapping0i}, #{tcIsUserCityMapping0i}, #{tcIsUserBrandMapping0a}, #{tcIsUserBrandMapping0b}, #{tcMainCustomerRowid}, #{tcMainDownCustomerRowid}, #{tcIsUserFactoryMapping1a}, #{tcIsUserFactoryMapping1b}, #{tcIsUserStoreWwMapping0a}, #{tcIsUserStoreWwMapping0b}, #{tcIsUserStoreWwMapping0c}, #{tcIsUserStoreWwMapping0d}, #{tcIsUserStoreWwMapping0e}, #{tcIsUserStoreWwMapping0f}, #{tcIsUserStoreWwMapping0g}, #{tcIsUserStoreWwMapping0h}, #{tcIsUserStoreWwMapping0i}, #{tcIsUserCompanyMapping1a}, #{tcIsUserCompanyMapping1b}, #{tcIsUserEnterpriseMap1a}, #{tcIsUserGroupMapping1a}, #{tcIsUserMethodMapping1a}, #{tcIsUserCustomerMapping1a}, #{tcIsUserCountryMapping1a}, #{tcIsUserRegionMapping1a}, #{tcIsUserProvinceMapping1a}, #{tcIsUserCityMapping1a}, #{tcIsUserStoreWwMapping1a}, #{tcIsUserEnterpriseMap1b}, #{tcIsUserGroupMapping1b}, #{tcIsUserMethodMapping1b}, #{tcIsUserCustomerMapping1b}, #{tcIsUserCountryMapping1b}, #{tcIsUserRegionMapping1b}, #{tcIsUserProvinceMapping1b}, #{tcIsUserCityMapping1b}, #{tcIsUserStoreWwMapping1b}, #{tcIsUserTeamMapping0a}, #{tcIsUserTeamMapping0b}, #{tcIsUserTeamMapping0c}, #{tcIsUserTeamMapping0d}, #{tcIsUserTeamMapping0e}, #{tcIsUserTeamMapping0f}, #{tcIsUserTeamMapping0g}, #{tcIsUserTeamMapping0h}, #{tcIsUserTeamMapping0i}, #{tcIsUserTeamMapping1a}, #{tcIsUserTeamMapping1b}, #{tcIsUserEnterpriseMap0j}, #{tcIsUserCompanyMapping0j}, #{tcIsUserGroupMapping0j}, #{tcIsUserMethodMapping0j}, #{tcIsUserCustomerMapping0j}, #{tcIsUserStoreMapping0j}, #{tcIsUserCountryMapping0j}, #{tcIsUserRegionMapping0j}, #{tcIsUserProvinceMapping0j}, #{tcIsUserCityMapping0j}, #{tcIsUserStoreWwMapping0j}, #{tcIsUserTeamMapping0j}, #{tcIsUserEnterpriseMap0k}, #{tcIsUserCompanyMapping0k}, #{tcIsUserGroupMapping0k}, #{tcIsUserMethodMapping0k}, #{tcIsUserCustomerMapping0k}, #{tcIsUserStoreMapping0k}, #{tcIsUserCountryMapping0k}, #{tcIsUserRegionMapping0k}, #{tcIsUserProvinceMapping0k}, #{tcIsUserCityMapping0k}, #{tcIsUserStoreWwMapping0k}, #{tcIsUserTeamMapping0k}, #{tcOldCode})
+    </insert>  
+	
+	<delete id="del" parameterType="com.domain.erp.entity.TbUserInfo0a">
+		DELETE FROM TB_USER_INFO_0A 
+		 WHERE TC_ROWID = #{tcRowid}  
+	</delete>
+	
+	<update id="upd" parameterType="com.domain.erp.entity.TbUserInfo0a">
+		UPDATE TB_USER_INFO_0A SET
+	           TC_CODE = #{tcCode}, 
+	           TC_NAME = #{tcName}, 
+	           TC_DESCRIPTION = #{tcDescription}, 
+	           TC_ADD_USER_ROWID = #{tcAddUserRowid}, 
+	           TC_ADD_TIME = #{tcAddTime}, 
+	           TC_UPDATE_USER_ROWID = #{tcUpdateUserRowid}, 
+	           TC_UPDATE_TIME = #{tcUpdateTime}, 
+	           TC_DELETE_USER_ROWID = #{tcDeleteUserRowid}, 
+	           TC_DELETE_TIME = #{tcDeleteTime}, 
+	           TC_ACTIVE_USER_ROWID = #{tcActiveUserRowid}, 
+	           TC_ACTIVE_TIME = #{tcActiveTime}, 
+	           TC_CLOSE_USER_ROWID = #{tcCloseUserRowid}, 
+	           TC_CLOSE_TIME = #{tcCloseTime}, 
+	           TC_STATUS = #{tcStatus}, 
+	           TC_PASSWORD = #{tcPassword}, 
+	           TC_USER_TYPE = #{tcUserType}, 
+	           TC_DEPARTMENT_ROWID = #{tcDepartmentRowid}, 
+	           TC_PWD_MODIFY_TIME = #{tcPwdModifyTime}, 
+	           TC_PWD_VALID_TIME = #{tcPwdValidTime}, 
+	           TC_FAILURE_TIME = #{tcFailureTime}, 
+	           TC_LAST_LOGIN_TIME = #{tcLastLoginTime}, 
+	           TC_IS_USER_ENTERPRISE_MAP_0A = #{tcIsUserEnterpriseMap0a}, 
+	           TC_IS_USER_COMPANY_MAPPING_0A = #{tcIsUserCompanyMapping0a}, 
+	           TC_IS_USER_GROUP_MAPPING_0A = #{tcIsUserGroupMapping0a}, 
+	           TC_IS_USER_METHOD_MAPPING_0A = #{tcIsUserMethodMapping0a}, 
+	           TC_IS_USER_CUSTOMER_MAPPING_0A = #{tcIsUserCustomerMapping0a}, 
+	           TC_IS_USER_STORE_MAPPING_0A = #{tcIsUserStoreMapping0a}, 
+	           TC_IS_USER_COUNTRY_MAPPING_0A = #{tcIsUserCountryMapping0a}, 
+	           TC_IS_USER_REGION_MAPPING_0A = #{tcIsUserRegionMapping0a}, 
+	           TC_IS_USER_PROVINCE_MAPPING_0A = #{tcIsUserProvinceMapping0a}, 
+	           TC_IS_USER_CITY_MAPPING_0A = #{tcIsUserCityMapping0a}, 
+	           TC_IS_USER_ENTERPRISE_MAP_0B = #{tcIsUserEnterpriseMap0b}, 
+	           TC_IS_USER_COMPANY_MAPPING_0B = #{tcIsUserCompanyMapping0b}, 
+	           TC_IS_USER_GROUP_MAPPING_0B = #{tcIsUserGroupMapping0b}, 
+	           TC_IS_USER_METHOD_MAPPING_0B = #{tcIsUserMethodMapping0b}, 
+	           TC_IS_USER_CUSTOMER_MAPPING_0B = #{tcIsUserCustomerMapping0b}, 
+	           TC_IS_USER_STORE_MAPPING_0B = #{tcIsUserStoreMapping0b}, 
+	           TC_IS_USER_COUNTRY_MAPPING_0B = #{tcIsUserCountryMapping0b}, 
+	           TC_IS_USER_REGION_MAPPING_0B = #{tcIsUserRegionMapping0b}, 
+	           TC_IS_USER_PROVINCE_MAPPING_0B = #{tcIsUserProvinceMapping0b}, 
+	           TC_IS_USER_CITY_MAPPING_0B = #{tcIsUserCityMapping0b}, 
+	           TC_IS_USER_ENTERPRISE_MAP_0C = #{tcIsUserEnterpriseMap0c}, 
+	           TC_IS_USER_COMPANY_MAPPING_0C = #{tcIsUserCompanyMapping0c}, 
+	           TC_IS_USER_GROUP_MAPPING_0C = #{tcIsUserGroupMapping0c}, 
+	           TC_IS_USER_METHOD_MAPPING_0C = #{tcIsUserMethodMapping0c}, 
+	           TC_IS_USER_CUSTOMER_MAPPING_0C = #{tcIsUserCustomerMapping0c}, 
+	           TC_IS_USER_STORE_MAPPING_0C = #{tcIsUserStoreMapping0c}, 
+	           TC_IS_USER_COUNTRY_MAPPING_0C = #{tcIsUserCountryMapping0c}, 
+	           TC_IS_USER_REGION_MAPPING_0C = #{tcIsUserRegionMapping0c}, 
+	           TC_IS_USER_PROVINCE_MAPPING_0C = #{tcIsUserProvinceMapping0c}, 
+	           TC_IS_USER_CITY_MAPPING_0C = #{tcIsUserCityMapping0c}, 
+	           TC_IS_USER_ENTERPRISE_MAP_0D = #{tcIsUserEnterpriseMap0d}, 
+	           TC_IS_USER_COMPANY_MAPPING_0D = #{tcIsUserCompanyMapping0d}, 
+	           TC_IS_USER_GROUP_MAPPING_0D = #{tcIsUserGroupMapping0d}, 
+	           TC_IS_USER_METHOD_MAPPING_0D = #{tcIsUserMethodMapping0d}, 
+	           TC_IS_USER_CUSTOMER_MAPPING_0D = #{tcIsUserCustomerMapping0d}, 
+	           TC_IS_USER_STORE_MAPPING_0D = #{tcIsUserStoreMapping0d}, 
+	           TC_IS_USER_COUNTRY_MAPPING_0D = #{tcIsUserCountryMapping0d}, 
+	           TC_IS_USER_REGION_MAPPING_0D = #{tcIsUserRegionMapping0d}, 
+	           TC_IS_USER_PROVINCE_MAPPING_0D = #{tcIsUserProvinceMapping0d}, 
+	           TC_IS_USER_CITY_MAPPING_0D = #{tcIsUserCityMapping0d}, 
+	           TC_IS_USER_ENTERPRISE_MAP_0E = #{tcIsUserEnterpriseMap0e}, 
+	           TC_IS_USER_COMPANY_MAPPING_0E = #{tcIsUserCompanyMapping0e}, 
+	           TC_IS_USER_GROUP_MAPPING_0E = #{tcIsUserGroupMapping0e}, 
+	           TC_IS_USER_METHOD_MAPPING_0E = #{tcIsUserMethodMapping0e}, 
+	           TC_IS_USER_CUSTOMER_MAPPING_0E = #{tcIsUserCustomerMapping0e}, 
+	           TC_IS_USER_STORE_MAPPING_0E = #{tcIsUserStoreMapping0e}, 
+	           TC_IS_USER_COUNTRY_MAPPING_0E = #{tcIsUserCountryMapping0e}, 
+	           TC_IS_USER_REGION_MAPPING_0E = #{tcIsUserRegionMapping0e}, 
+	           TC_IS_USER_PROVINCE_MAPPING_0E = #{tcIsUserProvinceMapping0e}, 
+	           TC_IS_USER_CITY_MAPPING_0E = #{tcIsUserCityMapping0e}, 
+	           TC_IS_USER_ENTERPRISE_MAP_0F = #{tcIsUserEnterpriseMap0f}, 
+	           TC_IS_USER_COMPANY_MAPPING_0F = #{tcIsUserCompanyMapping0f}, 
+	           TC_IS_USER_GROUP_MAPPING_0F = #{tcIsUserGroupMapping0f}, 
+	           TC_IS_USER_METHOD_MAPPING_0F = #{tcIsUserMethodMapping0f}, 
+	           TC_IS_USER_CUSTOMER_MAPPING_0F = #{tcIsUserCustomerMapping0f}, 
+	           TC_IS_USER_STORE_MAPPING_0F = #{tcIsUserStoreMapping0f}, 
+	           TC_IS_USER_COUNTRY_MAPPING_0F = #{tcIsUserCountryMapping0f}, 
+	           TC_IS_USER_REGION_MAPPING_0F = #{tcIsUserRegionMapping0f}, 
+	           TC_IS_USER_PROVINCE_MAPPING_0F = #{tcIsUserProvinceMapping0f}, 
+	           TC_IS_USER_CITY_MAPPING_0F = #{tcIsUserCityMapping0f}, 
+	           TC_IS_USER_ENTERPRISE_MAP_0G = #{tcIsUserEnterpriseMap0g}, 
+	           TC_IS_USER_COMPANY_MAPPING_0G = #{tcIsUserCompanyMapping0g}, 
+	           TC_IS_USER_GROUP_MAPPING_0G = #{tcIsUserGroupMapping0g}, 
+	           TC_IS_USER_METHOD_MAPPING_0G = #{tcIsUserMethodMapping0g}, 
+	           TC_IS_USER_CUSTOMER_MAPPING_0G = #{tcIsUserCustomerMapping0g}, 
+	           TC_IS_USER_STORE_MAPPING_0G = #{tcIsUserStoreMapping0g}, 
+	           TC_IS_USER_COUNTRY_MAPPING_0G = #{tcIsUserCountryMapping0g}, 
+	           TC_IS_USER_REGION_MAPPING_0G = #{tcIsUserRegionMapping0g}, 
+	           TC_IS_USER_PROVINCE_MAPPING_0G = #{tcIsUserProvinceMapping0g}, 
+	           TC_IS_USER_CITY_MAPPING_0G = #{tcIsUserCityMapping0g}, 
+	           TC_IS_USER_ENTERPRISE_MAP_0H = #{tcIsUserEnterpriseMap0h}, 
+	           TC_IS_USER_COMPANY_MAPPING_0H = #{tcIsUserCompanyMapping0h}, 
+	           TC_IS_USER_GROUP_MAPPING_0H = #{tcIsUserGroupMapping0h}, 
+	           TC_IS_USER_METHOD_MAPPING_0H = #{tcIsUserMethodMapping0h}, 
+	           TC_IS_USER_CUSTOMER_MAPPING_0H = #{tcIsUserCustomerMapping0h}, 
+	           TC_IS_USER_STORE_MAPPING_0H = #{tcIsUserStoreMapping0h}, 
+	           TC_IS_USER_COUNTRY_MAPPING_0H = #{tcIsUserCountryMapping0h}, 
+	           TC_IS_USER_REGION_MAPPING_0H = #{tcIsUserRegionMapping0h}, 
+	           TC_IS_USER_PROVINCE_MAPPING_0H = #{tcIsUserProvinceMapping0h}, 
+	           TC_IS_USER_CITY_MAPPING_0H = #{tcIsUserCityMapping0h}, 
+	           TC_IS_USER_ENTERPRISE_MAP_0I = #{tcIsUserEnterpriseMap0i}, 
+	           TC_IS_USER_COMPANY_MAPPING_0I = #{tcIsUserCompanyMapping0i}, 
+	           TC_IS_USER_GROUP_MAPPING_0I = #{tcIsUserGroupMapping0i}, 
+	           TC_IS_USER_METHOD_MAPPING_0I = #{tcIsUserMethodMapping0i}, 
+	           TC_IS_USER_CUSTOMER_MAPPING_0I = #{tcIsUserCustomerMapping0i}, 
+	           TC_IS_USER_STORE_MAPPING_0I = #{tcIsUserStoreMapping0i}, 
+	           TC_IS_USER_COUNTRY_MAPPING_0I = #{tcIsUserCountryMapping0i}, 
+	           TC_IS_USER_REGION_MAPPING_0I = #{tcIsUserRegionMapping0i}, 
+	           TC_IS_USER_PROVINCE_MAPPING_0I = #{tcIsUserProvinceMapping0i}, 
+	           TC_IS_USER_CITY_MAPPING_0I = #{tcIsUserCityMapping0i}, 
+	           TC_IS_USER_BRAND_MAPPING_0A = #{tcIsUserBrandMapping0a}, 
+	           TC_IS_USER_BRAND_MAPPING_0B = #{tcIsUserBrandMapping0b}, 
+	           TC_MAIN_CUSTOMER_ROWID = #{tcMainCustomerRowid}, 
+	           TC_MAIN_DOWN_CUSTOMER_ROWID = #{tcMainDownCustomerRowid}, 
+	           TC_IS_USER_FACTORY_MAPPING_1A = #{tcIsUserFactoryMapping1a}, 
+	           TC_IS_USER_FACTORY_MAPPING_1B = #{tcIsUserFactoryMapping1b}, 
+	           TC_IS_USER_STORE_WW_MAPPING_0A = #{tcIsUserStoreWwMapping0a}, 
+	           TC_IS_USER_STORE_WW_MAPPING_0B = #{tcIsUserStoreWwMapping0b}, 
+	           TC_IS_USER_STORE_WW_MAPPING_0C = #{tcIsUserStoreWwMapping0c}, 
+	           TC_IS_USER_STORE_WW_MAPPING_0D = #{tcIsUserStoreWwMapping0d}, 
+	           TC_IS_USER_STORE_WW_MAPPING_0E = #{tcIsUserStoreWwMapping0e}, 
+	           TC_IS_USER_STORE_WW_MAPPING_0F = #{tcIsUserStoreWwMapping0f}, 
+	           TC_IS_USER_STORE_WW_MAPPING_0G = #{tcIsUserStoreWwMapping0g}, 
+	           TC_IS_USER_STORE_WW_MAPPING_0H = #{tcIsUserStoreWwMapping0h}, 
+	           TC_IS_USER_STORE_WW_MAPPING_0I = #{tcIsUserStoreWwMapping0i}, 
+	           TC_IS_USER_COMPANY_MAPPING_1A = #{tcIsUserCompanyMapping1a}, 
+	           TC_IS_USER_COMPANY_MAPPING_1B = #{tcIsUserCompanyMapping1b}, 
+	           TC_IS_USER_ENTERPRISE_MAP_1A = #{tcIsUserEnterpriseMap1a}, 
+	           TC_IS_USER_GROUP_MAPPING_1A = #{tcIsUserGroupMapping1a}, 
+	           TC_IS_USER_METHOD_MAPPING_1A = #{tcIsUserMethodMapping1a}, 
+	           TC_IS_USER_CUSTOMER_MAPPING_1A = #{tcIsUserCustomerMapping1a}, 
+	           TC_IS_USER_COUNTRY_MAPPING_1A = #{tcIsUserCountryMapping1a}, 
+	           TC_IS_USER_REGION_MAPPING_1A = #{tcIsUserRegionMapping1a}, 
+	           TC_IS_USER_PROVINCE_MAPPING_1A = #{tcIsUserProvinceMapping1a}, 
+	           TC_IS_USER_CITY_MAPPING_1A = #{tcIsUserCityMapping1a}, 
+	           TC_IS_USER_STORE_WW_MAPPING_1A = #{tcIsUserStoreWwMapping1a}, 
+	           TC_IS_USER_ENTERPRISE_MAP_1B = #{tcIsUserEnterpriseMap1b}, 
+	           TC_IS_USER_GROUP_MAPPING_1B = #{tcIsUserGroupMapping1b}, 
+	           TC_IS_USER_METHOD_MAPPING_1B = #{tcIsUserMethodMapping1b}, 
+	           TC_IS_USER_CUSTOMER_MAPPING_1B = #{tcIsUserCustomerMapping1b}, 
+	           TC_IS_USER_COUNTRY_MAPPING_1B = #{tcIsUserCountryMapping1b}, 
+	           TC_IS_USER_REGION_MAPPING_1B = #{tcIsUserRegionMapping1b}, 
+	           TC_IS_USER_PROVINCE_MAPPING_1B = #{tcIsUserProvinceMapping1b}, 
+	           TC_IS_USER_CITY_MAPPING_1B = #{tcIsUserCityMapping1b}, 
+	           TC_IS_USER_STORE_WW_MAPPING_1B = #{tcIsUserStoreWwMapping1b}, 
+	           TC_IS_USER_TEAM_MAPPING_0A = #{tcIsUserTeamMapping0a}, 
+	           TC_IS_USER_TEAM_MAPPING_0B = #{tcIsUserTeamMapping0b}, 
+	           TC_IS_USER_TEAM_MAPPING_0C = #{tcIsUserTeamMapping0c}, 
+	           TC_IS_USER_TEAM_MAPPING_0D = #{tcIsUserTeamMapping0d}, 
+	           TC_IS_USER_TEAM_MAPPING_0E = #{tcIsUserTeamMapping0e}, 
+	           TC_IS_USER_TEAM_MAPPING_0F = #{tcIsUserTeamMapping0f}, 
+	           TC_IS_USER_TEAM_MAPPING_0G = #{tcIsUserTeamMapping0g}, 
+	           TC_IS_USER_TEAM_MAPPING_0H = #{tcIsUserTeamMapping0h}, 
+	           TC_IS_USER_TEAM_MAPPING_0I = #{tcIsUserTeamMapping0i}, 
+	           TC_IS_USER_TEAM_MAPPING_1A = #{tcIsUserTeamMapping1a}, 
+	           TC_IS_USER_TEAM_MAPPING_1B = #{tcIsUserTeamMapping1b}, 
+	           TC_IS_USER_ENTERPRISE_MAP_0J = #{tcIsUserEnterpriseMap0j}, 
+	           TC_IS_USER_COMPANY_MAPPING_0J = #{tcIsUserCompanyMapping0j}, 
+	           TC_IS_USER_GROUP_MAPPING_0J = #{tcIsUserGroupMapping0j}, 
+	           TC_IS_USER_METHOD_MAPPING_0J = #{tcIsUserMethodMapping0j}, 
+	           TC_IS_USER_CUSTOMER_MAPPING_0J = #{tcIsUserCustomerMapping0j}, 
+	           TC_IS_USER_STORE_MAPPING_0J = #{tcIsUserStoreMapping0j}, 
+	           TC_IS_USER_COUNTRY_MAPPING_0J = #{tcIsUserCountryMapping0j}, 
+	           TC_IS_USER_REGION_MAPPING_0J = #{tcIsUserRegionMapping0j}, 
+	           TC_IS_USER_PROVINCE_MAPPING_0J = #{tcIsUserProvinceMapping0j}, 
+	           TC_IS_USER_CITY_MAPPING_0J = #{tcIsUserCityMapping0j}, 
+	           TC_IS_USER_STORE_WW_MAPPING_0J = #{tcIsUserStoreWwMapping0j}, 
+	           TC_IS_USER_TEAM_MAPPING_0J = #{tcIsUserTeamMapping0j}, 
+	           TC_IS_USER_ENTERPRISE_MAP_0K = #{tcIsUserEnterpriseMap0k}, 
+	           TC_IS_USER_COMPANY_MAPPING_0K = #{tcIsUserCompanyMapping0k}, 
+	           TC_IS_USER_GROUP_MAPPING_0K = #{tcIsUserGroupMapping0k}, 
+	           TC_IS_USER_METHOD_MAPPING_0K = #{tcIsUserMethodMapping0k}, 
+	           TC_IS_USER_CUSTOMER_MAPPING_0K = #{tcIsUserCustomerMapping0k}, 
+	           TC_IS_USER_STORE_MAPPING_0K = #{tcIsUserStoreMapping0k}, 
+	           TC_IS_USER_COUNTRY_MAPPING_0K = #{tcIsUserCountryMapping0k}, 
+	           TC_IS_USER_REGION_MAPPING_0K = #{tcIsUserRegionMapping0k}, 
+	           TC_IS_USER_PROVINCE_MAPPING_0K = #{tcIsUserProvinceMapping0k}, 
+	           TC_IS_USER_CITY_MAPPING_0K = #{tcIsUserCityMapping0k}, 
+	           TC_IS_USER_STORE_WW_MAPPING_0K = #{tcIsUserStoreWwMapping0k}, 
+	           TC_IS_USER_TEAM_MAPPING_0K = #{tcIsUserTeamMapping0k}, 
+	           TC_OLD_CODE = #{tcOldCode} 
+         WHERE TC_ROWID = #{tcRowid}  
+	</update>
+  	
+	<resultMap type="com.domain.erp.entity.TbUserInfo0a" id="result">
+        <result property="tcRowid" column="TC_ROWID"/>
+        <result property="tcCode" column="TC_CODE"/>
+        <result property="tcName" column="TC_NAME"/>
+        <result property="tcDescription" column="TC_DESCRIPTION"/>
+        <result property="tcAddUserRowid" column="TC_ADD_USER_ROWID"/>
+        <result property="tcAddTime" column="TC_ADD_TIME"/>
+        <result property="tcUpdateUserRowid" column="TC_UPDATE_USER_ROWID"/>
+        <result property="tcUpdateTime" column="TC_UPDATE_TIME"/>
+        <result property="tcDeleteUserRowid" column="TC_DELETE_USER_ROWID"/>
+        <result property="tcDeleteTime" column="TC_DELETE_TIME"/>
+        <result property="tcActiveUserRowid" column="TC_ACTIVE_USER_ROWID"/>
+        <result property="tcActiveTime" column="TC_ACTIVE_TIME"/>
+        <result property="tcCloseUserRowid" column="TC_CLOSE_USER_ROWID"/>
+        <result property="tcCloseTime" column="TC_CLOSE_TIME"/>
+        <result property="tcStatus" column="TC_STATUS"/>
+        <result property="tcPassword" column="TC_PASSWORD"/>
+        <result property="tcUserType" column="TC_USER_TYPE"/>
+        <result property="tcDepartmentRowid" column="TC_DEPARTMENT_ROWID"/>
+        <result property="tcPwdModifyTime" column="TC_PWD_MODIFY_TIME"/>
+        <result property="tcPwdValidTime" column="TC_PWD_VALID_TIME"/>
+        <result property="tcFailureTime" column="TC_FAILURE_TIME"/>
+        <result property="tcLastLoginTime" column="TC_LAST_LOGIN_TIME"/>
+        <result property="tcIsUserEnterpriseMap0a" column="TC_IS_USER_ENTERPRISE_MAP_0A"/>
+        <result property="tcIsUserCompanyMapping0a" column="TC_IS_USER_COMPANY_MAPPING_0A"/>
+        <result property="tcIsUserGroupMapping0a" column="TC_IS_USER_GROUP_MAPPING_0A"/>
+        <result property="tcIsUserMethodMapping0a" column="TC_IS_USER_METHOD_MAPPING_0A"/>
+        <result property="tcIsUserCustomerMapping0a" column="TC_IS_USER_CUSTOMER_MAPPING_0A"/>
+        <result property="tcIsUserStoreMapping0a" column="TC_IS_USER_STORE_MAPPING_0A"/>
+        <result property="tcIsUserCountryMapping0a" column="TC_IS_USER_COUNTRY_MAPPING_0A"/>
+        <result property="tcIsUserRegionMapping0a" column="TC_IS_USER_REGION_MAPPING_0A"/>
+        <result property="tcIsUserProvinceMapping0a" column="TC_IS_USER_PROVINCE_MAPPING_0A"/>
+        <result property="tcIsUserCityMapping0a" column="TC_IS_USER_CITY_MAPPING_0A"/>
+        <result property="tcIsUserEnterpriseMap0b" column="TC_IS_USER_ENTERPRISE_MAP_0B"/>
+        <result property="tcIsUserCompanyMapping0b" column="TC_IS_USER_COMPANY_MAPPING_0B"/>
+        <result property="tcIsUserGroupMapping0b" column="TC_IS_USER_GROUP_MAPPING_0B"/>
+        <result property="tcIsUserMethodMapping0b" column="TC_IS_USER_METHOD_MAPPING_0B"/>
+        <result property="tcIsUserCustomerMapping0b" column="TC_IS_USER_CUSTOMER_MAPPING_0B"/>
+        <result property="tcIsUserStoreMapping0b" column="TC_IS_USER_STORE_MAPPING_0B"/>
+        <result property="tcIsUserCountryMapping0b" column="TC_IS_USER_COUNTRY_MAPPING_0B"/>
+        <result property="tcIsUserRegionMapping0b" column="TC_IS_USER_REGION_MAPPING_0B"/>
+        <result property="tcIsUserProvinceMapping0b" column="TC_IS_USER_PROVINCE_MAPPING_0B"/>
+        <result property="tcIsUserCityMapping0b" column="TC_IS_USER_CITY_MAPPING_0B"/>
+        <result property="tcIsUserEnterpriseMap0c" column="TC_IS_USER_ENTERPRISE_MAP_0C"/>
+        <result property="tcIsUserCompanyMapping0c" column="TC_IS_USER_COMPANY_MAPPING_0C"/>
+        <result property="tcIsUserGroupMapping0c" column="TC_IS_USER_GROUP_MAPPING_0C"/>
+        <result property="tcIsUserMethodMapping0c" column="TC_IS_USER_METHOD_MAPPING_0C"/>
+        <result property="tcIsUserCustomerMapping0c" column="TC_IS_USER_CUSTOMER_MAPPING_0C"/>
+        <result property="tcIsUserStoreMapping0c" column="TC_IS_USER_STORE_MAPPING_0C"/>
+        <result property="tcIsUserCountryMapping0c" column="TC_IS_USER_COUNTRY_MAPPING_0C"/>
+        <result property="tcIsUserRegionMapping0c" column="TC_IS_USER_REGION_MAPPING_0C"/>
+        <result property="tcIsUserProvinceMapping0c" column="TC_IS_USER_PROVINCE_MAPPING_0C"/>
+        <result property="tcIsUserCityMapping0c" column="TC_IS_USER_CITY_MAPPING_0C"/>
+        <result property="tcIsUserEnterpriseMap0d" column="TC_IS_USER_ENTERPRISE_MAP_0D"/>
+        <result property="tcIsUserCompanyMapping0d" column="TC_IS_USER_COMPANY_MAPPING_0D"/>
+        <result property="tcIsUserGroupMapping0d" column="TC_IS_USER_GROUP_MAPPING_0D"/>
+        <result property="tcIsUserMethodMapping0d" column="TC_IS_USER_METHOD_MAPPING_0D"/>
+        <result property="tcIsUserCustomerMapping0d" column="TC_IS_USER_CUSTOMER_MAPPING_0D"/>
+        <result property="tcIsUserStoreMapping0d" column="TC_IS_USER_STORE_MAPPING_0D"/>
+        <result property="tcIsUserCountryMapping0d" column="TC_IS_USER_COUNTRY_MAPPING_0D"/>
+        <result property="tcIsUserRegionMapping0d" column="TC_IS_USER_REGION_MAPPING_0D"/>
+        <result property="tcIsUserProvinceMapping0d" column="TC_IS_USER_PROVINCE_MAPPING_0D"/>
+        <result property="tcIsUserCityMapping0d" column="TC_IS_USER_CITY_MAPPING_0D"/>
+        <result property="tcIsUserEnterpriseMap0e" column="TC_IS_USER_ENTERPRISE_MAP_0E"/>
+        <result property="tcIsUserCompanyMapping0e" column="TC_IS_USER_COMPANY_MAPPING_0E"/>
+        <result property="tcIsUserGroupMapping0e" column="TC_IS_USER_GROUP_MAPPING_0E"/>
+        <result property="tcIsUserMethodMapping0e" column="TC_IS_USER_METHOD_MAPPING_0E"/>
+        <result property="tcIsUserCustomerMapping0e" column="TC_IS_USER_CUSTOMER_MAPPING_0E"/>
+        <result property="tcIsUserStoreMapping0e" column="TC_IS_USER_STORE_MAPPING_0E"/>
+        <result property="tcIsUserCountryMapping0e" column="TC_IS_USER_COUNTRY_MAPPING_0E"/>
+        <result property="tcIsUserRegionMapping0e" column="TC_IS_USER_REGION_MAPPING_0E"/>
+        <result property="tcIsUserProvinceMapping0e" column="TC_IS_USER_PROVINCE_MAPPING_0E"/>
+        <result property="tcIsUserCityMapping0e" column="TC_IS_USER_CITY_MAPPING_0E"/>
+        <result property="tcIsUserEnterpriseMap0f" column="TC_IS_USER_ENTERPRISE_MAP_0F"/>
+        <result property="tcIsUserCompanyMapping0f" column="TC_IS_USER_COMPANY_MAPPING_0F"/>
+        <result property="tcIsUserGroupMapping0f" column="TC_IS_USER_GROUP_MAPPING_0F"/>
+        <result property="tcIsUserMethodMapping0f" column="TC_IS_USER_METHOD_MAPPING_0F"/>
+        <result property="tcIsUserCustomerMapping0f" column="TC_IS_USER_CUSTOMER_MAPPING_0F"/>
+        <result property="tcIsUserStoreMapping0f" column="TC_IS_USER_STORE_MAPPING_0F"/>
+        <result property="tcIsUserCountryMapping0f" column="TC_IS_USER_COUNTRY_MAPPING_0F"/>
+        <result property="tcIsUserRegionMapping0f" column="TC_IS_USER_REGION_MAPPING_0F"/>
+        <result property="tcIsUserProvinceMapping0f" column="TC_IS_USER_PROVINCE_MAPPING_0F"/>
+        <result property="tcIsUserCityMapping0f" column="TC_IS_USER_CITY_MAPPING_0F"/>
+        <result property="tcIsUserEnterpriseMap0g" column="TC_IS_USER_ENTERPRISE_MAP_0G"/>
+        <result property="tcIsUserCompanyMapping0g" column="TC_IS_USER_COMPANY_MAPPING_0G"/>
+        <result property="tcIsUserGroupMapping0g" column="TC_IS_USER_GROUP_MAPPING_0G"/>
+        <result property="tcIsUserMethodMapping0g" column="TC_IS_USER_METHOD_MAPPING_0G"/>
+        <result property="tcIsUserCustomerMapping0g" column="TC_IS_USER_CUSTOMER_MAPPING_0G"/>
+        <result property="tcIsUserStoreMapping0g" column="TC_IS_USER_STORE_MAPPING_0G"/>
+        <result property="tcIsUserCountryMapping0g" column="TC_IS_USER_COUNTRY_MAPPING_0G"/>
+        <result property="tcIsUserRegionMapping0g" column="TC_IS_USER_REGION_MAPPING_0G"/>
+        <result property="tcIsUserProvinceMapping0g" column="TC_IS_USER_PROVINCE_MAPPING_0G"/>
+        <result property="tcIsUserCityMapping0g" column="TC_IS_USER_CITY_MAPPING_0G"/>
+        <result property="tcIsUserEnterpriseMap0h" column="TC_IS_USER_ENTERPRISE_MAP_0H"/>
+        <result property="tcIsUserCompanyMapping0h" column="TC_IS_USER_COMPANY_MAPPING_0H"/>
+        <result property="tcIsUserGroupMapping0h" column="TC_IS_USER_GROUP_MAPPING_0H"/>
+        <result property="tcIsUserMethodMapping0h" column="TC_IS_USER_METHOD_MAPPING_0H"/>
+        <result property="tcIsUserCustomerMapping0h" column="TC_IS_USER_CUSTOMER_MAPPING_0H"/>
+        <result property="tcIsUserStoreMapping0h" column="TC_IS_USER_STORE_MAPPING_0H"/>
+        <result property="tcIsUserCountryMapping0h" column="TC_IS_USER_COUNTRY_MAPPING_0H"/>
+        <result property="tcIsUserRegionMapping0h" column="TC_IS_USER_REGION_MAPPING_0H"/>
+        <result property="tcIsUserProvinceMapping0h" column="TC_IS_USER_PROVINCE_MAPPING_0H"/>
+        <result property="tcIsUserCityMapping0h" column="TC_IS_USER_CITY_MAPPING_0H"/>
+        <result property="tcIsUserEnterpriseMap0i" column="TC_IS_USER_ENTERPRISE_MAP_0I"/>
+        <result property="tcIsUserCompanyMapping0i" column="TC_IS_USER_COMPANY_MAPPING_0I"/>
+        <result property="tcIsUserGroupMapping0i" column="TC_IS_USER_GROUP_MAPPING_0I"/>
+        <result property="tcIsUserMethodMapping0i" column="TC_IS_USER_METHOD_MAPPING_0I"/>
+        <result property="tcIsUserCustomerMapping0i" column="TC_IS_USER_CUSTOMER_MAPPING_0I"/>
+        <result property="tcIsUserStoreMapping0i" column="TC_IS_USER_STORE_MAPPING_0I"/>
+        <result property="tcIsUserCountryMapping0i" column="TC_IS_USER_COUNTRY_MAPPING_0I"/>
+        <result property="tcIsUserRegionMapping0i" column="TC_IS_USER_REGION_MAPPING_0I"/>
+        <result property="tcIsUserProvinceMapping0i" column="TC_IS_USER_PROVINCE_MAPPING_0I"/>
+        <result property="tcIsUserCityMapping0i" column="TC_IS_USER_CITY_MAPPING_0I"/>
+        <result property="tcIsUserBrandMapping0a" column="TC_IS_USER_BRAND_MAPPING_0A"/>
+        <result property="tcIsUserBrandMapping0b" column="TC_IS_USER_BRAND_MAPPING_0B"/>
+        <result property="tcMainCustomerRowid" column="TC_MAIN_CUSTOMER_ROWID"/>
+        <result property="tcMainDownCustomerRowid" column="TC_MAIN_DOWN_CUSTOMER_ROWID"/>
+        <result property="tcIsUserFactoryMapping1a" column="TC_IS_USER_FACTORY_MAPPING_1A"/>
+        <result property="tcIsUserFactoryMapping1b" column="TC_IS_USER_FACTORY_MAPPING_1B"/>
+        <result property="tcIsUserStoreWwMapping0a" column="TC_IS_USER_STORE_WW_MAPPING_0A"/>
+        <result property="tcIsUserStoreWwMapping0b" column="TC_IS_USER_STORE_WW_MAPPING_0B"/>
+        <result property="tcIsUserStoreWwMapping0c" column="TC_IS_USER_STORE_WW_MAPPING_0C"/>
+        <result property="tcIsUserStoreWwMapping0d" column="TC_IS_USER_STORE_WW_MAPPING_0D"/>
+        <result property="tcIsUserStoreWwMapping0e" column="TC_IS_USER_STORE_WW_MAPPING_0E"/>
+        <result property="tcIsUserStoreWwMapping0f" column="TC_IS_USER_STORE_WW_MAPPING_0F"/>
+        <result property="tcIsUserStoreWwMapping0g" column="TC_IS_USER_STORE_WW_MAPPING_0G"/>
+        <result property="tcIsUserStoreWwMapping0h" column="TC_IS_USER_STORE_WW_MAPPING_0H"/>
+        <result property="tcIsUserStoreWwMapping0i" column="TC_IS_USER_STORE_WW_MAPPING_0I"/>
+        <result property="tcIsUserCompanyMapping1a" column="TC_IS_USER_COMPANY_MAPPING_1A"/>
+        <result property="tcIsUserCompanyMapping1b" column="TC_IS_USER_COMPANY_MAPPING_1B"/>
+        <result property="tcIsUserEnterpriseMap1a" column="TC_IS_USER_ENTERPRISE_MAP_1A"/>
+        <result property="tcIsUserGroupMapping1a" column="TC_IS_USER_GROUP_MAPPING_1A"/>
+        <result property="tcIsUserMethodMapping1a" column="TC_IS_USER_METHOD_MAPPING_1A"/>
+        <result property="tcIsUserCustomerMapping1a" column="TC_IS_USER_CUSTOMER_MAPPING_1A"/>
+        <result property="tcIsUserCountryMapping1a" column="TC_IS_USER_COUNTRY_MAPPING_1A"/>
+        <result property="tcIsUserRegionMapping1a" column="TC_IS_USER_REGION_MAPPING_1A"/>
+        <result property="tcIsUserProvinceMapping1a" column="TC_IS_USER_PROVINCE_MAPPING_1A"/>
+        <result property="tcIsUserCityMapping1a" column="TC_IS_USER_CITY_MAPPING_1A"/>
+        <result property="tcIsUserStoreWwMapping1a" column="TC_IS_USER_STORE_WW_MAPPING_1A"/>
+        <result property="tcIsUserEnterpriseMap1b" column="TC_IS_USER_ENTERPRISE_MAP_1B"/>
+        <result property="tcIsUserGroupMapping1b" column="TC_IS_USER_GROUP_MAPPING_1B"/>
+        <result property="tcIsUserMethodMapping1b" column="TC_IS_USER_METHOD_MAPPING_1B"/>
+        <result property="tcIsUserCustomerMapping1b" column="TC_IS_USER_CUSTOMER_MAPPING_1B"/>
+        <result property="tcIsUserCountryMapping1b" column="TC_IS_USER_COUNTRY_MAPPING_1B"/>
+        <result property="tcIsUserRegionMapping1b" column="TC_IS_USER_REGION_MAPPING_1B"/>
+        <result property="tcIsUserProvinceMapping1b" column="TC_IS_USER_PROVINCE_MAPPING_1B"/>
+        <result property="tcIsUserCityMapping1b" column="TC_IS_USER_CITY_MAPPING_1B"/>
+        <result property="tcIsUserStoreWwMapping1b" column="TC_IS_USER_STORE_WW_MAPPING_1B"/>
+        <result property="tcIsUserTeamMapping0a" column="TC_IS_USER_TEAM_MAPPING_0A"/>
+        <result property="tcIsUserTeamMapping0b" column="TC_IS_USER_TEAM_MAPPING_0B"/>
+        <result property="tcIsUserTeamMapping0c" column="TC_IS_USER_TEAM_MAPPING_0C"/>
+        <result property="tcIsUserTeamMapping0d" column="TC_IS_USER_TEAM_MAPPING_0D"/>
+        <result property="tcIsUserTeamMapping0e" column="TC_IS_USER_TEAM_MAPPING_0E"/>
+        <result property="tcIsUserTeamMapping0f" column="TC_IS_USER_TEAM_MAPPING_0F"/>
+        <result property="tcIsUserTeamMapping0g" column="TC_IS_USER_TEAM_MAPPING_0G"/>
+        <result property="tcIsUserTeamMapping0h" column="TC_IS_USER_TEAM_MAPPING_0H"/>
+        <result property="tcIsUserTeamMapping0i" column="TC_IS_USER_TEAM_MAPPING_0I"/>
+        <result property="tcIsUserTeamMapping1a" column="TC_IS_USER_TEAM_MAPPING_1A"/>
+        <result property="tcIsUserTeamMapping1b" column="TC_IS_USER_TEAM_MAPPING_1B"/>
+        <result property="tcIsUserEnterpriseMap0j" column="TC_IS_USER_ENTERPRISE_MAP_0J"/>
+        <result property="tcIsUserCompanyMapping0j" column="TC_IS_USER_COMPANY_MAPPING_0J"/>
+        <result property="tcIsUserGroupMapping0j" column="TC_IS_USER_GROUP_MAPPING_0J"/>
+        <result property="tcIsUserMethodMapping0j" column="TC_IS_USER_METHOD_MAPPING_0J"/>
+        <result property="tcIsUserCustomerMapping0j" column="TC_IS_USER_CUSTOMER_MAPPING_0J"/>
+        <result property="tcIsUserStoreMapping0j" column="TC_IS_USER_STORE_MAPPING_0J"/>
+        <result property="tcIsUserCountryMapping0j" column="TC_IS_USER_COUNTRY_MAPPING_0J"/>
+        <result property="tcIsUserRegionMapping0j" column="TC_IS_USER_REGION_MAPPING_0J"/>
+        <result property="tcIsUserProvinceMapping0j" column="TC_IS_USER_PROVINCE_MAPPING_0J"/>
+        <result property="tcIsUserCityMapping0j" column="TC_IS_USER_CITY_MAPPING_0J"/>
+        <result property="tcIsUserStoreWwMapping0j" column="TC_IS_USER_STORE_WW_MAPPING_0J"/>
+        <result property="tcIsUserTeamMapping0j" column="TC_IS_USER_TEAM_MAPPING_0J"/>
+        <result property="tcIsUserEnterpriseMap0k" column="TC_IS_USER_ENTERPRISE_MAP_0K"/>
+        <result property="tcIsUserCompanyMapping0k" column="TC_IS_USER_COMPANY_MAPPING_0K"/>
+        <result property="tcIsUserGroupMapping0k" column="TC_IS_USER_GROUP_MAPPING_0K"/>
+        <result property="tcIsUserMethodMapping0k" column="TC_IS_USER_METHOD_MAPPING_0K"/>
+        <result property="tcIsUserCustomerMapping0k" column="TC_IS_USER_CUSTOMER_MAPPING_0K"/>
+        <result property="tcIsUserStoreMapping0k" column="TC_IS_USER_STORE_MAPPING_0K"/>
+        <result property="tcIsUserCountryMapping0k" column="TC_IS_USER_COUNTRY_MAPPING_0K"/>
+        <result property="tcIsUserRegionMapping0k" column="TC_IS_USER_REGION_MAPPING_0K"/>
+        <result property="tcIsUserProvinceMapping0k" column="TC_IS_USER_PROVINCE_MAPPING_0K"/>
+        <result property="tcIsUserCityMapping0k" column="TC_IS_USER_CITY_MAPPING_0K"/>
+        <result property="tcIsUserStoreWwMapping0k" column="TC_IS_USER_STORE_WW_MAPPING_0K"/>
+        <result property="tcIsUserTeamMapping0k" column="TC_IS_USER_TEAM_MAPPING_0K"/>
+        <result property="tcOldCode" column="TC_OLD_CODE"/>
+	</resultMap>
+  	
+	<sql id="columns">
+		t.TC_ROWID, t.TC_CODE, t.TC_NAME, t.TC_DESCRIPTION, t.TC_ADD_USER_ROWID, t.TC_ADD_TIME, t.TC_UPDATE_USER_ROWID, t.TC_UPDATE_TIME, t.TC_DELETE_USER_ROWID, t.TC_DELETE_TIME, t.TC_ACTIVE_USER_ROWID, t.TC_ACTIVE_TIME, t.TC_CLOSE_USER_ROWID, t.TC_CLOSE_TIME, t.TC_STATUS, t.TC_PASSWORD, t.TC_USER_TYPE, t.TC_DEPARTMENT_ROWID, t.TC_PWD_MODIFY_TIME, t.TC_PWD_VALID_TIME, t.TC_FAILURE_TIME, t.TC_LAST_LOGIN_TIME, t.TC_IS_USER_ENTERPRISE_MAP_0A, t.TC_IS_USER_COMPANY_MAPPING_0A, t.TC_IS_USER_GROUP_MAPPING_0A, t.TC_IS_USER_METHOD_MAPPING_0A, t.TC_IS_USER_CUSTOMER_MAPPING_0A, t.TC_IS_USER_STORE_MAPPING_0A, t.TC_IS_USER_COUNTRY_MAPPING_0A, t.TC_IS_USER_REGION_MAPPING_0A, t.TC_IS_USER_PROVINCE_MAPPING_0A, t.TC_IS_USER_CITY_MAPPING_0A, t.TC_IS_USER_ENTERPRISE_MAP_0B, t.TC_IS_USER_COMPANY_MAPPING_0B, t.TC_IS_USER_GROUP_MAPPING_0B, t.TC_IS_USER_METHOD_MAPPING_0B, t.TC_IS_USER_CUSTOMER_MAPPING_0B, t.TC_IS_USER_STORE_MAPPING_0B, t.TC_IS_USER_COUNTRY_MAPPING_0B, t.TC_IS_USER_REGION_MAPPING_0B, t.TC_IS_USER_PROVINCE_MAPPING_0B, t.TC_IS_USER_CITY_MAPPING_0B, t.TC_IS_USER_ENTERPRISE_MAP_0C, t.TC_IS_USER_COMPANY_MAPPING_0C, t.TC_IS_USER_GROUP_MAPPING_0C, t.TC_IS_USER_METHOD_MAPPING_0C, t.TC_IS_USER_CUSTOMER_MAPPING_0C, t.TC_IS_USER_STORE_MAPPING_0C, t.TC_IS_USER_COUNTRY_MAPPING_0C, t.TC_IS_USER_REGION_MAPPING_0C, t.TC_IS_USER_PROVINCE_MAPPING_0C, t.TC_IS_USER_CITY_MAPPING_0C, t.TC_IS_USER_ENTERPRISE_MAP_0D, t.TC_IS_USER_COMPANY_MAPPING_0D, t.TC_IS_USER_GROUP_MAPPING_0D, t.TC_IS_USER_METHOD_MAPPING_0D, t.TC_IS_USER_CUSTOMER_MAPPING_0D, t.TC_IS_USER_STORE_MAPPING_0D, t.TC_IS_USER_COUNTRY_MAPPING_0D, t.TC_IS_USER_REGION_MAPPING_0D, t.TC_IS_USER_PROVINCE_MAPPING_0D, t.TC_IS_USER_CITY_MAPPING_0D, t.TC_IS_USER_ENTERPRISE_MAP_0E, t.TC_IS_USER_COMPANY_MAPPING_0E, t.TC_IS_USER_GROUP_MAPPING_0E, t.TC_IS_USER_METHOD_MAPPING_0E, t.TC_IS_USER_CUSTOMER_MAPPING_0E, t.TC_IS_USER_STORE_MAPPING_0E, t.TC_IS_USER_COUNTRY_MAPPING_0E, t.TC_IS_USER_REGION_MAPPING_0E, t.TC_IS_USER_PROVINCE_MAPPING_0E, t.TC_IS_USER_CITY_MAPPING_0E, t.TC_IS_USER_ENTERPRISE_MAP_0F, t.TC_IS_USER_COMPANY_MAPPING_0F, t.TC_IS_USER_GROUP_MAPPING_0F, t.TC_IS_USER_METHOD_MAPPING_0F, t.TC_IS_USER_CUSTOMER_MAPPING_0F, t.TC_IS_USER_STORE_MAPPING_0F, t.TC_IS_USER_COUNTRY_MAPPING_0F, t.TC_IS_USER_REGION_MAPPING_0F, t.TC_IS_USER_PROVINCE_MAPPING_0F, t.TC_IS_USER_CITY_MAPPING_0F, t.TC_IS_USER_ENTERPRISE_MAP_0G, t.TC_IS_USER_COMPANY_MAPPING_0G, t.TC_IS_USER_GROUP_MAPPING_0G, t.TC_IS_USER_METHOD_MAPPING_0G, t.TC_IS_USER_CUSTOMER_MAPPING_0G, t.TC_IS_USER_STORE_MAPPING_0G, t.TC_IS_USER_COUNTRY_MAPPING_0G, t.TC_IS_USER_REGION_MAPPING_0G, t.TC_IS_USER_PROVINCE_MAPPING_0G, t.TC_IS_USER_CITY_MAPPING_0G, t.TC_IS_USER_ENTERPRISE_MAP_0H, t.TC_IS_USER_COMPANY_MAPPING_0H, t.TC_IS_USER_GROUP_MAPPING_0H, t.TC_IS_USER_METHOD_MAPPING_0H, t.TC_IS_USER_CUSTOMER_MAPPING_0H, t.TC_IS_USER_STORE_MAPPING_0H, t.TC_IS_USER_COUNTRY_MAPPING_0H, t.TC_IS_USER_REGION_MAPPING_0H, t.TC_IS_USER_PROVINCE_MAPPING_0H, t.TC_IS_USER_CITY_MAPPING_0H, t.TC_IS_USER_ENTERPRISE_MAP_0I, t.TC_IS_USER_COMPANY_MAPPING_0I, t.TC_IS_USER_GROUP_MAPPING_0I, t.TC_IS_USER_METHOD_MAPPING_0I, t.TC_IS_USER_CUSTOMER_MAPPING_0I, t.TC_IS_USER_STORE_MAPPING_0I, t.TC_IS_USER_COUNTRY_MAPPING_0I, t.TC_IS_USER_REGION_MAPPING_0I, t.TC_IS_USER_PROVINCE_MAPPING_0I, t.TC_IS_USER_CITY_MAPPING_0I, t.TC_IS_USER_BRAND_MAPPING_0A, t.TC_IS_USER_BRAND_MAPPING_0B, t.TC_MAIN_CUSTOMER_ROWID, t.TC_MAIN_DOWN_CUSTOMER_ROWID, t.TC_IS_USER_FACTORY_MAPPING_1A, t.TC_IS_USER_FACTORY_MAPPING_1B, t.TC_IS_USER_STORE_WW_MAPPING_0A, t.TC_IS_USER_STORE_WW_MAPPING_0B, t.TC_IS_USER_STORE_WW_MAPPING_0C, t.TC_IS_USER_STORE_WW_MAPPING_0D, t.TC_IS_USER_STORE_WW_MAPPING_0E, t.TC_IS_USER_STORE_WW_MAPPING_0F, t.TC_IS_USER_STORE_WW_MAPPING_0G, t.TC_IS_USER_STORE_WW_MAPPING_0H, t.TC_IS_USER_STORE_WW_MAPPING_0I, t.TC_IS_USER_COMPANY_MAPPING_1A, t.TC_IS_USER_COMPANY_MAPPING_1B, t.TC_IS_USER_ENTERPRISE_MAP_1A, t.TC_IS_USER_GROUP_MAPPING_1A, t.TC_IS_USER_METHOD_MAPPING_1A, t.TC_IS_USER_CUSTOMER_MAPPING_1A, t.TC_IS_USER_COUNTRY_MAPPING_1A, t.TC_IS_USER_REGION_MAPPING_1A, t.TC_IS_USER_PROVINCE_MAPPING_1A, t.TC_IS_USER_CITY_MAPPING_1A, t.TC_IS_USER_STORE_WW_MAPPING_1A, t.TC_IS_USER_ENTERPRISE_MAP_1B, t.TC_IS_USER_GROUP_MAPPING_1B, t.TC_IS_USER_METHOD_MAPPING_1B, t.TC_IS_USER_CUSTOMER_MAPPING_1B, t.TC_IS_USER_COUNTRY_MAPPING_1B, t.TC_IS_USER_REGION_MAPPING_1B, t.TC_IS_USER_PROVINCE_MAPPING_1B, t.TC_IS_USER_CITY_MAPPING_1B, t.TC_IS_USER_STORE_WW_MAPPING_1B, t.TC_IS_USER_TEAM_MAPPING_0A, t.TC_IS_USER_TEAM_MAPPING_0B, t.TC_IS_USER_TEAM_MAPPING_0C, t.TC_IS_USER_TEAM_MAPPING_0D, t.TC_IS_USER_TEAM_MAPPING_0E, t.TC_IS_USER_TEAM_MAPPING_0F, t.TC_IS_USER_TEAM_MAPPING_0G, t.TC_IS_USER_TEAM_MAPPING_0H, t.TC_IS_USER_TEAM_MAPPING_0I, t.TC_IS_USER_TEAM_MAPPING_1A, t.TC_IS_USER_TEAM_MAPPING_1B, t.TC_IS_USER_ENTERPRISE_MAP_0J, t.TC_IS_USER_COMPANY_MAPPING_0J, t.TC_IS_USER_GROUP_MAPPING_0J, t.TC_IS_USER_METHOD_MAPPING_0J, t.TC_IS_USER_CUSTOMER_MAPPING_0J, t.TC_IS_USER_STORE_MAPPING_0J, t.TC_IS_USER_COUNTRY_MAPPING_0J, t.TC_IS_USER_REGION_MAPPING_0J, t.TC_IS_USER_PROVINCE_MAPPING_0J, t.TC_IS_USER_CITY_MAPPING_0J, t.TC_IS_USER_STORE_WW_MAPPING_0J, t.TC_IS_USER_TEAM_MAPPING_0J, t.TC_IS_USER_ENTERPRISE_MAP_0K, t.TC_IS_USER_COMPANY_MAPPING_0K, t.TC_IS_USER_GROUP_MAPPING_0K, t.TC_IS_USER_METHOD_MAPPING_0K, t.TC_IS_USER_CUSTOMER_MAPPING_0K, t.TC_IS_USER_STORE_MAPPING_0K, t.TC_IS_USER_COUNTRY_MAPPING_0K, t.TC_IS_USER_REGION_MAPPING_0K, t.TC_IS_USER_PROVINCE_MAPPING_0K, t.TC_IS_USER_CITY_MAPPING_0K, t.TC_IS_USER_STORE_WW_MAPPING_0K, t.TC_IS_USER_TEAM_MAPPING_0K, t.TC_OLD_CODE 
+	</sql>
+	
+	<sql id="order">
+		<choose>
+			<when test="@chok.devwork.Ognl@isNotEmpty(sort)">
+				ORDER BY tt.<include refid="orderParse1"/> ${order}
+			</when>
+			<when test="@chok.devwork.Ognl@isNotEmpty(multiSort) and @chok.devwork.Ognl@isEmpty(sort)">
+				ORDER BY <foreach collection="multiSort" index="index" item="item" separator=",">tt.<include refid="orderParse2" /> ${item.sortOrder}</foreach>  
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</sql>
+	<sql id="orderParse1">
+		<if test="sort == 'tcRowid'">TC_ROWID</if>
+		<if test="sort == 'tcCode'">TC_CODE</if>
+		<if test="sort == 'tcName'">TC_NAME</if>
+		<if test="sort == 'tcDescription'">TC_DESCRIPTION</if>
+		<if test="sort == 'tcAddUserRowid'">TC_ADD_USER_ROWID</if>
+		<if test="sort == 'tcAddTime'">TC_ADD_TIME</if>
+		<if test="sort == 'tcUpdateUserRowid'">TC_UPDATE_USER_ROWID</if>
+		<if test="sort == 'tcUpdateTime'">TC_UPDATE_TIME</if>
+		<if test="sort == 'tcDeleteUserRowid'">TC_DELETE_USER_ROWID</if>
+		<if test="sort == 'tcDeleteTime'">TC_DELETE_TIME</if>
+		<if test="sort == 'tcActiveUserRowid'">TC_ACTIVE_USER_ROWID</if>
+		<if test="sort == 'tcActiveTime'">TC_ACTIVE_TIME</if>
+		<if test="sort == 'tcCloseUserRowid'">TC_CLOSE_USER_ROWID</if>
+		<if test="sort == 'tcCloseTime'">TC_CLOSE_TIME</if>
+		<if test="sort == 'tcStatus'">TC_STATUS</if>
+		<if test="sort == 'tcPassword'">TC_PASSWORD</if>
+		<if test="sort == 'tcUserType'">TC_USER_TYPE</if>
+		<if test="sort == 'tcDepartmentRowid'">TC_DEPARTMENT_ROWID</if>
+		<if test="sort == 'tcPwdModifyTime'">TC_PWD_MODIFY_TIME</if>
+		<if test="sort == 'tcPwdValidTime'">TC_PWD_VALID_TIME</if>
+		<if test="sort == 'tcFailureTime'">TC_FAILURE_TIME</if>
+		<if test="sort == 'tcLastLoginTime'">TC_LAST_LOGIN_TIME</if>
+		<if test="sort == 'tcIsUserEnterpriseMap0a'">TC_IS_USER_ENTERPRISE_MAP_0A</if>
+		<if test="sort == 'tcIsUserCompanyMapping0a'">TC_IS_USER_COMPANY_MAPPING_0A</if>
+		<if test="sort == 'tcIsUserGroupMapping0a'">TC_IS_USER_GROUP_MAPPING_0A</if>
+		<if test="sort == 'tcIsUserMethodMapping0a'">TC_IS_USER_METHOD_MAPPING_0A</if>
+		<if test="sort == 'tcIsUserCustomerMapping0a'">TC_IS_USER_CUSTOMER_MAPPING_0A</if>
+		<if test="sort == 'tcIsUserStoreMapping0a'">TC_IS_USER_STORE_MAPPING_0A</if>
+		<if test="sort == 'tcIsUserCountryMapping0a'">TC_IS_USER_COUNTRY_MAPPING_0A</if>
+		<if test="sort == 'tcIsUserRegionMapping0a'">TC_IS_USER_REGION_MAPPING_0A</if>
+		<if test="sort == 'tcIsUserProvinceMapping0a'">TC_IS_USER_PROVINCE_MAPPING_0A</if>
+		<if test="sort == 'tcIsUserCityMapping0a'">TC_IS_USER_CITY_MAPPING_0A</if>
+		<if test="sort == 'tcIsUserEnterpriseMap0b'">TC_IS_USER_ENTERPRISE_MAP_0B</if>
+		<if test="sort == 'tcIsUserCompanyMapping0b'">TC_IS_USER_COMPANY_MAPPING_0B</if>
+		<if test="sort == 'tcIsUserGroupMapping0b'">TC_IS_USER_GROUP_MAPPING_0B</if>
+		<if test="sort == 'tcIsUserMethodMapping0b'">TC_IS_USER_METHOD_MAPPING_0B</if>
+		<if test="sort == 'tcIsUserCustomerMapping0b'">TC_IS_USER_CUSTOMER_MAPPING_0B</if>
+		<if test="sort == 'tcIsUserStoreMapping0b'">TC_IS_USER_STORE_MAPPING_0B</if>
+		<if test="sort == 'tcIsUserCountryMapping0b'">TC_IS_USER_COUNTRY_MAPPING_0B</if>
+		<if test="sort == 'tcIsUserRegionMapping0b'">TC_IS_USER_REGION_MAPPING_0B</if>
+		<if test="sort == 'tcIsUserProvinceMapping0b'">TC_IS_USER_PROVINCE_MAPPING_0B</if>
+		<if test="sort == 'tcIsUserCityMapping0b'">TC_IS_USER_CITY_MAPPING_0B</if>
+		<if test="sort == 'tcIsUserEnterpriseMap0c'">TC_IS_USER_ENTERPRISE_MAP_0C</if>
+		<if test="sort == 'tcIsUserCompanyMapping0c'">TC_IS_USER_COMPANY_MAPPING_0C</if>
+		<if test="sort == 'tcIsUserGroupMapping0c'">TC_IS_USER_GROUP_MAPPING_0C</if>
+		<if test="sort == 'tcIsUserMethodMapping0c'">TC_IS_USER_METHOD_MAPPING_0C</if>
+		<if test="sort == 'tcIsUserCustomerMapping0c'">TC_IS_USER_CUSTOMER_MAPPING_0C</if>
+		<if test="sort == 'tcIsUserStoreMapping0c'">TC_IS_USER_STORE_MAPPING_0C</if>
+		<if test="sort == 'tcIsUserCountryMapping0c'">TC_IS_USER_COUNTRY_MAPPING_0C</if>
+		<if test="sort == 'tcIsUserRegionMapping0c'">TC_IS_USER_REGION_MAPPING_0C</if>
+		<if test="sort == 'tcIsUserProvinceMapping0c'">TC_IS_USER_PROVINCE_MAPPING_0C</if>
+		<if test="sort == 'tcIsUserCityMapping0c'">TC_IS_USER_CITY_MAPPING_0C</if>
+		<if test="sort == 'tcIsUserEnterpriseMap0d'">TC_IS_USER_ENTERPRISE_MAP_0D</if>
+		<if test="sort == 'tcIsUserCompanyMapping0d'">TC_IS_USER_COMPANY_MAPPING_0D</if>
+		<if test="sort == 'tcIsUserGroupMapping0d'">TC_IS_USER_GROUP_MAPPING_0D</if>
+		<if test="sort == 'tcIsUserMethodMapping0d'">TC_IS_USER_METHOD_MAPPING_0D</if>
+		<if test="sort == 'tcIsUserCustomerMapping0d'">TC_IS_USER_CUSTOMER_MAPPING_0D</if>
+		<if test="sort == 'tcIsUserStoreMapping0d'">TC_IS_USER_STORE_MAPPING_0D</if>
+		<if test="sort == 'tcIsUserCountryMapping0d'">TC_IS_USER_COUNTRY_MAPPING_0D</if>
+		<if test="sort == 'tcIsUserRegionMapping0d'">TC_IS_USER_REGION_MAPPING_0D</if>
+		<if test="sort == 'tcIsUserProvinceMapping0d'">TC_IS_USER_PROVINCE_MAPPING_0D</if>
+		<if test="sort == 'tcIsUserCityMapping0d'">TC_IS_USER_CITY_MAPPING_0D</if>
+		<if test="sort == 'tcIsUserEnterpriseMap0e'">TC_IS_USER_ENTERPRISE_MAP_0E</if>
+		<if test="sort == 'tcIsUserCompanyMapping0e'">TC_IS_USER_COMPANY_MAPPING_0E</if>
+		<if test="sort == 'tcIsUserGroupMapping0e'">TC_IS_USER_GROUP_MAPPING_0E</if>
+		<if test="sort == 'tcIsUserMethodMapping0e'">TC_IS_USER_METHOD_MAPPING_0E</if>
+		<if test="sort == 'tcIsUserCustomerMapping0e'">TC_IS_USER_CUSTOMER_MAPPING_0E</if>
+		<if test="sort == 'tcIsUserStoreMapping0e'">TC_IS_USER_STORE_MAPPING_0E</if>
+		<if test="sort == 'tcIsUserCountryMapping0e'">TC_IS_USER_COUNTRY_MAPPING_0E</if>
+		<if test="sort == 'tcIsUserRegionMapping0e'">TC_IS_USER_REGION_MAPPING_0E</if>
+		<if test="sort == 'tcIsUserProvinceMapping0e'">TC_IS_USER_PROVINCE_MAPPING_0E</if>
+		<if test="sort == 'tcIsUserCityMapping0e'">TC_IS_USER_CITY_MAPPING_0E</if>
+		<if test="sort == 'tcIsUserEnterpriseMap0f'">TC_IS_USER_ENTERPRISE_MAP_0F</if>
+		<if test="sort == 'tcIsUserCompanyMapping0f'">TC_IS_USER_COMPANY_MAPPING_0F</if>
+		<if test="sort == 'tcIsUserGroupMapping0f'">TC_IS_USER_GROUP_MAPPING_0F</if>
+		<if test="sort == 'tcIsUserMethodMapping0f'">TC_IS_USER_METHOD_MAPPING_0F</if>
+		<if test="sort == 'tcIsUserCustomerMapping0f'">TC_IS_USER_CUSTOMER_MAPPING_0F</if>
+		<if test="sort == 'tcIsUserStoreMapping0f'">TC_IS_USER_STORE_MAPPING_0F</if>
+		<if test="sort == 'tcIsUserCountryMapping0f'">TC_IS_USER_COUNTRY_MAPPING_0F</if>
+		<if test="sort == 'tcIsUserRegionMapping0f'">TC_IS_USER_REGION_MAPPING_0F</if>
+		<if test="sort == 'tcIsUserProvinceMapping0f'">TC_IS_USER_PROVINCE_MAPPING_0F</if>
+		<if test="sort == 'tcIsUserCityMapping0f'">TC_IS_USER_CITY_MAPPING_0F</if>
+		<if test="sort == 'tcIsUserEnterpriseMap0g'">TC_IS_USER_ENTERPRISE_MAP_0G</if>
+		<if test="sort == 'tcIsUserCompanyMapping0g'">TC_IS_USER_COMPANY_MAPPING_0G</if>
+		<if test="sort == 'tcIsUserGroupMapping0g'">TC_IS_USER_GROUP_MAPPING_0G</if>
+		<if test="sort == 'tcIsUserMethodMapping0g'">TC_IS_USER_METHOD_MAPPING_0G</if>
+		<if test="sort == 'tcIsUserCustomerMapping0g'">TC_IS_USER_CUSTOMER_MAPPING_0G</if>
+		<if test="sort == 'tcIsUserStoreMapping0g'">TC_IS_USER_STORE_MAPPING_0G</if>
+		<if test="sort == 'tcIsUserCountryMapping0g'">TC_IS_USER_COUNTRY_MAPPING_0G</if>
+		<if test="sort == 'tcIsUserRegionMapping0g'">TC_IS_USER_REGION_MAPPING_0G</if>
+		<if test="sort == 'tcIsUserProvinceMapping0g'">TC_IS_USER_PROVINCE_MAPPING_0G</if>
+		<if test="sort == 'tcIsUserCityMapping0g'">TC_IS_USER_CITY_MAPPING_0G</if>
+		<if test="sort == 'tcIsUserEnterpriseMap0h'">TC_IS_USER_ENTERPRISE_MAP_0H</if>
+		<if test="sort == 'tcIsUserCompanyMapping0h'">TC_IS_USER_COMPANY_MAPPING_0H</if>
+		<if test="sort == 'tcIsUserGroupMapping0h'">TC_IS_USER_GROUP_MAPPING_0H</if>
+		<if test="sort == 'tcIsUserMethodMapping0h'">TC_IS_USER_METHOD_MAPPING_0H</if>
+		<if test="sort == 'tcIsUserCustomerMapping0h'">TC_IS_USER_CUSTOMER_MAPPING_0H</if>
+		<if test="sort == 'tcIsUserStoreMapping0h'">TC_IS_USER_STORE_MAPPING_0H</if>
+		<if test="sort == 'tcIsUserCountryMapping0h'">TC_IS_USER_COUNTRY_MAPPING_0H</if>
+		<if test="sort == 'tcIsUserRegionMapping0h'">TC_IS_USER_REGION_MAPPING_0H</if>
+		<if test="sort == 'tcIsUserProvinceMapping0h'">TC_IS_USER_PROVINCE_MAPPING_0H</if>
+		<if test="sort == 'tcIsUserCityMapping0h'">TC_IS_USER_CITY_MAPPING_0H</if>
+		<if test="sort == 'tcIsUserEnterpriseMap0i'">TC_IS_USER_ENTERPRISE_MAP_0I</if>
+		<if test="sort == 'tcIsUserCompanyMapping0i'">TC_IS_USER_COMPANY_MAPPING_0I</if>
+		<if test="sort == 'tcIsUserGroupMapping0i'">TC_IS_USER_GROUP_MAPPING_0I</if>
+		<if test="sort == 'tcIsUserMethodMapping0i'">TC_IS_USER_METHOD_MAPPING_0I</if>
+		<if test="sort == 'tcIsUserCustomerMapping0i'">TC_IS_USER_CUSTOMER_MAPPING_0I</if>
+		<if test="sort == 'tcIsUserStoreMapping0i'">TC_IS_USER_STORE_MAPPING_0I</if>
+		<if test="sort == 'tcIsUserCountryMapping0i'">TC_IS_USER_COUNTRY_MAPPING_0I</if>
+		<if test="sort == 'tcIsUserRegionMapping0i'">TC_IS_USER_REGION_MAPPING_0I</if>
+		<if test="sort == 'tcIsUserProvinceMapping0i'">TC_IS_USER_PROVINCE_MAPPING_0I</if>
+		<if test="sort == 'tcIsUserCityMapping0i'">TC_IS_USER_CITY_MAPPING_0I</if>
+		<if test="sort == 'tcIsUserBrandMapping0a'">TC_IS_USER_BRAND_MAPPING_0A</if>
+		<if test="sort == 'tcIsUserBrandMapping0b'">TC_IS_USER_BRAND_MAPPING_0B</if>
+		<if test="sort == 'tcMainCustomerRowid'">TC_MAIN_CUSTOMER_ROWID</if>
+		<if test="sort == 'tcMainDownCustomerRowid'">TC_MAIN_DOWN_CUSTOMER_ROWID</if>
+		<if test="sort == 'tcIsUserFactoryMapping1a'">TC_IS_USER_FACTORY_MAPPING_1A</if>
+		<if test="sort == 'tcIsUserFactoryMapping1b'">TC_IS_USER_FACTORY_MAPPING_1B</if>
+		<if test="sort == 'tcIsUserStoreWwMapping0a'">TC_IS_USER_STORE_WW_MAPPING_0A</if>
+		<if test="sort == 'tcIsUserStoreWwMapping0b'">TC_IS_USER_STORE_WW_MAPPING_0B</if>
+		<if test="sort == 'tcIsUserStoreWwMapping0c'">TC_IS_USER_STORE_WW_MAPPING_0C</if>
+		<if test="sort == 'tcIsUserStoreWwMapping0d'">TC_IS_USER_STORE_WW_MAPPING_0D</if>
+		<if test="sort == 'tcIsUserStoreWwMapping0e'">TC_IS_USER_STORE_WW_MAPPING_0E</if>
+		<if test="sort == 'tcIsUserStoreWwMapping0f'">TC_IS_USER_STORE_WW_MAPPING_0F</if>
+		<if test="sort == 'tcIsUserStoreWwMapping0g'">TC_IS_USER_STORE_WW_MAPPING_0G</if>
+		<if test="sort == 'tcIsUserStoreWwMapping0h'">TC_IS_USER_STORE_WW_MAPPING_0H</if>
+		<if test="sort == 'tcIsUserStoreWwMapping0i'">TC_IS_USER_STORE_WW_MAPPING_0I</if>
+		<if test="sort == 'tcIsUserCompanyMapping1a'">TC_IS_USER_COMPANY_MAPPING_1A</if>
+		<if test="sort == 'tcIsUserCompanyMapping1b'">TC_IS_USER_COMPANY_MAPPING_1B</if>
+		<if test="sort == 'tcIsUserEnterpriseMap1a'">TC_IS_USER_ENTERPRISE_MAP_1A</if>
+		<if test="sort == 'tcIsUserGroupMapping1a'">TC_IS_USER_GROUP_MAPPING_1A</if>
+		<if test="sort == 'tcIsUserMethodMapping1a'">TC_IS_USER_METHOD_MAPPING_1A</if>
+		<if test="sort == 'tcIsUserCustomerMapping1a'">TC_IS_USER_CUSTOMER_MAPPING_1A</if>
+		<if test="sort == 'tcIsUserCountryMapping1a'">TC_IS_USER_COUNTRY_MAPPING_1A</if>
+		<if test="sort == 'tcIsUserRegionMapping1a'">TC_IS_USER_REGION_MAPPING_1A</if>
+		<if test="sort == 'tcIsUserProvinceMapping1a'">TC_IS_USER_PROVINCE_MAPPING_1A</if>
+		<if test="sort == 'tcIsUserCityMapping1a'">TC_IS_USER_CITY_MAPPING_1A</if>
+		<if test="sort == 'tcIsUserStoreWwMapping1a'">TC_IS_USER_STORE_WW_MAPPING_1A</if>
+		<if test="sort == 'tcIsUserEnterpriseMap1b'">TC_IS_USER_ENTERPRISE_MAP_1B</if>
+		<if test="sort == 'tcIsUserGroupMapping1b'">TC_IS_USER_GROUP_MAPPING_1B</if>
+		<if test="sort == 'tcIsUserMethodMapping1b'">TC_IS_USER_METHOD_MAPPING_1B</if>
+		<if test="sort == 'tcIsUserCustomerMapping1b'">TC_IS_USER_CUSTOMER_MAPPING_1B</if>
+		<if test="sort == 'tcIsUserCountryMapping1b'">TC_IS_USER_COUNTRY_MAPPING_1B</if>
+		<if test="sort == 'tcIsUserRegionMapping1b'">TC_IS_USER_REGION_MAPPING_1B</if>
+		<if test="sort == 'tcIsUserProvinceMapping1b'">TC_IS_USER_PROVINCE_MAPPING_1B</if>
+		<if test="sort == 'tcIsUserCityMapping1b'">TC_IS_USER_CITY_MAPPING_1B</if>
+		<if test="sort == 'tcIsUserStoreWwMapping1b'">TC_IS_USER_STORE_WW_MAPPING_1B</if>
+		<if test="sort == 'tcIsUserTeamMapping0a'">TC_IS_USER_TEAM_MAPPING_0A</if>
+		<if test="sort == 'tcIsUserTeamMapping0b'">TC_IS_USER_TEAM_MAPPING_0B</if>
+		<if test="sort == 'tcIsUserTeamMapping0c'">TC_IS_USER_TEAM_MAPPING_0C</if>
+		<if test="sort == 'tcIsUserTeamMapping0d'">TC_IS_USER_TEAM_MAPPING_0D</if>
+		<if test="sort == 'tcIsUserTeamMapping0e'">TC_IS_USER_TEAM_MAPPING_0E</if>
+		<if test="sort == 'tcIsUserTeamMapping0f'">TC_IS_USER_TEAM_MAPPING_0F</if>
+		<if test="sort == 'tcIsUserTeamMapping0g'">TC_IS_USER_TEAM_MAPPING_0G</if>
+		<if test="sort == 'tcIsUserTeamMapping0h'">TC_IS_USER_TEAM_MAPPING_0H</if>
+		<if test="sort == 'tcIsUserTeamMapping0i'">TC_IS_USER_TEAM_MAPPING_0I</if>
+		<if test="sort == 'tcIsUserTeamMapping1a'">TC_IS_USER_TEAM_MAPPING_1A</if>
+		<if test="sort == 'tcIsUserTeamMapping1b'">TC_IS_USER_TEAM_MAPPING_1B</if>
+		<if test="sort == 'tcIsUserEnterpriseMap0j'">TC_IS_USER_ENTERPRISE_MAP_0J</if>
+		<if test="sort == 'tcIsUserCompanyMapping0j'">TC_IS_USER_COMPANY_MAPPING_0J</if>
+		<if test="sort == 'tcIsUserGroupMapping0j'">TC_IS_USER_GROUP_MAPPING_0J</if>
+		<if test="sort == 'tcIsUserMethodMapping0j'">TC_IS_USER_METHOD_MAPPING_0J</if>
+		<if test="sort == 'tcIsUserCustomerMapping0j'">TC_IS_USER_CUSTOMER_MAPPING_0J</if>
+		<if test="sort == 'tcIsUserStoreMapping0j'">TC_IS_USER_STORE_MAPPING_0J</if>
+		<if test="sort == 'tcIsUserCountryMapping0j'">TC_IS_USER_COUNTRY_MAPPING_0J</if>
+		<if test="sort == 'tcIsUserRegionMapping0j'">TC_IS_USER_REGION_MAPPING_0J</if>
+		<if test="sort == 'tcIsUserProvinceMapping0j'">TC_IS_USER_PROVINCE_MAPPING_0J</if>
+		<if test="sort == 'tcIsUserCityMapping0j'">TC_IS_USER_CITY_MAPPING_0J</if>
+		<if test="sort == 'tcIsUserStoreWwMapping0j'">TC_IS_USER_STORE_WW_MAPPING_0J</if>
+		<if test="sort == 'tcIsUserTeamMapping0j'">TC_IS_USER_TEAM_MAPPING_0J</if>
+		<if test="sort == 'tcIsUserEnterpriseMap0k'">TC_IS_USER_ENTERPRISE_MAP_0K</if>
+		<if test="sort == 'tcIsUserCompanyMapping0k'">TC_IS_USER_COMPANY_MAPPING_0K</if>
+		<if test="sort == 'tcIsUserGroupMapping0k'">TC_IS_USER_GROUP_MAPPING_0K</if>
+		<if test="sort == 'tcIsUserMethodMapping0k'">TC_IS_USER_METHOD_MAPPING_0K</if>
+		<if test="sort == 'tcIsUserCustomerMapping0k'">TC_IS_USER_CUSTOMER_MAPPING_0K</if>
+		<if test="sort == 'tcIsUserStoreMapping0k'">TC_IS_USER_STORE_MAPPING_0K</if>
+		<if test="sort == 'tcIsUserCountryMapping0k'">TC_IS_USER_COUNTRY_MAPPING_0K</if>
+		<if test="sort == 'tcIsUserRegionMapping0k'">TC_IS_USER_REGION_MAPPING_0K</if>
+		<if test="sort == 'tcIsUserProvinceMapping0k'">TC_IS_USER_PROVINCE_MAPPING_0K</if>
+		<if test="sort == 'tcIsUserCityMapping0k'">TC_IS_USER_CITY_MAPPING_0K</if>
+		<if test="sort == 'tcIsUserStoreWwMapping0k'">TC_IS_USER_STORE_WW_MAPPING_0K</if>
+		<if test="sort == 'tcIsUserTeamMapping0k'">TC_IS_USER_TEAM_MAPPING_0K</if>
+		<if test="sort == 'tcOldCode'">TC_OLD_CODE</if>
+	</sql>
+	<sql id="orderParse2">
+		<if test="item.sortName == 'tcRowid'">TC_ROWID</if>
+		<if test="item.sortName == 'tcCode'">TC_CODE</if>
+		<if test="item.sortName == 'tcName'">TC_NAME</if>
+		<if test="item.sortName == 'tcDescription'">TC_DESCRIPTION</if>
+		<if test="item.sortName == 'tcAddUserRowid'">TC_ADD_USER_ROWID</if>
+		<if test="item.sortName == 'tcAddTime'">TC_ADD_TIME</if>
+		<if test="item.sortName == 'tcUpdateUserRowid'">TC_UPDATE_USER_ROWID</if>
+		<if test="item.sortName == 'tcUpdateTime'">TC_UPDATE_TIME</if>
+		<if test="item.sortName == 'tcDeleteUserRowid'">TC_DELETE_USER_ROWID</if>
+		<if test="item.sortName == 'tcDeleteTime'">TC_DELETE_TIME</if>
+		<if test="item.sortName == 'tcActiveUserRowid'">TC_ACTIVE_USER_ROWID</if>
+		<if test="item.sortName == 'tcActiveTime'">TC_ACTIVE_TIME</if>
+		<if test="item.sortName == 'tcCloseUserRowid'">TC_CLOSE_USER_ROWID</if>
+		<if test="item.sortName == 'tcCloseTime'">TC_CLOSE_TIME</if>
+		<if test="item.sortName == 'tcStatus'">TC_STATUS</if>
+		<if test="item.sortName == 'tcPassword'">TC_PASSWORD</if>
+		<if test="item.sortName == 'tcUserType'">TC_USER_TYPE</if>
+		<if test="item.sortName == 'tcDepartmentRowid'">TC_DEPARTMENT_ROWID</if>
+		<if test="item.sortName == 'tcPwdModifyTime'">TC_PWD_MODIFY_TIME</if>
+		<if test="item.sortName == 'tcPwdValidTime'">TC_PWD_VALID_TIME</if>
+		<if test="item.sortName == 'tcFailureTime'">TC_FAILURE_TIME</if>
+		<if test="item.sortName == 'tcLastLoginTime'">TC_LAST_LOGIN_TIME</if>
+		<if test="item.sortName == 'tcIsUserEnterpriseMap0a'">TC_IS_USER_ENTERPRISE_MAP_0A</if>
+		<if test="item.sortName == 'tcIsUserCompanyMapping0a'">TC_IS_USER_COMPANY_MAPPING_0A</if>
+		<if test="item.sortName == 'tcIsUserGroupMapping0a'">TC_IS_USER_GROUP_MAPPING_0A</if>
+		<if test="item.sortName == 'tcIsUserMethodMapping0a'">TC_IS_USER_METHOD_MAPPING_0A</if>
+		<if test="item.sortName == 'tcIsUserCustomerMapping0a'">TC_IS_USER_CUSTOMER_MAPPING_0A</if>
+		<if test="item.sortName == 'tcIsUserStoreMapping0a'">TC_IS_USER_STORE_MAPPING_0A</if>
+		<if test="item.sortName == 'tcIsUserCountryMapping0a'">TC_IS_USER_COUNTRY_MAPPING_0A</if>
+		<if test="item.sortName == 'tcIsUserRegionMapping0a'">TC_IS_USER_REGION_MAPPING_0A</if>
+		<if test="item.sortName == 'tcIsUserProvinceMapping0a'">TC_IS_USER_PROVINCE_MAPPING_0A</if>
+		<if test="item.sortName == 'tcIsUserCityMapping0a'">TC_IS_USER_CITY_MAPPING_0A</if>
+		<if test="item.sortName == 'tcIsUserEnterpriseMap0b'">TC_IS_USER_ENTERPRISE_MAP_0B</if>
+		<if test="item.sortName == 'tcIsUserCompanyMapping0b'">TC_IS_USER_COMPANY_MAPPING_0B</if>
+		<if test="item.sortName == 'tcIsUserGroupMapping0b'">TC_IS_USER_GROUP_MAPPING_0B</if>
+		<if test="item.sortName == 'tcIsUserMethodMapping0b'">TC_IS_USER_METHOD_MAPPING_0B</if>
+		<if test="item.sortName == 'tcIsUserCustomerMapping0b'">TC_IS_USER_CUSTOMER_MAPPING_0B</if>
+		<if test="item.sortName == 'tcIsUserStoreMapping0b'">TC_IS_USER_STORE_MAPPING_0B</if>
+		<if test="item.sortName == 'tcIsUserCountryMapping0b'">TC_IS_USER_COUNTRY_MAPPING_0B</if>
+		<if test="item.sortName == 'tcIsUserRegionMapping0b'">TC_IS_USER_REGION_MAPPING_0B</if>
+		<if test="item.sortName == 'tcIsUserProvinceMapping0b'">TC_IS_USER_PROVINCE_MAPPING_0B</if>
+		<if test="item.sortName == 'tcIsUserCityMapping0b'">TC_IS_USER_CITY_MAPPING_0B</if>
+		<if test="item.sortName == 'tcIsUserEnterpriseMap0c'">TC_IS_USER_ENTERPRISE_MAP_0C</if>
+		<if test="item.sortName == 'tcIsUserCompanyMapping0c'">TC_IS_USER_COMPANY_MAPPING_0C</if>
+		<if test="item.sortName == 'tcIsUserGroupMapping0c'">TC_IS_USER_GROUP_MAPPING_0C</if>
+		<if test="item.sortName == 'tcIsUserMethodMapping0c'">TC_IS_USER_METHOD_MAPPING_0C</if>
+		<if test="item.sortName == 'tcIsUserCustomerMapping0c'">TC_IS_USER_CUSTOMER_MAPPING_0C</if>
+		<if test="item.sortName == 'tcIsUserStoreMapping0c'">TC_IS_USER_STORE_MAPPING_0C</if>
+		<if test="item.sortName == 'tcIsUserCountryMapping0c'">TC_IS_USER_COUNTRY_MAPPING_0C</if>
+		<if test="item.sortName == 'tcIsUserRegionMapping0c'">TC_IS_USER_REGION_MAPPING_0C</if>
+		<if test="item.sortName == 'tcIsUserProvinceMapping0c'">TC_IS_USER_PROVINCE_MAPPING_0C</if>
+		<if test="item.sortName == 'tcIsUserCityMapping0c'">TC_IS_USER_CITY_MAPPING_0C</if>
+		<if test="item.sortName == 'tcIsUserEnterpriseMap0d'">TC_IS_USER_ENTERPRISE_MAP_0D</if>
+		<if test="item.sortName == 'tcIsUserCompanyMapping0d'">TC_IS_USER_COMPANY_MAPPING_0D</if>
+		<if test="item.sortName == 'tcIsUserGroupMapping0d'">TC_IS_USER_GROUP_MAPPING_0D</if>
+		<if test="item.sortName == 'tcIsUserMethodMapping0d'">TC_IS_USER_METHOD_MAPPING_0D</if>
+		<if test="item.sortName == 'tcIsUserCustomerMapping0d'">TC_IS_USER_CUSTOMER_MAPPING_0D</if>
+		<if test="item.sortName == 'tcIsUserStoreMapping0d'">TC_IS_USER_STORE_MAPPING_0D</if>
+		<if test="item.sortName == 'tcIsUserCountryMapping0d'">TC_IS_USER_COUNTRY_MAPPING_0D</if>
+		<if test="item.sortName == 'tcIsUserRegionMapping0d'">TC_IS_USER_REGION_MAPPING_0D</if>
+		<if test="item.sortName == 'tcIsUserProvinceMapping0d'">TC_IS_USER_PROVINCE_MAPPING_0D</if>
+		<if test="item.sortName == 'tcIsUserCityMapping0d'">TC_IS_USER_CITY_MAPPING_0D</if>
+		<if test="item.sortName == 'tcIsUserEnterpriseMap0e'">TC_IS_USER_ENTERPRISE_MAP_0E</if>
+		<if test="item.sortName == 'tcIsUserCompanyMapping0e'">TC_IS_USER_COMPANY_MAPPING_0E</if>
+		<if test="item.sortName == 'tcIsUserGroupMapping0e'">TC_IS_USER_GROUP_MAPPING_0E</if>
+		<if test="item.sortName == 'tcIsUserMethodMapping0e'">TC_IS_USER_METHOD_MAPPING_0E</if>
+		<if test="item.sortName == 'tcIsUserCustomerMapping0e'">TC_IS_USER_CUSTOMER_MAPPING_0E</if>
+		<if test="item.sortName == 'tcIsUserStoreMapping0e'">TC_IS_USER_STORE_MAPPING_0E</if>
+		<if test="item.sortName == 'tcIsUserCountryMapping0e'">TC_IS_USER_COUNTRY_MAPPING_0E</if>
+		<if test="item.sortName == 'tcIsUserRegionMapping0e'">TC_IS_USER_REGION_MAPPING_0E</if>
+		<if test="item.sortName == 'tcIsUserProvinceMapping0e'">TC_IS_USER_PROVINCE_MAPPING_0E</if>
+		<if test="item.sortName == 'tcIsUserCityMapping0e'">TC_IS_USER_CITY_MAPPING_0E</if>
+		<if test="item.sortName == 'tcIsUserEnterpriseMap0f'">TC_IS_USER_ENTERPRISE_MAP_0F</if>
+		<if test="item.sortName == 'tcIsUserCompanyMapping0f'">TC_IS_USER_COMPANY_MAPPING_0F</if>
+		<if test="item.sortName == 'tcIsUserGroupMapping0f'">TC_IS_USER_GROUP_MAPPING_0F</if>
+		<if test="item.sortName == 'tcIsUserMethodMapping0f'">TC_IS_USER_METHOD_MAPPING_0F</if>
+		<if test="item.sortName == 'tcIsUserCustomerMapping0f'">TC_IS_USER_CUSTOMER_MAPPING_0F</if>
+		<if test="item.sortName == 'tcIsUserStoreMapping0f'">TC_IS_USER_STORE_MAPPING_0F</if>
+		<if test="item.sortName == 'tcIsUserCountryMapping0f'">TC_IS_USER_COUNTRY_MAPPING_0F</if>
+		<if test="item.sortName == 'tcIsUserRegionMapping0f'">TC_IS_USER_REGION_MAPPING_0F</if>
+		<if test="item.sortName == 'tcIsUserProvinceMapping0f'">TC_IS_USER_PROVINCE_MAPPING_0F</if>
+		<if test="item.sortName == 'tcIsUserCityMapping0f'">TC_IS_USER_CITY_MAPPING_0F</if>
+		<if test="item.sortName == 'tcIsUserEnterpriseMap0g'">TC_IS_USER_ENTERPRISE_MAP_0G</if>
+		<if test="item.sortName == 'tcIsUserCompanyMapping0g'">TC_IS_USER_COMPANY_MAPPING_0G</if>
+		<if test="item.sortName == 'tcIsUserGroupMapping0g'">TC_IS_USER_GROUP_MAPPING_0G</if>
+		<if test="item.sortName == 'tcIsUserMethodMapping0g'">TC_IS_USER_METHOD_MAPPING_0G</if>
+		<if test="item.sortName == 'tcIsUserCustomerMapping0g'">TC_IS_USER_CUSTOMER_MAPPING_0G</if>
+		<if test="item.sortName == 'tcIsUserStoreMapping0g'">TC_IS_USER_STORE_MAPPING_0G</if>
+		<if test="item.sortName == 'tcIsUserCountryMapping0g'">TC_IS_USER_COUNTRY_MAPPING_0G</if>
+		<if test="item.sortName == 'tcIsUserRegionMapping0g'">TC_IS_USER_REGION_MAPPING_0G</if>
+		<if test="item.sortName == 'tcIsUserProvinceMapping0g'">TC_IS_USER_PROVINCE_MAPPING_0G</if>
+		<if test="item.sortName == 'tcIsUserCityMapping0g'">TC_IS_USER_CITY_MAPPING_0G</if>
+		<if test="item.sortName == 'tcIsUserEnterpriseMap0h'">TC_IS_USER_ENTERPRISE_MAP_0H</if>
+		<if test="item.sortName == 'tcIsUserCompanyMapping0h'">TC_IS_USER_COMPANY_MAPPING_0H</if>
+		<if test="item.sortName == 'tcIsUserGroupMapping0h'">TC_IS_USER_GROUP_MAPPING_0H</if>
+		<if test="item.sortName == 'tcIsUserMethodMapping0h'">TC_IS_USER_METHOD_MAPPING_0H</if>
+		<if test="item.sortName == 'tcIsUserCustomerMapping0h'">TC_IS_USER_CUSTOMER_MAPPING_0H</if>
+		<if test="item.sortName == 'tcIsUserStoreMapping0h'">TC_IS_USER_STORE_MAPPING_0H</if>
+		<if test="item.sortName == 'tcIsUserCountryMapping0h'">TC_IS_USER_COUNTRY_MAPPING_0H</if>
+		<if test="item.sortName == 'tcIsUserRegionMapping0h'">TC_IS_USER_REGION_MAPPING_0H</if>
+		<if test="item.sortName == 'tcIsUserProvinceMapping0h'">TC_IS_USER_PROVINCE_MAPPING_0H</if>
+		<if test="item.sortName == 'tcIsUserCityMapping0h'">TC_IS_USER_CITY_MAPPING_0H</if>
+		<if test="item.sortName == 'tcIsUserEnterpriseMap0i'">TC_IS_USER_ENTERPRISE_MAP_0I</if>
+		<if test="item.sortName == 'tcIsUserCompanyMapping0i'">TC_IS_USER_COMPANY_MAPPING_0I</if>
+		<if test="item.sortName == 'tcIsUserGroupMapping0i'">TC_IS_USER_GROUP_MAPPING_0I</if>
+		<if test="item.sortName == 'tcIsUserMethodMapping0i'">TC_IS_USER_METHOD_MAPPING_0I</if>
+		<if test="item.sortName == 'tcIsUserCustomerMapping0i'">TC_IS_USER_CUSTOMER_MAPPING_0I</if>
+		<if test="item.sortName == 'tcIsUserStoreMapping0i'">TC_IS_USER_STORE_MAPPING_0I</if>
+		<if test="item.sortName == 'tcIsUserCountryMapping0i'">TC_IS_USER_COUNTRY_MAPPING_0I</if>
+		<if test="item.sortName == 'tcIsUserRegionMapping0i'">TC_IS_USER_REGION_MAPPING_0I</if>
+		<if test="item.sortName == 'tcIsUserProvinceMapping0i'">TC_IS_USER_PROVINCE_MAPPING_0I</if>
+		<if test="item.sortName == 'tcIsUserCityMapping0i'">TC_IS_USER_CITY_MAPPING_0I</if>
+		<if test="item.sortName == 'tcIsUserBrandMapping0a'">TC_IS_USER_BRAND_MAPPING_0A</if>
+		<if test="item.sortName == 'tcIsUserBrandMapping0b'">TC_IS_USER_BRAND_MAPPING_0B</if>
+		<if test="item.sortName == 'tcMainCustomerRowid'">TC_MAIN_CUSTOMER_ROWID</if>
+		<if test="item.sortName == 'tcMainDownCustomerRowid'">TC_MAIN_DOWN_CUSTOMER_ROWID</if>
+		<if test="item.sortName == 'tcIsUserFactoryMapping1a'">TC_IS_USER_FACTORY_MAPPING_1A</if>
+		<if test="item.sortName == 'tcIsUserFactoryMapping1b'">TC_IS_USER_FACTORY_MAPPING_1B</if>
+		<if test="item.sortName == 'tcIsUserStoreWwMapping0a'">TC_IS_USER_STORE_WW_MAPPING_0A</if>
+		<if test="item.sortName == 'tcIsUserStoreWwMapping0b'">TC_IS_USER_STORE_WW_MAPPING_0B</if>
+		<if test="item.sortName == 'tcIsUserStoreWwMapping0c'">TC_IS_USER_STORE_WW_MAPPING_0C</if>
+		<if test="item.sortName == 'tcIsUserStoreWwMapping0d'">TC_IS_USER_STORE_WW_MAPPING_0D</if>
+		<if test="item.sortName == 'tcIsUserStoreWwMapping0e'">TC_IS_USER_STORE_WW_MAPPING_0E</if>
+		<if test="item.sortName == 'tcIsUserStoreWwMapping0f'">TC_IS_USER_STORE_WW_MAPPING_0F</if>
+		<if test="item.sortName == 'tcIsUserStoreWwMapping0g'">TC_IS_USER_STORE_WW_MAPPING_0G</if>
+		<if test="item.sortName == 'tcIsUserStoreWwMapping0h'">TC_IS_USER_STORE_WW_MAPPING_0H</if>
+		<if test="item.sortName == 'tcIsUserStoreWwMapping0i'">TC_IS_USER_STORE_WW_MAPPING_0I</if>
+		<if test="item.sortName == 'tcIsUserCompanyMapping1a'">TC_IS_USER_COMPANY_MAPPING_1A</if>
+		<if test="item.sortName == 'tcIsUserCompanyMapping1b'">TC_IS_USER_COMPANY_MAPPING_1B</if>
+		<if test="item.sortName == 'tcIsUserEnterpriseMap1a'">TC_IS_USER_ENTERPRISE_MAP_1A</if>
+		<if test="item.sortName == 'tcIsUserGroupMapping1a'">TC_IS_USER_GROUP_MAPPING_1A</if>
+		<if test="item.sortName == 'tcIsUserMethodMapping1a'">TC_IS_USER_METHOD_MAPPING_1A</if>
+		<if test="item.sortName == 'tcIsUserCustomerMapping1a'">TC_IS_USER_CUSTOMER_MAPPING_1A</if>
+		<if test="item.sortName == 'tcIsUserCountryMapping1a'">TC_IS_USER_COUNTRY_MAPPING_1A</if>
+		<if test="item.sortName == 'tcIsUserRegionMapping1a'">TC_IS_USER_REGION_MAPPING_1A</if>
+		<if test="item.sortName == 'tcIsUserProvinceMapping1a'">TC_IS_USER_PROVINCE_MAPPING_1A</if>
+		<if test="item.sortName == 'tcIsUserCityMapping1a'">TC_IS_USER_CITY_MAPPING_1A</if>
+		<if test="item.sortName == 'tcIsUserStoreWwMapping1a'">TC_IS_USER_STORE_WW_MAPPING_1A</if>
+		<if test="item.sortName == 'tcIsUserEnterpriseMap1b'">TC_IS_USER_ENTERPRISE_MAP_1B</if>
+		<if test="item.sortName == 'tcIsUserGroupMapping1b'">TC_IS_USER_GROUP_MAPPING_1B</if>
+		<if test="item.sortName == 'tcIsUserMethodMapping1b'">TC_IS_USER_METHOD_MAPPING_1B</if>
+		<if test="item.sortName == 'tcIsUserCustomerMapping1b'">TC_IS_USER_CUSTOMER_MAPPING_1B</if>
+		<if test="item.sortName == 'tcIsUserCountryMapping1b'">TC_IS_USER_COUNTRY_MAPPING_1B</if>
+		<if test="item.sortName == 'tcIsUserRegionMapping1b'">TC_IS_USER_REGION_MAPPING_1B</if>
+		<if test="item.sortName == 'tcIsUserProvinceMapping1b'">TC_IS_USER_PROVINCE_MAPPING_1B</if>
+		<if test="item.sortName == 'tcIsUserCityMapping1b'">TC_IS_USER_CITY_MAPPING_1B</if>
+		<if test="item.sortName == 'tcIsUserStoreWwMapping1b'">TC_IS_USER_STORE_WW_MAPPING_1B</if>
+		<if test="item.sortName == 'tcIsUserTeamMapping0a'">TC_IS_USER_TEAM_MAPPING_0A</if>
+		<if test="item.sortName == 'tcIsUserTeamMapping0b'">TC_IS_USER_TEAM_MAPPING_0B</if>
+		<if test="item.sortName == 'tcIsUserTeamMapping0c'">TC_IS_USER_TEAM_MAPPING_0C</if>
+		<if test="item.sortName == 'tcIsUserTeamMapping0d'">TC_IS_USER_TEAM_MAPPING_0D</if>
+		<if test="item.sortName == 'tcIsUserTeamMapping0e'">TC_IS_USER_TEAM_MAPPING_0E</if>
+		<if test="item.sortName == 'tcIsUserTeamMapping0f'">TC_IS_USER_TEAM_MAPPING_0F</if>
+		<if test="item.sortName == 'tcIsUserTeamMapping0g'">TC_IS_USER_TEAM_MAPPING_0G</if>
+		<if test="item.sortName == 'tcIsUserTeamMapping0h'">TC_IS_USER_TEAM_MAPPING_0H</if>
+		<if test="item.sortName == 'tcIsUserTeamMapping0i'">TC_IS_USER_TEAM_MAPPING_0I</if>
+		<if test="item.sortName == 'tcIsUserTeamMapping1a'">TC_IS_USER_TEAM_MAPPING_1A</if>
+		<if test="item.sortName == 'tcIsUserTeamMapping1b'">TC_IS_USER_TEAM_MAPPING_1B</if>
+		<if test="item.sortName == 'tcIsUserEnterpriseMap0j'">TC_IS_USER_ENTERPRISE_MAP_0J</if>
+		<if test="item.sortName == 'tcIsUserCompanyMapping0j'">TC_IS_USER_COMPANY_MAPPING_0J</if>
+		<if test="item.sortName == 'tcIsUserGroupMapping0j'">TC_IS_USER_GROUP_MAPPING_0J</if>
+		<if test="item.sortName == 'tcIsUserMethodMapping0j'">TC_IS_USER_METHOD_MAPPING_0J</if>
+		<if test="item.sortName == 'tcIsUserCustomerMapping0j'">TC_IS_USER_CUSTOMER_MAPPING_0J</if>
+		<if test="item.sortName == 'tcIsUserStoreMapping0j'">TC_IS_USER_STORE_MAPPING_0J</if>
+		<if test="item.sortName == 'tcIsUserCountryMapping0j'">TC_IS_USER_COUNTRY_MAPPING_0J</if>
+		<if test="item.sortName == 'tcIsUserRegionMapping0j'">TC_IS_USER_REGION_MAPPING_0J</if>
+		<if test="item.sortName == 'tcIsUserProvinceMapping0j'">TC_IS_USER_PROVINCE_MAPPING_0J</if>
+		<if test="item.sortName == 'tcIsUserCityMapping0j'">TC_IS_USER_CITY_MAPPING_0J</if>
+		<if test="item.sortName == 'tcIsUserStoreWwMapping0j'">TC_IS_USER_STORE_WW_MAPPING_0J</if>
+		<if test="item.sortName == 'tcIsUserTeamMapping0j'">TC_IS_USER_TEAM_MAPPING_0J</if>
+		<if test="item.sortName == 'tcIsUserEnterpriseMap0k'">TC_IS_USER_ENTERPRISE_MAP_0K</if>
+		<if test="item.sortName == 'tcIsUserCompanyMapping0k'">TC_IS_USER_COMPANY_MAPPING_0K</if>
+		<if test="item.sortName == 'tcIsUserGroupMapping0k'">TC_IS_USER_GROUP_MAPPING_0K</if>
+		<if test="item.sortName == 'tcIsUserMethodMapping0k'">TC_IS_USER_METHOD_MAPPING_0K</if>
+		<if test="item.sortName == 'tcIsUserCustomerMapping0k'">TC_IS_USER_CUSTOMER_MAPPING_0K</if>
+		<if test="item.sortName == 'tcIsUserStoreMapping0k'">TC_IS_USER_STORE_MAPPING_0K</if>
+		<if test="item.sortName == 'tcIsUserCountryMapping0k'">TC_IS_USER_COUNTRY_MAPPING_0K</if>
+		<if test="item.sortName == 'tcIsUserRegionMapping0k'">TC_IS_USER_REGION_MAPPING_0K</if>
+		<if test="item.sortName == 'tcIsUserProvinceMapping0k'">TC_IS_USER_PROVINCE_MAPPING_0K</if>
+		<if test="item.sortName == 'tcIsUserCityMapping0k'">TC_IS_USER_CITY_MAPPING_0K</if>
+		<if test="item.sortName == 'tcIsUserStoreWwMapping0k'">TC_IS_USER_STORE_WW_MAPPING_0K</if>
+		<if test="item.sortName == 'tcIsUserTeamMapping0k'">TC_IS_USER_TEAM_MAPPING_0K</if>
+		<if test="item.sortName == 'tcOldCode'">TC_OLD_CODE</if>
+	</sql>
+	
+	<sql id="dynamicWhere">
+		<where>	      				
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcCode)"> AND t.TC_CODE LIKE CONCAT('%',#{tcCode},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcName)"> AND t.TC_NAME LIKE CONCAT('%',#{tcName},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcDescription)"> AND t.TC_DESCRIPTION LIKE CONCAT('%',#{tcDescription},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcAddUserRowid)"> AND t.TC_ADD_USER_ROWID LIKE CONCAT('%',#{tcAddUserRowid},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcAddTime)"> AND t.TC_ADD_TIME LIKE CONCAT('%',#{tcAddTime},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcUpdateUserRowid)"> AND t.TC_UPDATE_USER_ROWID LIKE CONCAT('%',#{tcUpdateUserRowid},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcUpdateTime)"> AND t.TC_UPDATE_TIME LIKE CONCAT('%',#{tcUpdateTime},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcDeleteUserRowid)"> AND t.TC_DELETE_USER_ROWID LIKE CONCAT('%',#{tcDeleteUserRowid},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcDeleteTime)"> AND t.TC_DELETE_TIME LIKE CONCAT('%',#{tcDeleteTime},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcActiveUserRowid)"> AND t.TC_ACTIVE_USER_ROWID LIKE CONCAT('%',#{tcActiveUserRowid},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcActiveTime)"> AND t.TC_ACTIVE_TIME LIKE CONCAT('%',#{tcActiveTime},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcCloseUserRowid)"> AND t.TC_CLOSE_USER_ROWID LIKE CONCAT('%',#{tcCloseUserRowid},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcCloseTime)"> AND t.TC_CLOSE_TIME LIKE CONCAT('%',#{tcCloseTime},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcStatus)"> AND t.TC_STATUS LIKE CONCAT('%',#{tcStatus},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcPassword)"> AND t.TC_PASSWORD LIKE CONCAT('%',#{tcPassword},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcUserType)"> AND t.TC_USER_TYPE LIKE CONCAT('%',#{tcUserType},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcDepartmentRowid)"> AND t.TC_DEPARTMENT_ROWID LIKE CONCAT('%',#{tcDepartmentRowid},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcPwdModifyTime)"> AND t.TC_PWD_MODIFY_TIME LIKE CONCAT('%',#{tcPwdModifyTime},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcPwdValidTime)"> AND t.TC_PWD_VALID_TIME LIKE CONCAT('%',#{tcPwdValidTime},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcFailureTime)"> AND t.TC_FAILURE_TIME LIKE CONCAT('%',#{tcFailureTime},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcLastLoginTime)"> AND t.TC_LAST_LOGIN_TIME LIKE CONCAT('%',#{tcLastLoginTime},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserEnterpriseMap0a)"> AND t.TC_IS_USER_ENTERPRISE_MAP_0A LIKE CONCAT('%',#{tcIsUserEnterpriseMap0a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCompanyMapping0a)"> AND t.TC_IS_USER_COMPANY_MAPPING_0A LIKE CONCAT('%',#{tcIsUserCompanyMapping0a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserGroupMapping0a)"> AND t.TC_IS_USER_GROUP_MAPPING_0A LIKE CONCAT('%',#{tcIsUserGroupMapping0a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserMethodMapping0a)"> AND t.TC_IS_USER_METHOD_MAPPING_0A LIKE CONCAT('%',#{tcIsUserMethodMapping0a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCustomerMapping0a)"> AND t.TC_IS_USER_CUSTOMER_MAPPING_0A LIKE CONCAT('%',#{tcIsUserCustomerMapping0a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreMapping0a)"> AND t.TC_IS_USER_STORE_MAPPING_0A LIKE CONCAT('%',#{tcIsUserStoreMapping0a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCountryMapping0a)"> AND t.TC_IS_USER_COUNTRY_MAPPING_0A LIKE CONCAT('%',#{tcIsUserCountryMapping0a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserRegionMapping0a)"> AND t.TC_IS_USER_REGION_MAPPING_0A LIKE CONCAT('%',#{tcIsUserRegionMapping0a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserProvinceMapping0a)"> AND t.TC_IS_USER_PROVINCE_MAPPING_0A LIKE CONCAT('%',#{tcIsUserProvinceMapping0a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCityMapping0a)"> AND t.TC_IS_USER_CITY_MAPPING_0A LIKE CONCAT('%',#{tcIsUserCityMapping0a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserEnterpriseMap0b)"> AND t.TC_IS_USER_ENTERPRISE_MAP_0B LIKE CONCAT('%',#{tcIsUserEnterpriseMap0b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCompanyMapping0b)"> AND t.TC_IS_USER_COMPANY_MAPPING_0B LIKE CONCAT('%',#{tcIsUserCompanyMapping0b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserGroupMapping0b)"> AND t.TC_IS_USER_GROUP_MAPPING_0B LIKE CONCAT('%',#{tcIsUserGroupMapping0b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserMethodMapping0b)"> AND t.TC_IS_USER_METHOD_MAPPING_0B LIKE CONCAT('%',#{tcIsUserMethodMapping0b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCustomerMapping0b)"> AND t.TC_IS_USER_CUSTOMER_MAPPING_0B LIKE CONCAT('%',#{tcIsUserCustomerMapping0b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreMapping0b)"> AND t.TC_IS_USER_STORE_MAPPING_0B LIKE CONCAT('%',#{tcIsUserStoreMapping0b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCountryMapping0b)"> AND t.TC_IS_USER_COUNTRY_MAPPING_0B LIKE CONCAT('%',#{tcIsUserCountryMapping0b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserRegionMapping0b)"> AND t.TC_IS_USER_REGION_MAPPING_0B LIKE CONCAT('%',#{tcIsUserRegionMapping0b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserProvinceMapping0b)"> AND t.TC_IS_USER_PROVINCE_MAPPING_0B LIKE CONCAT('%',#{tcIsUserProvinceMapping0b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCityMapping0b)"> AND t.TC_IS_USER_CITY_MAPPING_0B LIKE CONCAT('%',#{tcIsUserCityMapping0b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserEnterpriseMap0c)"> AND t.TC_IS_USER_ENTERPRISE_MAP_0C LIKE CONCAT('%',#{tcIsUserEnterpriseMap0c},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCompanyMapping0c)"> AND t.TC_IS_USER_COMPANY_MAPPING_0C LIKE CONCAT('%',#{tcIsUserCompanyMapping0c},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserGroupMapping0c)"> AND t.TC_IS_USER_GROUP_MAPPING_0C LIKE CONCAT('%',#{tcIsUserGroupMapping0c},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserMethodMapping0c)"> AND t.TC_IS_USER_METHOD_MAPPING_0C LIKE CONCAT('%',#{tcIsUserMethodMapping0c},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCustomerMapping0c)"> AND t.TC_IS_USER_CUSTOMER_MAPPING_0C LIKE CONCAT('%',#{tcIsUserCustomerMapping0c},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreMapping0c)"> AND t.TC_IS_USER_STORE_MAPPING_0C LIKE CONCAT('%',#{tcIsUserStoreMapping0c},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCountryMapping0c)"> AND t.TC_IS_USER_COUNTRY_MAPPING_0C LIKE CONCAT('%',#{tcIsUserCountryMapping0c},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserRegionMapping0c)"> AND t.TC_IS_USER_REGION_MAPPING_0C LIKE CONCAT('%',#{tcIsUserRegionMapping0c},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserProvinceMapping0c)"> AND t.TC_IS_USER_PROVINCE_MAPPING_0C LIKE CONCAT('%',#{tcIsUserProvinceMapping0c},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCityMapping0c)"> AND t.TC_IS_USER_CITY_MAPPING_0C LIKE CONCAT('%',#{tcIsUserCityMapping0c},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserEnterpriseMap0d)"> AND t.TC_IS_USER_ENTERPRISE_MAP_0D LIKE CONCAT('%',#{tcIsUserEnterpriseMap0d},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCompanyMapping0d)"> AND t.TC_IS_USER_COMPANY_MAPPING_0D LIKE CONCAT('%',#{tcIsUserCompanyMapping0d},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserGroupMapping0d)"> AND t.TC_IS_USER_GROUP_MAPPING_0D LIKE CONCAT('%',#{tcIsUserGroupMapping0d},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserMethodMapping0d)"> AND t.TC_IS_USER_METHOD_MAPPING_0D LIKE CONCAT('%',#{tcIsUserMethodMapping0d},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCustomerMapping0d)"> AND t.TC_IS_USER_CUSTOMER_MAPPING_0D LIKE CONCAT('%',#{tcIsUserCustomerMapping0d},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreMapping0d)"> AND t.TC_IS_USER_STORE_MAPPING_0D LIKE CONCAT('%',#{tcIsUserStoreMapping0d},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCountryMapping0d)"> AND t.TC_IS_USER_COUNTRY_MAPPING_0D LIKE CONCAT('%',#{tcIsUserCountryMapping0d},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserRegionMapping0d)"> AND t.TC_IS_USER_REGION_MAPPING_0D LIKE CONCAT('%',#{tcIsUserRegionMapping0d},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserProvinceMapping0d)"> AND t.TC_IS_USER_PROVINCE_MAPPING_0D LIKE CONCAT('%',#{tcIsUserProvinceMapping0d},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCityMapping0d)"> AND t.TC_IS_USER_CITY_MAPPING_0D LIKE CONCAT('%',#{tcIsUserCityMapping0d},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserEnterpriseMap0e)"> AND t.TC_IS_USER_ENTERPRISE_MAP_0E LIKE CONCAT('%',#{tcIsUserEnterpriseMap0e},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCompanyMapping0e)"> AND t.TC_IS_USER_COMPANY_MAPPING_0E LIKE CONCAT('%',#{tcIsUserCompanyMapping0e},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserGroupMapping0e)"> AND t.TC_IS_USER_GROUP_MAPPING_0E LIKE CONCAT('%',#{tcIsUserGroupMapping0e},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserMethodMapping0e)"> AND t.TC_IS_USER_METHOD_MAPPING_0E LIKE CONCAT('%',#{tcIsUserMethodMapping0e},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCustomerMapping0e)"> AND t.TC_IS_USER_CUSTOMER_MAPPING_0E LIKE CONCAT('%',#{tcIsUserCustomerMapping0e},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreMapping0e)"> AND t.TC_IS_USER_STORE_MAPPING_0E LIKE CONCAT('%',#{tcIsUserStoreMapping0e},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCountryMapping0e)"> AND t.TC_IS_USER_COUNTRY_MAPPING_0E LIKE CONCAT('%',#{tcIsUserCountryMapping0e},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserRegionMapping0e)"> AND t.TC_IS_USER_REGION_MAPPING_0E LIKE CONCAT('%',#{tcIsUserRegionMapping0e},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserProvinceMapping0e)"> AND t.TC_IS_USER_PROVINCE_MAPPING_0E LIKE CONCAT('%',#{tcIsUserProvinceMapping0e},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCityMapping0e)"> AND t.TC_IS_USER_CITY_MAPPING_0E LIKE CONCAT('%',#{tcIsUserCityMapping0e},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserEnterpriseMap0f)"> AND t.TC_IS_USER_ENTERPRISE_MAP_0F LIKE CONCAT('%',#{tcIsUserEnterpriseMap0f},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCompanyMapping0f)"> AND t.TC_IS_USER_COMPANY_MAPPING_0F LIKE CONCAT('%',#{tcIsUserCompanyMapping0f},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserGroupMapping0f)"> AND t.TC_IS_USER_GROUP_MAPPING_0F LIKE CONCAT('%',#{tcIsUserGroupMapping0f},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserMethodMapping0f)"> AND t.TC_IS_USER_METHOD_MAPPING_0F LIKE CONCAT('%',#{tcIsUserMethodMapping0f},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCustomerMapping0f)"> AND t.TC_IS_USER_CUSTOMER_MAPPING_0F LIKE CONCAT('%',#{tcIsUserCustomerMapping0f},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreMapping0f)"> AND t.TC_IS_USER_STORE_MAPPING_0F LIKE CONCAT('%',#{tcIsUserStoreMapping0f},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCountryMapping0f)"> AND t.TC_IS_USER_COUNTRY_MAPPING_0F LIKE CONCAT('%',#{tcIsUserCountryMapping0f},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserRegionMapping0f)"> AND t.TC_IS_USER_REGION_MAPPING_0F LIKE CONCAT('%',#{tcIsUserRegionMapping0f},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserProvinceMapping0f)"> AND t.TC_IS_USER_PROVINCE_MAPPING_0F LIKE CONCAT('%',#{tcIsUserProvinceMapping0f},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCityMapping0f)"> AND t.TC_IS_USER_CITY_MAPPING_0F LIKE CONCAT('%',#{tcIsUserCityMapping0f},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserEnterpriseMap0g)"> AND t.TC_IS_USER_ENTERPRISE_MAP_0G LIKE CONCAT('%',#{tcIsUserEnterpriseMap0g},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCompanyMapping0g)"> AND t.TC_IS_USER_COMPANY_MAPPING_0G LIKE CONCAT('%',#{tcIsUserCompanyMapping0g},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserGroupMapping0g)"> AND t.TC_IS_USER_GROUP_MAPPING_0G LIKE CONCAT('%',#{tcIsUserGroupMapping0g},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserMethodMapping0g)"> AND t.TC_IS_USER_METHOD_MAPPING_0G LIKE CONCAT('%',#{tcIsUserMethodMapping0g},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCustomerMapping0g)"> AND t.TC_IS_USER_CUSTOMER_MAPPING_0G LIKE CONCAT('%',#{tcIsUserCustomerMapping0g},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreMapping0g)"> AND t.TC_IS_USER_STORE_MAPPING_0G LIKE CONCAT('%',#{tcIsUserStoreMapping0g},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCountryMapping0g)"> AND t.TC_IS_USER_COUNTRY_MAPPING_0G LIKE CONCAT('%',#{tcIsUserCountryMapping0g},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserRegionMapping0g)"> AND t.TC_IS_USER_REGION_MAPPING_0G LIKE CONCAT('%',#{tcIsUserRegionMapping0g},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserProvinceMapping0g)"> AND t.TC_IS_USER_PROVINCE_MAPPING_0G LIKE CONCAT('%',#{tcIsUserProvinceMapping0g},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCityMapping0g)"> AND t.TC_IS_USER_CITY_MAPPING_0G LIKE CONCAT('%',#{tcIsUserCityMapping0g},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserEnterpriseMap0h)"> AND t.TC_IS_USER_ENTERPRISE_MAP_0H LIKE CONCAT('%',#{tcIsUserEnterpriseMap0h},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCompanyMapping0h)"> AND t.TC_IS_USER_COMPANY_MAPPING_0H LIKE CONCAT('%',#{tcIsUserCompanyMapping0h},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserGroupMapping0h)"> AND t.TC_IS_USER_GROUP_MAPPING_0H LIKE CONCAT('%',#{tcIsUserGroupMapping0h},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserMethodMapping0h)"> AND t.TC_IS_USER_METHOD_MAPPING_0H LIKE CONCAT('%',#{tcIsUserMethodMapping0h},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCustomerMapping0h)"> AND t.TC_IS_USER_CUSTOMER_MAPPING_0H LIKE CONCAT('%',#{tcIsUserCustomerMapping0h},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreMapping0h)"> AND t.TC_IS_USER_STORE_MAPPING_0H LIKE CONCAT('%',#{tcIsUserStoreMapping0h},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCountryMapping0h)"> AND t.TC_IS_USER_COUNTRY_MAPPING_0H LIKE CONCAT('%',#{tcIsUserCountryMapping0h},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserRegionMapping0h)"> AND t.TC_IS_USER_REGION_MAPPING_0H LIKE CONCAT('%',#{tcIsUserRegionMapping0h},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserProvinceMapping0h)"> AND t.TC_IS_USER_PROVINCE_MAPPING_0H LIKE CONCAT('%',#{tcIsUserProvinceMapping0h},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCityMapping0h)"> AND t.TC_IS_USER_CITY_MAPPING_0H LIKE CONCAT('%',#{tcIsUserCityMapping0h},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserEnterpriseMap0i)"> AND t.TC_IS_USER_ENTERPRISE_MAP_0I LIKE CONCAT('%',#{tcIsUserEnterpriseMap0i},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCompanyMapping0i)"> AND t.TC_IS_USER_COMPANY_MAPPING_0I LIKE CONCAT('%',#{tcIsUserCompanyMapping0i},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserGroupMapping0i)"> AND t.TC_IS_USER_GROUP_MAPPING_0I LIKE CONCAT('%',#{tcIsUserGroupMapping0i},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserMethodMapping0i)"> AND t.TC_IS_USER_METHOD_MAPPING_0I LIKE CONCAT('%',#{tcIsUserMethodMapping0i},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCustomerMapping0i)"> AND t.TC_IS_USER_CUSTOMER_MAPPING_0I LIKE CONCAT('%',#{tcIsUserCustomerMapping0i},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreMapping0i)"> AND t.TC_IS_USER_STORE_MAPPING_0I LIKE CONCAT('%',#{tcIsUserStoreMapping0i},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCountryMapping0i)"> AND t.TC_IS_USER_COUNTRY_MAPPING_0I LIKE CONCAT('%',#{tcIsUserCountryMapping0i},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserRegionMapping0i)"> AND t.TC_IS_USER_REGION_MAPPING_0I LIKE CONCAT('%',#{tcIsUserRegionMapping0i},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserProvinceMapping0i)"> AND t.TC_IS_USER_PROVINCE_MAPPING_0I LIKE CONCAT('%',#{tcIsUserProvinceMapping0i},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCityMapping0i)"> AND t.TC_IS_USER_CITY_MAPPING_0I LIKE CONCAT('%',#{tcIsUserCityMapping0i},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserBrandMapping0a)"> AND t.TC_IS_USER_BRAND_MAPPING_0A LIKE CONCAT('%',#{tcIsUserBrandMapping0a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserBrandMapping0b)"> AND t.TC_IS_USER_BRAND_MAPPING_0B LIKE CONCAT('%',#{tcIsUserBrandMapping0b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcMainCustomerRowid)"> AND t.TC_MAIN_CUSTOMER_ROWID LIKE CONCAT('%',#{tcMainCustomerRowid},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcMainDownCustomerRowid)"> AND t.TC_MAIN_DOWN_CUSTOMER_ROWID LIKE CONCAT('%',#{tcMainDownCustomerRowid},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserFactoryMapping1a)"> AND t.TC_IS_USER_FACTORY_MAPPING_1A LIKE CONCAT('%',#{tcIsUserFactoryMapping1a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserFactoryMapping1b)"> AND t.TC_IS_USER_FACTORY_MAPPING_1B LIKE CONCAT('%',#{tcIsUserFactoryMapping1b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreWwMapping0a)"> AND t.TC_IS_USER_STORE_WW_MAPPING_0A LIKE CONCAT('%',#{tcIsUserStoreWwMapping0a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreWwMapping0b)"> AND t.TC_IS_USER_STORE_WW_MAPPING_0B LIKE CONCAT('%',#{tcIsUserStoreWwMapping0b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreWwMapping0c)"> AND t.TC_IS_USER_STORE_WW_MAPPING_0C LIKE CONCAT('%',#{tcIsUserStoreWwMapping0c},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreWwMapping0d)"> AND t.TC_IS_USER_STORE_WW_MAPPING_0D LIKE CONCAT('%',#{tcIsUserStoreWwMapping0d},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreWwMapping0e)"> AND t.TC_IS_USER_STORE_WW_MAPPING_0E LIKE CONCAT('%',#{tcIsUserStoreWwMapping0e},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreWwMapping0f)"> AND t.TC_IS_USER_STORE_WW_MAPPING_0F LIKE CONCAT('%',#{tcIsUserStoreWwMapping0f},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreWwMapping0g)"> AND t.TC_IS_USER_STORE_WW_MAPPING_0G LIKE CONCAT('%',#{tcIsUserStoreWwMapping0g},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreWwMapping0h)"> AND t.TC_IS_USER_STORE_WW_MAPPING_0H LIKE CONCAT('%',#{tcIsUserStoreWwMapping0h},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreWwMapping0i)"> AND t.TC_IS_USER_STORE_WW_MAPPING_0I LIKE CONCAT('%',#{tcIsUserStoreWwMapping0i},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCompanyMapping1a)"> AND t.TC_IS_USER_COMPANY_MAPPING_1A LIKE CONCAT('%',#{tcIsUserCompanyMapping1a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCompanyMapping1b)"> AND t.TC_IS_USER_COMPANY_MAPPING_1B LIKE CONCAT('%',#{tcIsUserCompanyMapping1b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserEnterpriseMap1a)"> AND t.TC_IS_USER_ENTERPRISE_MAP_1A LIKE CONCAT('%',#{tcIsUserEnterpriseMap1a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserGroupMapping1a)"> AND t.TC_IS_USER_GROUP_MAPPING_1A LIKE CONCAT('%',#{tcIsUserGroupMapping1a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserMethodMapping1a)"> AND t.TC_IS_USER_METHOD_MAPPING_1A LIKE CONCAT('%',#{tcIsUserMethodMapping1a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCustomerMapping1a)"> AND t.TC_IS_USER_CUSTOMER_MAPPING_1A LIKE CONCAT('%',#{tcIsUserCustomerMapping1a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCountryMapping1a)"> AND t.TC_IS_USER_COUNTRY_MAPPING_1A LIKE CONCAT('%',#{tcIsUserCountryMapping1a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserRegionMapping1a)"> AND t.TC_IS_USER_REGION_MAPPING_1A LIKE CONCAT('%',#{tcIsUserRegionMapping1a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserProvinceMapping1a)"> AND t.TC_IS_USER_PROVINCE_MAPPING_1A LIKE CONCAT('%',#{tcIsUserProvinceMapping1a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCityMapping1a)"> AND t.TC_IS_USER_CITY_MAPPING_1A LIKE CONCAT('%',#{tcIsUserCityMapping1a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreWwMapping1a)"> AND t.TC_IS_USER_STORE_WW_MAPPING_1A LIKE CONCAT('%',#{tcIsUserStoreWwMapping1a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserEnterpriseMap1b)"> AND t.TC_IS_USER_ENTERPRISE_MAP_1B LIKE CONCAT('%',#{tcIsUserEnterpriseMap1b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserGroupMapping1b)"> AND t.TC_IS_USER_GROUP_MAPPING_1B LIKE CONCAT('%',#{tcIsUserGroupMapping1b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserMethodMapping1b)"> AND t.TC_IS_USER_METHOD_MAPPING_1B LIKE CONCAT('%',#{tcIsUserMethodMapping1b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCustomerMapping1b)"> AND t.TC_IS_USER_CUSTOMER_MAPPING_1B LIKE CONCAT('%',#{tcIsUserCustomerMapping1b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCountryMapping1b)"> AND t.TC_IS_USER_COUNTRY_MAPPING_1B LIKE CONCAT('%',#{tcIsUserCountryMapping1b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserRegionMapping1b)"> AND t.TC_IS_USER_REGION_MAPPING_1B LIKE CONCAT('%',#{tcIsUserRegionMapping1b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserProvinceMapping1b)"> AND t.TC_IS_USER_PROVINCE_MAPPING_1B LIKE CONCAT('%',#{tcIsUserProvinceMapping1b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCityMapping1b)"> AND t.TC_IS_USER_CITY_MAPPING_1B LIKE CONCAT('%',#{tcIsUserCityMapping1b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreWwMapping1b)"> AND t.TC_IS_USER_STORE_WW_MAPPING_1B LIKE CONCAT('%',#{tcIsUserStoreWwMapping1b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserTeamMapping0a)"> AND t.TC_IS_USER_TEAM_MAPPING_0A LIKE CONCAT('%',#{tcIsUserTeamMapping0a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserTeamMapping0b)"> AND t.TC_IS_USER_TEAM_MAPPING_0B LIKE CONCAT('%',#{tcIsUserTeamMapping0b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserTeamMapping0c)"> AND t.TC_IS_USER_TEAM_MAPPING_0C LIKE CONCAT('%',#{tcIsUserTeamMapping0c},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserTeamMapping0d)"> AND t.TC_IS_USER_TEAM_MAPPING_0D LIKE CONCAT('%',#{tcIsUserTeamMapping0d},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserTeamMapping0e)"> AND t.TC_IS_USER_TEAM_MAPPING_0E LIKE CONCAT('%',#{tcIsUserTeamMapping0e},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserTeamMapping0f)"> AND t.TC_IS_USER_TEAM_MAPPING_0F LIKE CONCAT('%',#{tcIsUserTeamMapping0f},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserTeamMapping0g)"> AND t.TC_IS_USER_TEAM_MAPPING_0G LIKE CONCAT('%',#{tcIsUserTeamMapping0g},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserTeamMapping0h)"> AND t.TC_IS_USER_TEAM_MAPPING_0H LIKE CONCAT('%',#{tcIsUserTeamMapping0h},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserTeamMapping0i)"> AND t.TC_IS_USER_TEAM_MAPPING_0I LIKE CONCAT('%',#{tcIsUserTeamMapping0i},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserTeamMapping1a)"> AND t.TC_IS_USER_TEAM_MAPPING_1A LIKE CONCAT('%',#{tcIsUserTeamMapping1a},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserTeamMapping1b)"> AND t.TC_IS_USER_TEAM_MAPPING_1B LIKE CONCAT('%',#{tcIsUserTeamMapping1b},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserEnterpriseMap0j)"> AND t.TC_IS_USER_ENTERPRISE_MAP_0J LIKE CONCAT('%',#{tcIsUserEnterpriseMap0j},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCompanyMapping0j)"> AND t.TC_IS_USER_COMPANY_MAPPING_0J LIKE CONCAT('%',#{tcIsUserCompanyMapping0j},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserGroupMapping0j)"> AND t.TC_IS_USER_GROUP_MAPPING_0J LIKE CONCAT('%',#{tcIsUserGroupMapping0j},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserMethodMapping0j)"> AND t.TC_IS_USER_METHOD_MAPPING_0J LIKE CONCAT('%',#{tcIsUserMethodMapping0j},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCustomerMapping0j)"> AND t.TC_IS_USER_CUSTOMER_MAPPING_0J LIKE CONCAT('%',#{tcIsUserCustomerMapping0j},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreMapping0j)"> AND t.TC_IS_USER_STORE_MAPPING_0J LIKE CONCAT('%',#{tcIsUserStoreMapping0j},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCountryMapping0j)"> AND t.TC_IS_USER_COUNTRY_MAPPING_0J LIKE CONCAT('%',#{tcIsUserCountryMapping0j},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserRegionMapping0j)"> AND t.TC_IS_USER_REGION_MAPPING_0J LIKE CONCAT('%',#{tcIsUserRegionMapping0j},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserProvinceMapping0j)"> AND t.TC_IS_USER_PROVINCE_MAPPING_0J LIKE CONCAT('%',#{tcIsUserProvinceMapping0j},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCityMapping0j)"> AND t.TC_IS_USER_CITY_MAPPING_0J LIKE CONCAT('%',#{tcIsUserCityMapping0j},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreWwMapping0j)"> AND t.TC_IS_USER_STORE_WW_MAPPING_0J LIKE CONCAT('%',#{tcIsUserStoreWwMapping0j},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserTeamMapping0j)"> AND t.TC_IS_USER_TEAM_MAPPING_0J LIKE CONCAT('%',#{tcIsUserTeamMapping0j},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserEnterpriseMap0k)"> AND t.TC_IS_USER_ENTERPRISE_MAP_0K LIKE CONCAT('%',#{tcIsUserEnterpriseMap0k},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCompanyMapping0k)"> AND t.TC_IS_USER_COMPANY_MAPPING_0K LIKE CONCAT('%',#{tcIsUserCompanyMapping0k},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserGroupMapping0k)"> AND t.TC_IS_USER_GROUP_MAPPING_0K LIKE CONCAT('%',#{tcIsUserGroupMapping0k},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserMethodMapping0k)"> AND t.TC_IS_USER_METHOD_MAPPING_0K LIKE CONCAT('%',#{tcIsUserMethodMapping0k},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCustomerMapping0k)"> AND t.TC_IS_USER_CUSTOMER_MAPPING_0K LIKE CONCAT('%',#{tcIsUserCustomerMapping0k},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreMapping0k)"> AND t.TC_IS_USER_STORE_MAPPING_0K LIKE CONCAT('%',#{tcIsUserStoreMapping0k},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCountryMapping0k)"> AND t.TC_IS_USER_COUNTRY_MAPPING_0K LIKE CONCAT('%',#{tcIsUserCountryMapping0k},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserRegionMapping0k)"> AND t.TC_IS_USER_REGION_MAPPING_0K LIKE CONCAT('%',#{tcIsUserRegionMapping0k},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserProvinceMapping0k)"> AND t.TC_IS_USER_PROVINCE_MAPPING_0K LIKE CONCAT('%',#{tcIsUserProvinceMapping0k},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserCityMapping0k)"> AND t.TC_IS_USER_CITY_MAPPING_0K LIKE CONCAT('%',#{tcIsUserCityMapping0k},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserStoreWwMapping0k)"> AND t.TC_IS_USER_STORE_WW_MAPPING_0K LIKE CONCAT('%',#{tcIsUserStoreWwMapping0k},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcIsUserTeamMapping0k)"> AND t.TC_IS_USER_TEAM_MAPPING_0K LIKE CONCAT('%',#{tcIsUserTeamMapping0k},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(tcOldCode)"> AND t.TC_OLD_CODE LIKE CONCAT('%',#{tcOldCode},'%')</if>
+	       <if test="@chok.devwork.Ognl@isNotEmpty(search)"> AND (t.TC_CODE LIKE CONCAT('%',#{search},'%') OR t.TC_NAME LIKE CONCAT('%',#{search},'%') OR t.TC_DESCRIPTION LIKE CONCAT('%',#{search},'%') OR t.TC_ADD_USER_ROWID LIKE CONCAT('%',#{search},'%') OR t.TC_ADD_TIME LIKE CONCAT('%',#{search},'%') OR t.TC_UPDATE_USER_ROWID LIKE CONCAT('%',#{search},'%') OR t.TC_UPDATE_TIME LIKE CONCAT('%',#{search},'%') OR t.TC_DELETE_USER_ROWID LIKE CONCAT('%',#{search},'%') OR t.TC_DELETE_TIME LIKE CONCAT('%',#{search},'%') OR t.TC_ACTIVE_USER_ROWID LIKE CONCAT('%',#{search},'%') OR t.TC_ACTIVE_TIME LIKE CONCAT('%',#{search},'%') OR t.TC_CLOSE_USER_ROWID LIKE CONCAT('%',#{search},'%') OR t.TC_CLOSE_TIME LIKE CONCAT('%',#{search},'%') OR t.TC_STATUS LIKE CONCAT('%',#{search},'%') OR t.TC_PASSWORD LIKE CONCAT('%',#{search},'%') OR t.TC_USER_TYPE LIKE CONCAT('%',#{search},'%') OR t.TC_DEPARTMENT_ROWID LIKE CONCAT('%',#{search},'%') OR t.TC_PWD_MODIFY_TIME LIKE CONCAT('%',#{search},'%') OR t.TC_PWD_VALID_TIME LIKE CONCAT('%',#{search},'%') OR t.TC_FAILURE_TIME LIKE CONCAT('%',#{search},'%') OR t.TC_LAST_LOGIN_TIME LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_ENTERPRISE_MAP_0A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COMPANY_MAPPING_0A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_GROUP_MAPPING_0A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_METHOD_MAPPING_0A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CUSTOMER_MAPPING_0A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_MAPPING_0A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COUNTRY_MAPPING_0A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_REGION_MAPPING_0A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_PROVINCE_MAPPING_0A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CITY_MAPPING_0A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_ENTERPRISE_MAP_0B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COMPANY_MAPPING_0B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_GROUP_MAPPING_0B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_METHOD_MAPPING_0B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CUSTOMER_MAPPING_0B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_MAPPING_0B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COUNTRY_MAPPING_0B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_REGION_MAPPING_0B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_PROVINCE_MAPPING_0B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CITY_MAPPING_0B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_ENTERPRISE_MAP_0C LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COMPANY_MAPPING_0C LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_GROUP_MAPPING_0C LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_METHOD_MAPPING_0C LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CUSTOMER_MAPPING_0C LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_MAPPING_0C LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COUNTRY_MAPPING_0C LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_REGION_MAPPING_0C LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_PROVINCE_MAPPING_0C LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CITY_MAPPING_0C LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_ENTERPRISE_MAP_0D LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COMPANY_MAPPING_0D LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_GROUP_MAPPING_0D LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_METHOD_MAPPING_0D LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CUSTOMER_MAPPING_0D LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_MAPPING_0D LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COUNTRY_MAPPING_0D LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_REGION_MAPPING_0D LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_PROVINCE_MAPPING_0D LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CITY_MAPPING_0D LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_ENTERPRISE_MAP_0E LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COMPANY_MAPPING_0E LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_GROUP_MAPPING_0E LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_METHOD_MAPPING_0E LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CUSTOMER_MAPPING_0E LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_MAPPING_0E LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COUNTRY_MAPPING_0E LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_REGION_MAPPING_0E LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_PROVINCE_MAPPING_0E LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CITY_MAPPING_0E LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_ENTERPRISE_MAP_0F LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COMPANY_MAPPING_0F LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_GROUP_MAPPING_0F LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_METHOD_MAPPING_0F LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CUSTOMER_MAPPING_0F LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_MAPPING_0F LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COUNTRY_MAPPING_0F LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_REGION_MAPPING_0F LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_PROVINCE_MAPPING_0F LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CITY_MAPPING_0F LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_ENTERPRISE_MAP_0G LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COMPANY_MAPPING_0G LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_GROUP_MAPPING_0G LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_METHOD_MAPPING_0G LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CUSTOMER_MAPPING_0G LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_MAPPING_0G LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COUNTRY_MAPPING_0G LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_REGION_MAPPING_0G LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_PROVINCE_MAPPING_0G LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CITY_MAPPING_0G LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_ENTERPRISE_MAP_0H LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COMPANY_MAPPING_0H LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_GROUP_MAPPING_0H LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_METHOD_MAPPING_0H LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CUSTOMER_MAPPING_0H LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_MAPPING_0H LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COUNTRY_MAPPING_0H LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_REGION_MAPPING_0H LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_PROVINCE_MAPPING_0H LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CITY_MAPPING_0H LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_ENTERPRISE_MAP_0I LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COMPANY_MAPPING_0I LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_GROUP_MAPPING_0I LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_METHOD_MAPPING_0I LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CUSTOMER_MAPPING_0I LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_MAPPING_0I LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COUNTRY_MAPPING_0I LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_REGION_MAPPING_0I LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_PROVINCE_MAPPING_0I LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CITY_MAPPING_0I LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_BRAND_MAPPING_0A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_BRAND_MAPPING_0B LIKE CONCAT('%',#{search},'%') OR t.TC_MAIN_CUSTOMER_ROWID LIKE CONCAT('%',#{search},'%') OR t.TC_MAIN_DOWN_CUSTOMER_ROWID LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_FACTORY_MAPPING_1A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_FACTORY_MAPPING_1B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_WW_MAPPING_0A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_WW_MAPPING_0B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_WW_MAPPING_0C LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_WW_MAPPING_0D LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_WW_MAPPING_0E LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_WW_MAPPING_0F LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_WW_MAPPING_0G LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_WW_MAPPING_0H LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_WW_MAPPING_0I LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COMPANY_MAPPING_1A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COMPANY_MAPPING_1B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_ENTERPRISE_MAP_1A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_GROUP_MAPPING_1A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_METHOD_MAPPING_1A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CUSTOMER_MAPPING_1A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COUNTRY_MAPPING_1A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_REGION_MAPPING_1A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_PROVINCE_MAPPING_1A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CITY_MAPPING_1A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_WW_MAPPING_1A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_ENTERPRISE_MAP_1B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_GROUP_MAPPING_1B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_METHOD_MAPPING_1B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CUSTOMER_MAPPING_1B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COUNTRY_MAPPING_1B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_REGION_MAPPING_1B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_PROVINCE_MAPPING_1B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CITY_MAPPING_1B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_WW_MAPPING_1B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_TEAM_MAPPING_0A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_TEAM_MAPPING_0B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_TEAM_MAPPING_0C LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_TEAM_MAPPING_0D LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_TEAM_MAPPING_0E LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_TEAM_MAPPING_0F LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_TEAM_MAPPING_0G LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_TEAM_MAPPING_0H LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_TEAM_MAPPING_0I LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_TEAM_MAPPING_1A LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_TEAM_MAPPING_1B LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_ENTERPRISE_MAP_0J LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COMPANY_MAPPING_0J LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_GROUP_MAPPING_0J LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_METHOD_MAPPING_0J LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CUSTOMER_MAPPING_0J LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_MAPPING_0J LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COUNTRY_MAPPING_0J LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_REGION_MAPPING_0J LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_PROVINCE_MAPPING_0J LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CITY_MAPPING_0J LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_WW_MAPPING_0J LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_TEAM_MAPPING_0J LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_ENTERPRISE_MAP_0K LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COMPANY_MAPPING_0K LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_GROUP_MAPPING_0K LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_METHOD_MAPPING_0K LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CUSTOMER_MAPPING_0K LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_MAPPING_0K LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_COUNTRY_MAPPING_0K LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_REGION_MAPPING_0K LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_PROVINCE_MAPPING_0K LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_CITY_MAPPING_0K LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_STORE_WW_MAPPING_0K LIKE CONCAT('%',#{search},'%') OR t.TC_IS_USER_TEAM_MAPPING_0K LIKE CONCAT('%',#{search},'%') OR t.TC_OLD_CODE LIKE CONCAT('%',#{search},'%'))</if>	
+		</where>
+	</sql>	
+	
+	<select id="get" resultMap="result">
+		SELECT <include refid="columns"/> 
+		  FROM TB_USER_INFO_0A t 
+		 WHERE t.TC_ROWID = #{tcRowid}  	  
+	</select>
+	
+	<select id="getByUsername" resultMap="result">
+		SELECT <include refid="columns"/>
+		  FROM TB_USER_INFO_0A t 
+	     WHERE t.tc_code = #{username} or t.tc_name = #{username}
+	</select>
+	
+	<select id="query" resultType="list" resultMap="result">
+		<choose>
+			<!-- 翻页 -->
+			<when test="@chok.devwork.Ognl@isNotEmpty(offset) and @chok.devwork.Ognl@isNotEmpty(limit)">
+				SELECT * FROM (SELECT row_.*, ROWNUM rownum_ FROM(
+					SELECT tt.* FROM 
+					(
+						SELECT <include refid="columns"/> FROM TB_USER_INFO_0A t
+						<include refid="dynamicWhere" />
+					) tt
+					<include refid="order" />
+	            ) row_ WHERE rownum &lt;= #{offset,javaType=String,jdbcType=NUMERIC}+#{limit,javaType=String,jdbcType=NUMERIC} ) 
+	            WHERE rownum_ &gt; #{offset,javaType=String,jdbcType=NUMERIC}
+			</when>
+			<!-- 非翻页 -->
+			<otherwise>
+				SELECT tt.* FROM 
+				(
+					SELECT <include refid="columns"/> FROM TB_USER_INFO_0A t
+					<include refid="dynamicWhere" />
+				) tt
+				<include refid="order" />
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="getCount" resultType="int">
+		SELECT COUNT(1) FROM TB_USER_INFO_0A t
+		<include refid="dynamicWhere" />
+	</select>
+</mapper>  

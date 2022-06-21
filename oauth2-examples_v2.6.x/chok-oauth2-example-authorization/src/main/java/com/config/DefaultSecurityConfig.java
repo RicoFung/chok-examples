@@ -22,11 +22,7 @@ import java.util.Arrays;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -70,12 +66,29 @@ public class DefaultSecurityConfig
 	// .build();
 	// return new InMemoryUserDetailsManager(user);
 	// }
+	
+//	@Bean
+//	UserDetailsService users()
+//	{
+//		UserDetails user = User.builder().username("admin").password("password")
+//				.passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder()::encode).roles("ADMIN")
+//				.build();
+//		return new InMemoryUserDetailsManager(user);
+//	}
+	
+//	@Bean
+//	UserDetailsService users()
+//	{
+//		UserDetails user = User.builder().username("admin").password("password")
+//				.passwordEncoder(MyPasswordEncoderFactories.createDelegatingPasswordEncoder()::encode).roles("ADMIN")
+//				.build();
+//		return new InMemoryUserDetailsManager(user);
+//	}
+	
+	// 仅用于【注册方式：数据库】
 	@Bean
-	UserDetailsService users()
+	public PasswordEncoder passwordEncoder()
 	{
-		UserDetails user = User.builder().username("admin").password("password")
-				.passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder()::encode).roles("ADMIN")
-				.build();
-		return new InMemoryUserDetailsManager(user);
+		return MyPasswordEncoderFactories.createDelegatingPasswordEncoder();
 	}
 }
