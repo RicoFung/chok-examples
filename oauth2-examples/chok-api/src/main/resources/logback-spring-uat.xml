@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+
+    <!-- 应用名称 -->
+    <springProperty scope="context" name="APP_NAME" source="spring.application.name"/>
+    <!-- 日志级别 -->
+    <springProperty scope="context" name="LOG_ROOT_LEVEL" source="logging.level.root" defaultValue="INFO"/>
+    
+	<!-- ================================================================ -->
+	<!-- APPENDER: GRAYLOG -->
+	<!-- 发送GELF UDP 到 graylog -->
+	<!-- 使用第三方组件 https://github.com/osiegmar/logback-gelf -->
+	<!-- ================================================================ -->
+	<appender name="GELF" class="de.siegmar.logbackgelf.GelfUdpAppender">
+		<graylogHost>grayloguat.moco.com</graylogHost>
+		<graylogPort>12201</graylogPort>
+		<!--以下为可选配置 -->
+		<maxChunkSize>508</maxChunkSize>
+		<useCompression>true</useCompression>
+		<layout class="de.siegmar.logbackgelf.GelfLayout">
+			<originHost>grayloguat.moco.com</originHost>
+			<includeRawMessage>false</includeRawMessage>
+			<includeMarker>true</includeMarker>
+			<includeMdcData>true</includeMdcData>
+			<includeCallerData>false</includeCallerData>
+			<includeRootCauseData>false</includeRootCauseData>
+			<includeLevelName>true</includeLevelName>
+			<shortPatternLayout class="ch.qos.logback.classic.PatternLayout">
+				<pattern>%m%nopex</pattern>
+			</shortPatternLayout>
+			<fullPatternLayout class="ch.qos.logback.classic.PatternLayout">
+				<pattern>%m</pattern>
+			</fullPatternLayout>
+			<staticField>application:${APP_NAME}</staticField>
+			<staticField>environment:UAT</staticField>
+		</layout>
+	</appender>
+
+	<!-- ================================================================ -->
+	<!-- LOGGER -->
+	<!-- ================================================================ -->
+    <logger name="org.springframework" level="ERROR" additivity="false">
+        <appender-ref ref="GELF"/>
+    </logger>
+    <logger name="com.common" level="DEBUG" additivity="false">
+        <appender-ref ref="GELF"/>
+    </logger>
+    <logger name="chok.component" level="DEBUG" additivity="false">
+        <appender-ref ref="GELF"/>
+    </logger>
+    <logger name="chok.redis" level="DEBUG" additivity="false">
+        <appender-ref ref="GELF"/>
+    </logger>
+    <logger name="com.epo" level="DEBUG" additivity="false">
+        <appender-ref ref="GELF"/>
+    </logger>
+
+	<!-- ================================================================ -->
+	<!-- ROOT -->
+	<!-- ================================================================ -->
+    <root level="${LOG_ROOT_LEVEL}">
+        <appender-ref ref="GELF"/>
+	</root>
+
+</included>
