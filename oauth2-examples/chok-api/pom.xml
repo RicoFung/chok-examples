@@ -20,19 +20,13 @@
 	<profiles>
 		<!-- Maven控制Spring Profile -->
 		<profile>
-			<id>local-dev</id>
+			<id>local</id>
 			<properties>
-				<profileActive>local-dev</profileActive>
+				<profileActive>local</profileActive>
 			</properties>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
-		</profile>
-		<profile>
-			<id>local-uat</id>
-			<properties>
-				<profileActive>local-uat</profileActive>
-			</properties>
 		</profile>
 		<profile>
 			<id>dev</id>
@@ -206,12 +200,14 @@
 				<!-- 是否替换@xx@表示的maven properties属性值 -->
 				<filtering>true</filtering>
 				<includes>
-					<include>**/*.xml</include>
 					<include>**/application.properties</include>
 					<include>**/application-${profileActive}.properties</include>
 					<include>**/datasource-mybatis-${profileActive}.properties</include>
 					<include>**/datasource-jdbc-${profileActive}.properties</include>
 					<include>**/redisson-single-${profileActive}.yml</include>
+					<include>**/logback-spring.xml</include>
+					<include>**/logback-spring-${profileActive}.xml</include>
+					<include>**/mybatis.xml</include>
 					<include>**/i18n/*</include>
 					<include>**/img/*</include>
 					<include>**/templates/**</include>
@@ -220,7 +216,9 @@
 		</resources>
 		<plugins>
 			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-war-plugin</artifactId>
+		        <version>3.3.2</version>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
