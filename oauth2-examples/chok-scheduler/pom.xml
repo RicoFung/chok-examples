@@ -2,24 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
 	<modelVersion>4.0.0</modelVersion>
-	<!--本Project識別 -->
+	
+	<groupId>com.chok</groupId>
 	<artifactId>chok-scheduler</artifactId>
-	<!--表示打包Project的型態,可能為Jar、war、ear或pom，若是使用了android 則為apk -->
+	<version>1.0</version>
 	<packaging>war</packaging>
-	<!--以下是給工具看的,主要是本Project的資訊 -->
 	<name>chok-scheduler</name>
-
-	<parent>
-		<groupId>com.chok</groupId>
-		<artifactId>chok-parent</artifactId>
-		<version>2.1.8</version>
-		<relativePath>../chok-parent/pom.xml</relativePath>
-	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
 	<profiles>
@@ -59,6 +53,31 @@
 		</profile>
 	</profiles>
 
+	<!--  
+		使用 bom 方式代替 parent 方式：
+		1.支持多继承；
+		2.从此项目version与依赖库version分离 ；
+	-->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.chok</groupId>
+				<artifactId>chok-parent</artifactId>
+				<version>1.1.5</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<!-- 
+		<parent>
+			<groupId>com.chok</groupId>
+			<artifactId>chok-examples</artifactId>
+			<version>1.1.5</version>
+			<relativePath>../../pom.xml</relativePath>
+		</parent>
+	 -->
+	 
 	<dependencies>
 		<!-- logback-glef 用于发送消息至graylog -->
 		<dependency>
@@ -180,6 +199,14 @@
 				</includes>
 			</resource>
 		</resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
 		<finalName>chok-scheduler</finalName>
 	</build>
 
